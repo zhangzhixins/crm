@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <!-- Google Chrome Frame也可以让IE用上Chrome的引擎: -->
+    <meta name="renderer" content="webkit">
+    <!-- 定义页面的最新版本 -->
+    <meta name="description" content="网站简介" />
+    <!-- 网站简介 -->
+    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
+    <title>ORM客户关系管理系统</title>
+
+    <!-- 公共样式 开始 -->
+    <link rel="shortcut icon" href="images/favicon.ico"/>
+    <link rel="bookmark" href="images/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/base.css">
+    <script type="text/javascript" src="../static/framework/jquery-1.11.3.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css">
+    <!--[if lt IE 9]>
+    <script src="framework/html5shiv.min.js"></script>
+    <script src="framework/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <!-- 滚动条插件 -->
+    <link rel="stylesheet" type="text/css" href="../static/css/jquery.mCustomScrollbar.css">
+    <script src="../static/framework/jquery-ui-1.10.4.min.js"></script>
+    <script src="../static/framework/jquery.mousewheel.min.js"></script>
+    <script src="../static/framework/jquery.mCustomScrollbar.min.js"></script>
+    <script src="../static/framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+    <!-- 公共样式 结束 -->
+
+    <link rel="stylesheet" type="text/css" href="../static/css/frameStyle.css">
+    <script type="text/javascript" src="../static/framework/frame.js" ></script>
+
+</head>
+
+<body>
+<!-- 左侧菜单 - 开始 -->
+<div class="frameMenu">
+    <div class="logo">
+        <img src="../static/1.jpg" height="538" width="1036"/>
+        <div class="logoText">
+            <h1>客户关系管理系统</h1>
+            <p>ormguanlixitong</p>
+        </div>
+    </div>
+    <div class="menu">
+        <ul>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/qdAPI.html',this)"><i class="layui-icon layui-icon-home" style="font-size: 20px; color: #1E9FFF;"></i>我的桌面</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-friends"></i>客户管理</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-password"></i>我的商机</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-password"></i>全部商机</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-form"></i>我的跟单</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-tabs"></i>全部跟单</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-file-b"></i>全部讨论帖子</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-file"></i>我的合同</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-template"></i>全部合同</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-headset"></i>售后服务</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('tgls/iconfont.html',this)"><i class="layui-icon layui-icon-chart"></i>统计分析</a>
+            </li>
+            <li>
+                <a class="menuFA" href="javascript:void(0)" onclick="menuCAClick('1.html',this)"><i class="layui-icon layui-icon-logout"></i>安全退出</a>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 左侧菜单 - 结束 -->
+
+<div class="main">
+
+
+    <!-- 核心区域 - 开始 -->
+    <div class="frameMain">
+        <div class="title" id="frameMainTitle">
+            <span><img src="2.png" height="11" width="6"/>后台首页</span>
+        </div>
+        <div class="con">
+            <iframe id="mainIframe" src="1.html" scrolling="no"></iframe>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
