@@ -16,9 +16,5 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("//userrole")
 public class UserroleController {
-    public static void main(String[] args){
-        System.out.println("第一次提交");
-        System.out.println("杨森第一次提交");
-    }
 
 }
