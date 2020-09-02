@@ -39,5 +39,6 @@ public class AftersaleController {
         msgUtils.setCount(Integer.parseInt(String.valueOf(iPage.getTotal())));
         msgUtils.setData(iPage.getRecords());
         return msgUtils;
+
     }
 }
