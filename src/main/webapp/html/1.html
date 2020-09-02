@@ -35,56 +35,79 @@
                     <label for="reg-log"></label>
                     <div class="card-3d-wrap mx-auto">
                         <div class="card-3d-wrapper">
-                            <form class="layui-form zyl_pad_01" action="">
-                            <div class="card-front">
-                                <div class="center-wrap">
-                                    <div class="section text-center">
-                                        <h4 class="mb-4 pb-3">登录</h4>
-                                        <div class="form-group">
-                                            <input type="text" name="userName" class="form-style" placeholder="名称" id="userName" autocomplete="off">
-                                            <i class="input-icon uil uil-user"></i>
-                                        </div>
-                                        <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="密码" id="logpass" autocomplete="off">
-                                            <i class="input-icon uil uil-lock-alt"></i>
-                                        </div>
-                                        <div class="form-group mt-2">
-                                            <div class="layui-row">
-                                                <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
-                                                    <div class="layui-form-item">
-                                                        <input type="text" name="vercode" id="vercode" class="form-style" lay-verify="required|vercodes" autocomplete="off" placeholder="验证码" class="layui-input" maxlength="4">
-                                                        <i class="input-icon uil uil-lock-alt"></i>
+                            <form class="layui-form" action="/login.do" method="post">
+                                <div class="card-front" style="position:relative;left:0px;top:0px;width:450px;height:430px">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">登录</h4>
+                                            <div class="form-group">
+                                                <input type="text" name="username" class="form-style" placeholder="名称" id="username" autocomplete="off">
+                                                <i class="input-icon uil uil-user"></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="password" name="pwd" class="form-style" placeholder="密码" id="pwd" autocomplete="off">
+                                                <i class="input-icon uil uil-lock-alt"></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <div class="layui-row">
+                                                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                                                        <div class="layui-form-item">
+                                                            <input type="text" name="vercode" id="vercode" class="form-style" lay-verify="required|vercodes" autocomplete="off" placeholder="验证码" class="layui-input" maxlength="4">
+                                                            <i class="input-icon uil uil-lock-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                                                        <div class="zyl_lofo_vercode zylVerCode" onclick="zylVerCode()"></div>
                                                     </div>
                                                 </div>
-                                                <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
-                                                    <div class="zyl_lofo_vercode zylVerCode" onclick="zylVerCode()"></div>
-                                                </div>
                                             </div>
+                                            <button class="layui-btn" lay-submit lay-filter="formDemo"><i class="layui-icon layui-icon-username">登录</i></button>
+                                            <p class="mb-0 mt-4 text-center"><a href="#0" class="link">忘记密码?</a></p>
                                         </div>
-                                        <a href="2.html" class="btn mt-4">提交</a>
-                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">忘记密码?</a></p>
                                     </div>
                                 </div>
-                            </div>
                             </form>
-                            <form>
-                            <div class="card-back">
-                                <div class="center-wrap">
-                                    <div class="section text-center">
-                                        <h4 class="mb-4 pb-3">注册</h4>
-                                        <div class="form-group">
-                                            <input type="text" name="logname" class="form-style" placeholder="名称" id="logname" autocomplete="off">
-                                            <i class="input-icon uil uil-user"></i>
+                            <form class="layui-form"  action="/add.do" onsubmit="return checkSub()">
+                                <div class="card-back" style=" left:0px;top:0px;width:450px;height:400px">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">用户名</label>
+                                        <div class="layui-inline">
+                                            <input type="text" name="username" id="uname" value="" onblur="checkUname()" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
+                                            <span id="unameSpan">
+							                   <font>2-4位汉字</font>
+                                            </span>
                                         </div>
-
-                                        <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="密码" id="logpass" autocomplete="off">
-                                            <i class="input-icon uil uil-lock-alt"></i>
-                                        </div>
-                                        <a href="#" class="btn mt-4">提交</a>
                                     </div>
+                                    <div  class="layui-form-item">
+                                        <label class="layui-form-label">密码</label>
+                                        <div class="layui-inline" >
+                                            <input type="password" name="pwd" id="pwd1" value="" onblur="checkPwd()" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"/>
+                                            <span id="pwdSpan">
+						                        <font>要求6-8位密码，首位为字母</font>
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div  class="layui-form-item">
+                                        <label class="layui-form-label">确认</label>
+                                        <div class="layui-inline" >
+                                            <input type="password" name="pwd2" id="pwd2" value=""  onblur="checkPwd2()" required  lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input"/>
+                                            <span id="pwd2Span"></span>
+                                        </div>
+                                    </div>
+                                    <div class="layui-upload">
+                                        <label class="layui-form-label"></label>
+                                        <button type="button" class="layui-btn" id="test1">上传图片</button>
+                                        <div class="layui-upload-list">
+                                            <label class="layui-form-label">证件</label>
+                                            <img class="layui-upload-img" id="deme1" style="width: 50px;height: 50px">
+                                            <p id="demoText"></p>
+                                            <input type="hidden" id="tx" name="filename">
+                                        </div>
+                                    </div>
+
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo" id="butt"><i class="layui-icon layui-icon-username" >注册</i></button>
+                                    <p><a href="1.html" class="fl">已有账号？立即登录</a></p>
                                 </div>
-                            </div>
                             </form>
                         </div>
                     </div>
@@ -93,79 +116,192 @@
         </div>
     </div>
 </div>
-<script>
+
+<script type="text/javascript">
+    layui.use(['form','upload','jquery'], function(){
+        var $=layui.jquery;
+        var upload=layui.upload;
+        var form = layui.form;
+        form.on('submit(sub)', function(data){
+            //当你在iframe页面关闭自身时
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index); //再执行关闭
+        });
+
+        var uploadInst = upload.render({
+            elem: '#test1'
+            ,url: '/imgag.do' //改成您自己的上传接口
+            ,before: function(obj){
+                obj.preview(function(index, file, result){
+                    $('#deme1').attr('src', result); //图片链接（base64）
+                });
+            }
+            ,done: function(res){
+                if(res.code ==200){
+                    $("#tx").val(res.data)
+                    alert("图片路径："+$("#tx").val())
+                    layer.msg('上传成功');
+
+                }
+                //上传成功
+            }
+        });
+    });
     layui.use(['carousel', 'form'], function(){
         var carousel = layui.carousel
             ,form = layui.form;
 
         //自定义验证规则
         form.verify({
-            userName: function(value){
-                if(value.length < 5){
-                    return '账号至少得5个字符';
-                }
-            }
-            ,pass: [/^[\S]{6,12}$/,'密码必须6到12位，且不能出现空格']
-            ,vercodes: function(value){
+
+            vercodes: function(value){
                 //获取验证码
                 var zylVerCode = $(".zylVerCode").html();
                 if(value!=zylVerCode){
                     return '验证码错误（区分大小写）';
                 }
             }
-            ,content: function(value){
-                layedit.sync(editIndex);
-            }
+
         });
-
-        //监听提交
-        form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field),{
-                title: '最终的提交信息'
-            })
-            return false;
-        });
-
-
-        //设置轮播主体高度
-        var zyl_login_height = $(window).height()/1.3;
-        var zyl_car_height = $(".zyl_login_height").css("cssText","height:" + zyl_login_height + "px!important");
-
-
-        //Login轮播主体
-        carousel.render({
-            elem: '#zyllogin'//指向容器选择器
-            ,width: '100%' //设置容器宽度
-            ,height:'zyl_car_height'
-            ,arrow: 'always' //始终显示箭头
-            ,anim: 'fade' //切换动画方式
-            ,autoplay: true //是否自动切换false true
-            ,arrow: 'hover' //切换箭头默认显示状态||不显示：none||悬停显示：hover||始终显示：always
-            ,indicator: 'none' //指示器位置||外部：outside||内部：inside||不显示：none
-            ,interval: '5000' //自动切换时间:单位：ms（毫秒）
-        });
-
-        //监听轮播--案例暂未使用
-        carousel.on('change(zyllogin)', function(obj){
-            var loginCarousel = obj.index;
-        });
-
-        //粒子线条
-        $(".zyl_login_cont").jParticle({
-            background: "rgba(0,0,0,0)",//背景颜色
-            color: "#fff",//粒子和连线的颜色
-            particlesNumber:100,//粒子数量
-            //disableLinks:true,//禁止粒子间连线
-            //disableMouse:true,//禁止粒子间连线(鼠标)
-            particle: {
-                minSize: 1,//最小粒子
-                maxSize: 3,//最大粒子
-                speed: 30,//粒子的动画速度
-            }
-        });
-
     });
 
+    //常见验证码
+    function createCode(){
+        //创建随机4位数字，math.floor向下取整
+        var code=Math.floor(Math.random()*9000+1000);
+        //获取元素对象
+        var  span=document.getElementById("codeSpan");
+        //将数字存放到span中
+        span.innerHTML=code;
+        //给span添加背景图片
+    }
+    //验证用户名
+    function checkUname(){
+        //获取用户获得用户名信息
+        var uname=document.getElementById("uname").value;
+        //创建校验规则,用户名2-4个
+        var reg=/^[\u4e00-\u9fa5]{2,4}$/
+        //获取span对象
+        var unameSpan=document.getElementById("unameSpan");
+        //开始交验
+        if(unameSpan==""||unameSpan==null){
+            //输入校验结果
+            unameSpan.innerHTML="*用户名不能为空";
+            unameSpan.style.color="red";
+            return false;
+        }else if(reg.test(uname)){
+            //输入校验结果
+            unameSpan.innerHTML="*用户名通过";
+            unameSpan.style.color="green";
+            return true;
+        }else{
+            //输入校验结果
+            unameSpan.innerHTML="*用户名格式不符"
+            unameSpan.style.color="red";
+            return false;
+        }
+
+
+    }
+    //验证密码
+    function checkPwd(){
+        //获取用户获得用户名信息
+        var upwd=document.getElementById("pwd1").value;
+        //创建校验规则,密码要求6-8位，首位为字母，后面5-7位是数字
+        var reg=/^[a-z]\w{5,7}$/;
+        //获取span对象
+        var span=document.getElementById("pwdSpan");
+        //开始交验
+        if(span==""||span==null){
+            //输入校验结果
+            span.innerHTML="*密码不能为空";
+            span.style.color="red";
+            return false;
+        }else if(reg.test(upwd)){
+            //输入校验结果
+            span.innerHTML="*密码通过";
+            span.style.color="green";
+            return true;
+        }else{
+            //输入校验结果
+            span.innerHTML="*密码格式不符"
+            span.style.color="red";
+            return false;
+        }
+        //第一次密码为a123456，第二次密码为a1234567，则修改的第一次密码，确认密码也会重新校验
+        checkPwd2();
+    }
+    //校验确认密码
+    function checkPwd2(){
+        //获取第一次校验密码
+        var pwd=document.getElementById("pwd1").value;
+        //获取确认密码
+        var pwd2=document.getElementById("pwd2").value;
+        //获取span对象
+        var span=document.getElementById("pwd2Span");
+        //比较前两次密码是否相同
+        if( pwd2==""|| pwd2==null){
+            //输入校验结果
+            span.innerHTML="*密码不能为空";
+            span.style.color="red";
+            return false;
+        }else if(pwd===pwd2){
+            //输入校验结果
+            span.innerHTML="*密码通过";
+            span.style.color="green";
+            return true;
+        }else{
+            //输入校验结果
+            span.innerHTML="*密码不同，请重新输入"
+            span.style.color="red";
+            return false;
+        }
+    }
+
+
+    //校验是否同意公司协议
+    function checkAgree(){
+//							//获取提交按钮的disable属性,选中框后disabled的值为1.
+//							alert(document.getElementById("sub").disabled);
+        document.getElementById("sub").disabled=!document.getElementById("agree").checked;
+    }
+    //提交判断
+    function checkSub(){
+        if(checkUname() && checkPwd() && checkPwd2()){
+            return true;
+        }else{
+            alert("请检查你的格式是否正确")
+            return false;
+        }
+    }
+    //----------------------------------------------------------------------------------------------------------------------
+    //封装校验：相同的保留，不同的传参
+    function checkField(id,reg){
+        //获取用户数据
+        var inp=document.getElementById(id);
+        var	va=inp.value;
+        var	alt=inp.alt;
+        //创建校验规则
+        //获取span对象
+        var span=document.getElementById(id+"Span");
+        //开始校验
+        if(va==""||va==null){
+            //输入校验结果
+            span.innerHTML="*"+alt+"不能为空";
+            span.style.color="red";
+            return false;
+        }else if(reg.test(va)){
+            //输入校验结果
+            span.innerHTML="*"+alt+"通过";
+            span.style.color="green";
+            return true;
+        }else{
+            //输入校验结果
+            span.innerHTML="*"+alt+"格式不符";
+            span.style.color="red";
+            return false;
+        }
+    }
 </script>
 </body>
 </html>
