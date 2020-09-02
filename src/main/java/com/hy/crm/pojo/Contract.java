@@ -1,9 +1,10 @@
 package com.hy.crm.pojo;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -38,7 +39,13 @@ public class Contract implements Serializable {
 
     private Date endtime;
 
-    private Integer linkid;
+    private String linkname;
+
+    private Integer linkphone;
+
+    private Integer phone;
+
+    private String email;
 
     private String technicalterm;
 
@@ -121,13 +128,7 @@ public class Contract implements Serializable {
     public void setEndtime(Date endtime) {
         this.endtime = endtime;
     }
-    public Integer getLinkid() {
-        return linkid;
-    }
 
-    public void setLinkid(Integer linkid) {
-        this.linkid = linkid;
-    }
     public String getTechnicalterm() {
         return technicalterm;
     }
@@ -192,28 +193,36 @@ public class Contract implements Serializable {
         this.updtime = updtime;
     }
 
-    @Override
-    public String toString() {
-        return "Contract{" +
-            "conid=" + conid +
-            ", busid=" + busid +
-            ", cliid=" + cliid +
-            ", conname=" + conname +
-            ", conserial=" + conserial +
-            ", conmoney=" + conmoney +
-            ", contime=" + contime +
-            ", entrytime=" + entrytime +
-            ", endtime=" + endtime +
-            ", linkid=" + linkid +
-            ", technicalterm=" + technicalterm +
-            ", commerceterm=" + commerceterm +
-            ", conaccessory=" + conaccessory +
-            ", condept=" + condept +
-            ", affiliated=" + affiliated +
-            ", state=" + state +
-            ", conpriority=" + conpriority +
-            ", newtime=" + newtime +
-            ", updtime=" + updtime +
-        "}";
+    public String getLinkname() {
+        return linkname;
     }
+
+    public void setLinkname(String linkname) {
+        this.linkname = linkname;
+    }
+
+    public Integer getLinkphone() {
+        return linkphone;
+    }
+
+    public void setLinkphone(Integer linkphone) {
+        this.linkphone = linkphone;
+    }
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

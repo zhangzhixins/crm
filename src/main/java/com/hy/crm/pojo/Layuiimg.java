@@ -14,17 +14,10 @@ public class Layuiimg {
     @Override
     public String toString() {
         return "Layuiimg{" +
-<<<<<<< HEAD
                 "code='" + code + '\'' +
                 ", msg='" + msg + '\'' +
                 ", data='" + data + '\'' +
                 '}';
-=======
-            "code='" + code + '\'' +
-            ", msg='" + msg + '\'' +
-            ", data='" + data + '\'' +
-            '}';
->>>>>>> e9458178a0187392bda5e62dca8f602ba28be5ee
     }
 
     public String getMsg() {
@@ -46,8 +39,4 @@ public class Layuiimg {
 
     private String msg;
     private String data;
-<<<<<<< HEAD
-
-=======
->>>>>>> e9458178a0187392bda5e62dca8f602ba28be5ee
 }

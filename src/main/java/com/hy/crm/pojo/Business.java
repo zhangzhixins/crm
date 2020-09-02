@@ -1,9 +1,10 @@
 package com.hy.crm.pojo;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -24,13 +25,23 @@ public class Business implements Serializable {
 
     private Integer cliid;
 
-    private Integer linkid;
-
     private String busname;
 
     private BigDecimal makemoney;
 
     private Date statementdate;
+
+    private String linkname;
+
+    private String linkdept;
+
+    private String linkduty;
+
+    private Integer linkphone;
+
+    private Integer phone;
+
+    private String email;
 
     private String busdemand;
 
@@ -68,16 +79,7 @@ public class Business implements Serializable {
     public void setCliid(Integer cliid) {
         this.cliid = cliid;
     }
-    public Integer getLinkid() {
-        return linkid;
-    }
 
-    public void setLinkid(Integer linkid) {
-        this.linkid = linkid;
-    }
-    public String getBusname() {
-        return busname;
-    }
 
     public void setBusname(String busname) {
         this.busname = busname;
@@ -174,26 +176,56 @@ public class Business implements Serializable {
         this.updtime = updtime;
     }
 
-    @Override
-    public String toString() {
-        return "Business{" +
-            " busid=" +  busid +
-            ", cliid=" + cliid +
-            ", linkid=" + linkid +
-            ", busname=" + busname +
-            ", makemoney=" + makemoney +
-            ", statementdate=" + statementdate +
-            ", busdemand=" + busdemand +
-            ", busaccessory=" + busaccessory +
-            ", busdept=" + busdept +
-            ", busprincipal=" + busprincipal +
-            ", busparticipant=" + busparticipant +
-            ", busfollower=" + busfollower +
-            ", buspriority=" + buspriority +
-            ", busstage=" + busstage +
-            ", state=" + state +
-            ", newtime=" + newtime +
-            ", updtime=" + updtime +
-        "}";
+
+    public String getBusname() {
+        return busname;
+    }
+
+    public String getLinkname() {
+        return linkname;
+    }
+
+    public void setLinkname(String linkname) {
+        this.linkname = linkname;
+    }
+
+    public String getLinkdept() {
+        return linkdept;
+    }
+
+    public void setLinkdept(String linkdept) {
+        this.linkdept = linkdept;
+    }
+
+    public String getLinkduty() {
+        return linkduty;
+    }
+
+    public void setLinkduty(String linkduty) {
+        this.linkduty = linkduty;
+    }
+
+    public Integer getLinkphone() {
+        return linkphone;
+    }
+
+    public void setLinkphone(Integer linkphone) {
+        this.linkphone = linkphone;
+    }
+
+    public Integer getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
