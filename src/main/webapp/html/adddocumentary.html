@@ -2,15 +2,97 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
-    <title>新增订单</title>
+    <title>新增跟单</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
+<style>
+    .box1{
+        position: absolute;
+        left: 10%;
+        border: 1px rgba(0, 0, 0, 0.99) solid;
+        width: 80%;
+        height: 200%;
+    }
+    .box2{
+        background-color: rgba(255, 254, 179, 0.95);
+        width: 100%;
+        height: 35px;
+    }
+    .box3{
+        position: relative;
+        top: 4px;
+        left: 20px;
+        font-size: 18px;
+    }
+    .box4{
+        position: relative;
+        top: 4px;
+        left: 10px;
+    }
+</style>
 <body>
+<div class="box1">
 <form class="layui-form" action="" lay-filter="example">
+    <div class="layui-form-item layui-box" ><!--页面头部信息-->
+        <div class="layui-inline" style="width: 200px;font-size: 45px;float: left">
+            <input type="text" style="border:none" id="bus">
+        </div>
+        <div class="layui-inline" style="width: 100px;float: right">
+            <button type="button" class="layui-btn layui-btn-primary">
+                <i class="layui-icon">&#xe608;返回</i>
+            </button>
+        </div>
+        <div class="layui-inline" style="width: 100px;float: right">
+            <button type="button" class="layui-btn layui-btn-primary" id="brefresh">
+                <i class="layui-icon">&#xe666;刷新</i>
+            </button>
+        </div>
+    </div>
+    <hr>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <div class="layui-inline">
+                <h4>跟单主题</h4>
+            </div>
+            <div class="layui-inline">
+                <select id="business" style="width:600px;font-size: 30px;float: left">
+                    <option value="0">请选择</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="box2"><!--基本信息-->
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <p class="box3">历史跟单记录</p>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <p class="box4">*如果要修改 我的跟单记录，请在 我的工作日程 中进行</p>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+
+    </div>
+    <div class="box2 layui-form-item"><!--基本信息-->
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <p class="box3">新增跟单记录</p>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <p class="box4">*可以预约几天后跟单，并在 我的工作日程 中获得提醒</p>
+            </div>
+        </div>
+    </div>
+
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">跟单时间</label>
@@ -33,6 +115,14 @@
                     </select>
                 </div>
         </div>
+        <div class="layui-inline">
+            <div class="layui-input-block" >
+                <h3>跟单人：
+                    <input style="border: none" value="王娜">
+                </h3>
+
+            </div>
+        </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">详细内容</label>
@@ -47,7 +137,7 @@
         </div>
     </div>
 </form>
-
+</div>
 <script src="/layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
@@ -68,12 +158,35 @@
             $.ajax({
                 URL:"/documentary/adddoc.do",
                 data:data.field,
-                success:function () {
+               /* success:function () {
                  layer.msg("提交成功");
-                }
+                }*/
             })
             return false;
         });
+        $(function () {
+            $.ajax({
+                url:"/documentary/selectbusiness.do",
+                type:'post',
+                success:function (data) {
+                    for (var i=0;i<data.data.length;i++){
+                        $("#business").append(new Option(data.data[i].busname,data.data[i].busid,));
+                    }
+                    form.render();
+                }
+            })
+            $("#business").change(function () {
+                alert("afwefaf");
+                layer.msg();
+                $("#bus").value($("#business").text());
+
+            })
+            /*function busin() {
+              alert($("#business").text());
+              $("#bus").value($("#business").text());
+            }*/
+
+        })
     });
 </script>
 

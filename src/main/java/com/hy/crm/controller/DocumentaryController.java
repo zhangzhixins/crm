@@ -1,7 +1,9 @@
 package com.hy.crm.controller;
 
 
+import com.hy.crm.pojo.Business;
 import com.hy.crm.pojo.Documentary;
+import com.hy.crm.service.IBusinessService;
 import com.hy.crm.service.IDocumentaryService;
 import com.hy.crm.service.impl.DocumentaryServiceImpl;
 import com.hy.crm.utils.MsgUtils;
@@ -26,8 +28,11 @@ import java.util.ArrayList;
 public class DocumentaryController {
     @Autowired
     private IDocumentaryService iDocumentaryService;
-
+    @Autowired
+    private IBusinessService iBusinessService;
+    /*添加跟单*/
     @RequestMapping("/adddoc.do")
+    @ResponseBody
     public void adddocumentary(Documentary documentary){
         System.out.println(documentary.toString());
         iDocumentaryService.save(documentary);
@@ -44,4 +49,18 @@ public class DocumentaryController {
         msg.setData(doclist);
         return msg;
     }
+    /*商机查询*/
+    @RequestMapping("/selectbusiness.do")
+    @ResponseBody
+    public MsgUtils selectbusiness(){
+        ArrayList<Business> buslist= (ArrayList<Business>) iBusinessService.list();
+        MsgUtils msg=new MsgUtils();
+        msg.setCode("0");
+        msg.setMsg("doc");
+        msg.setCount(buslist.size());
+        msg.setData(buslist);
+        return msg;
+    }
+
+
 }

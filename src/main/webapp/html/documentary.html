@@ -9,43 +9,39 @@
     <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
-<script type="text/javascript">
-    docadd=function () {
-      window.location.href="/html/adddocumentary.html";
-    }
-</script>
 <body>
-<div class="demoTable">
-    <div  class="layui-inline">
-        <div class="layui-input-block">
-            我的跟单
-        </div>
-    </div>
-    <div  class="layui-inline">
-        <div class="layui-input-block">
-            <select name="classify" lay-verify="required">
-                <option value="0">请选择</option>
-                <option value="1">跟单时间</option>
-                <option value="2">跟单主题</option>
-                <option value="3">跟单人</option>
-            </select>
-        </div>
-    </div>
-    <div class="layui-inline">
-        <input class="layui-input" name="id" id="demoReload" autocomplete="off">
-    </div>
-    <div class="layui-inline">
-       <button type="button" class="layui-btn layui-btn-primary"><i class="layui-icon" >&#xe615;搜索</i></button>
-    </div>
-    <div class="layui-inline">
-        <div class="layui-input-block">
-            <button type="button" class="layui-btn layui-btn-primary" onclick="docadd()"><i class="layui-icon" >&#xe654;新增跟单</i></button>
-        </div>
-    </div>
-    <div class="layui-inline">
-        <button type="button" class="layui-btn layui-btn-primary"><i class="layui-icon" >&#xe9aa;刷新</i></button>
-    </div>
-
+<div class="box2"><!--右边的div-->
+    <form class="layui-form">
+            <div class="layui-inline">
+                <div class="layui-input-block">
+                        <h1>我的跟单</h1>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-input-block">
+                    <select name="docify" lay-verify="required" >
+                         <option value="0">请选择</option>
+                         <option value="1">跟单时间</option>
+                         <option value="2">跟单主题</option>
+                         <option value="3">跟单人</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                    <input class="layui-input" name="doccontent" id="demoReload" autocomplete="off">
+            </div>
+            <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary" lay-submit lay-filter="listdoc"><i class="layui-icon" >&#xe615;搜索</i></button>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-primary" id="adddoc"><i class="layui-icon" >&#xe654;新增跟单</i></button>
+                </div>
+            </div>
+            <div class="layui-inline">
+                    <button class="layui-btn layui-btn-primary" id="brefresh"><i class="layui-icon" >&#xe9aa;刷新</i></button>
+            </div>
+    </form>
 </div>
 <table class="layui-hide" id="doc"></table>
 
@@ -55,20 +51,47 @@
 
 <script>
     layui.use('table', function(){
-        var table = layui.table;
+        var layer = layui.layer
+            ,form = layui.form
+            ,table = layui.table
+            ,$=layui.jquery;
 
         table.render({
             elem: '#doc'
-            ,url:'/demo/table/user/'
-            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,url:'/documentary/selectdoc.do'
+            ,page: true //开启分页
+            ,limits:[15,20,25,30,5]
             ,cols: [[
-                {field:'id', width:160, title: '跟单时间'}
-                ,{field:'username', width:250, title: '跟单主题'}
-                ,{field:'sex', width:100, title: '跟单人'}
-                ,{field:'city', width:300, title: '详细内容'}
-                ,{field:'classify', width:230 ,title: '附件'}
+                {field:'doctime', width:160, title: '跟单时间'}
+                ,{field:'docpeople', width:320, title: '跟单主题'}
+                ,{field:'docpeople', width:100, title: '跟单人'}
+                ,{field:'doccontent', width:380, title: '详细内容'}
+                ,{field:'docaccessory', width:230 ,title: '附件'}
             ]]
         });
+        $(function () {
+            //点击刷新按钮表格重载
+            $("#brefresh").click(function () {
+                table.reload('demo', {
+                    url: '/aftersale/queryAll.do'
+                    , where: {}
+                });
+            })
+            //点击跟单
+            $("#adddoc").click(function () {
+                layer.open({
+                    type: 2,  //类型  2表示iframe层  1：页面层
+                    icon: 2,
+                    closeBtn: 0,
+                    area: ['100%', '100%'],//弹出页面的宽 高
+                    /*shade: false,*/ //遮罩层透明度,默认false，也可以写数字表示透明程度（如：0.1），数字越大，透明度越低
+                    title: "新增跟单", //显示标题
+                    skin: 'layui-layer-rim', //加上边框
+                    content: ["/html/adddocumentary.html"],
+                    //content  是一个url，可以访问后台，如果不想让iframe出现滚动条，这样写content: ['http://baidu.com', 'no']
+                });
+            })
+        })
         form.on('submit(listdoc)', function(data){
             console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
             tab.reload({
