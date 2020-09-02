@@ -69,6 +69,14 @@
                 ,{field:'classify', width:230 ,title: '附件'}
             ]]
         });
+        form.on('submit(listdoc)', function(data){
+            console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+            tab.reload({
+                url: '/documentary/selectdoc.do' //数据接口
+                ,where:data.field
+            });
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
     });
 </script>
 </body>
