@@ -16,6 +16,9 @@
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+
+
+
     <!--注解的适配器和映射器-->
     <mvc:annotation-driven ></mvc:annotation-driven>
 
