@@ -18,8 +18,8 @@ public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "cliids", type = IdType.AUTO)
-    private Integer cliids;
+    @TableId(value = "cliid", type = IdType.AUTO)
+    private Integer cliid;
 
     private String cliname;
 
@@ -43,7 +43,13 @@ public class Client implements Serializable {
 
     private String clifax;
 
-    private Integer linkid;
+    private String linkname;
+
+    private String linkdept;
+
+    private String linkduty;
+
+    private Integer linkphone;
 
     private String climail;
 
@@ -59,13 +65,15 @@ public class Client implements Serializable {
 
     private Date newtime;
 
-    public Integer getCliids() {
-        return cliids;
+
+    public Integer getCliid() {
+        return cliid;
     }
 
-    public void setCliids(Integer cliids) {
-        this.cliids = cliids;
+    public void setCliid(Integer cliid) {
+        this.cliid = cliid;
     }
+
     public String getCliname() {
         return cliname;
     }
@@ -73,6 +81,7 @@ public class Client implements Serializable {
     public void setCliname(String cliname) {
         this.cliname = cliname;
     }
+
     public String getClistr() {
         return clistr;
     }
@@ -80,6 +89,7 @@ public class Client implements Serializable {
     public void setClistr(String clistr) {
         this.clistr = clistr;
     }
+
     public Integer getIfyid() {
         return ifyid;
     }
@@ -87,6 +97,7 @@ public class Client implements Serializable {
     public void setIfyid(Integer ifyid) {
         this.ifyid = ifyid;
     }
+
     public String getClisource() {
         return clisource;
     }
@@ -94,6 +105,7 @@ public class Client implements Serializable {
     public void setClisource(String clisource) {
         this.clisource = clisource;
     }
+
     public String getIndustry() {
         return industry;
     }
@@ -101,6 +113,7 @@ public class Client implements Serializable {
     public void setIndustry(String industry) {
         this.industry = industry;
     }
+
     public String getWebsite() {
         return website;
     }
@@ -108,6 +121,7 @@ public class Client implements Serializable {
     public void setWebsite(String website) {
         this.website = website;
     }
+
     public String getRegions() {
         return regions;
     }
@@ -115,6 +129,7 @@ public class Client implements Serializable {
     public void setRegions(String regions) {
         this.regions = regions;
     }
+
     public String getCity() {
         return city;
     }
@@ -122,6 +137,7 @@ public class Client implements Serializable {
     public void setCity(String city) {
         this.city = city;
     }
+
     public String getAddress() {
         return address;
     }
@@ -129,6 +145,7 @@ public class Client implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
     public Integer getPostalcode() {
         return postalcode;
     }
@@ -136,6 +153,7 @@ public class Client implements Serializable {
     public void setPostalcode(Integer postalcode) {
         this.postalcode = postalcode;
     }
+
     public String getClifax() {
         return clifax;
     }
@@ -143,13 +161,39 @@ public class Client implements Serializable {
     public void setClifax(String clifax) {
         this.clifax = clifax;
     }
-    public Integer getLinkid() {
-        return linkid;
+
+    public String getLinkname() {
+        return linkname;
     }
 
-    public void setLinkid(Integer linkid) {
-        this.linkid = linkid;
+    public void setLinkname(String linkname) {
+        this.linkname = linkname;
     }
+
+    public String getLinkdept() {
+        return linkdept;
+    }
+
+    public void setLinkdept(String linkdept) {
+        this.linkdept = linkdept;
+    }
+
+    public String getLinkduty() {
+        return linkduty;
+    }
+
+    public void setLinkduty(String linkduty) {
+        this.linkduty = linkduty;
+    }
+
+    public Integer getLinkphone() {
+        return linkphone;
+    }
+
+    public void setLinkphone(Integer linkphone) {
+        this.linkphone = linkphone;
+    }
+
     public String getClimail() {
         return climail;
     }
@@ -157,6 +201,7 @@ public class Client implements Serializable {
     public void setClimail(String climail) {
         this.climail = climail;
     }
+
     public Integer getCliphone() {
         return cliphone;
     }
@@ -164,6 +209,7 @@ public class Client implements Serializable {
     public void setCliphone(Integer cliphone) {
         this.cliphone = cliphone;
     }
+
     public String getLegalperson() {
         return legalperson;
     }
@@ -171,6 +217,7 @@ public class Client implements Serializable {
     public void setLegalperson(String legalperson) {
         this.legalperson = legalperson;
     }
+
     public String getCapital() {
         return capital;
     }
@@ -178,6 +225,7 @@ public class Client implements Serializable {
     public void setCapital(String capital) {
         this.capital = capital;
     }
+
     public String getExplain() {
         return explain;
     }
@@ -185,6 +233,7 @@ public class Client implements Serializable {
     public void setExplain(String explain) {
         this.explain = explain;
     }
+
     public Integer getState() {
         return state;
     }
@@ -192,37 +241,12 @@ public class Client implements Serializable {
     public void setState(Integer state) {
         this.state = state;
     }
+
     public Date getNewtime() {
         return newtime;
     }
 
     public void setNewtime(Date newtime) {
         this.newtime = newtime;
-    }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-            "cliids=" + cliids +
-            ", cliname=" + cliname +
-            ", clistr=" + clistr +
-            ", ifyid=" + ifyid +
-            ", clisource=" + clisource +
-            ", industry=" + industry +
-            ", website=" + website +
-            ", regions=" + regions +
-            ", city=" + city +
-            ", address=" + address +
-            ", postalcode=" + postalcode +
-            ", clifax=" + clifax +
-            ", linkid=" + linkid +
-            ", climail=" + climail +
-            ", cliphone=" + cliphone +
-            ", legalperson=" + legalperson +
-            ", capital=" + capital +
-            ", explain=" + explain +
-            ", state=" + state +
-            ", newtime=" + newtime +
-        "}";
     }
 }
