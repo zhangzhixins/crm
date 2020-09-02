@@ -36,78 +36,78 @@
                     <div class="card-3d-wrap mx-auto">
                         <div class="card-3d-wrapper">
                             <form class="layui-form" action="/login.do" method="post">
-                            <div class="card-front" style="position:relative;left:0px;top:0px;width:450px;height:430px">
-                                <div class="center-wrap">
-                                    <div class="section text-center">
-                                        <h4 class="mb-4 pb-3">登录</h4>
-                                        <div class="form-group">
-                                            <input type="text" name="username" class="form-style" placeholder="名称" id="username" autocomplete="off">
-                                            <i class="input-icon uil uil-user"></i>
-                                        </div>
-                                        <div class="form-group mt-2">
-                                            <input type="password" name="pwd" class="form-style" placeholder="密码" id="pwd" autocomplete="off">
-                                            <i class="input-icon uil uil-lock-alt"></i>
-                                        </div>
-                                        <div class="form-group mt-2">
-                                            <div class="layui-row">
-                                                <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
-                                                    <div class="layui-form-item">
-                                                        <input type="text" name="vercode" id="vercode" class="form-style" lay-verify="required|vercodes" autocomplete="off" placeholder="验证码" class="layui-input" maxlength="4">
-                                                        <i class="input-icon uil uil-lock-alt"></i>
+                                <div class="card-front" style="position:relative;left:0px;top:0px;width:450px;height:430px">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">登录</h4>
+                                            <div class="form-group">
+                                                <input type="text" name="username" class="form-style" placeholder="名称" id="username" autocomplete="off">
+                                                <i class="input-icon uil uil-user"></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="password" name="pwd" class="form-style" placeholder="密码" id="pwd" autocomplete="off">
+                                                <i class="input-icon uil uil-lock-alt"></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <div class="layui-row">
+                                                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                                                        <div class="layui-form-item">
+                                                            <input type="text" name="vercode" id="vercode" class="form-style" lay-verify="required|vercodes" autocomplete="off" placeholder="验证码" class="layui-input" maxlength="4">
+                                                            <i class="input-icon uil uil-lock-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                                                        <div class="zyl_lofo_vercode zylVerCode" onclick="zylVerCode()"></div>
                                                     </div>
                                                 </div>
-                                                <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
-                                                    <div class="zyl_lofo_vercode zylVerCode" onclick="zylVerCode()"></div>
-                                                </div>
                                             </div>
+                                            <button class="layui-btn" lay-submit lay-filter="formDemo"><i class="layui-icon layui-icon-username">登录</i></button>
+                                            <p class="mb-0 mt-4 text-center"><a href="#0" class="link">忘记密码?</a></p>
                                         </div>
-                                        <button class="layui-btn" lay-submit lay-filter="formDemo"><i class="layui-icon layui-icon-username">登录</i></button>
-                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">忘记密码?</a></p>
                                     </div>
                                 </div>
-                            </div>
                             </form>
                             <form class="layui-form"  action="/add.do" onsubmit="return checkSub()">
-                            <div class="card-back" style=" left:0px;top:0px;width:450px;height:400px">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">用户名</label>
-                                    <div class="layui-inline">
-                                        <input type="text" name="username" id="uname" value="" onblur="checkUname()" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
-                                        <span id="unameSpan">
+                                <div class="card-back" style=" left:0px;top:0px;width:450px;height:400px">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">用户名</label>
+                                        <div class="layui-inline">
+                                            <input type="text" name="username" id="uname" value="" onblur="checkUname()" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
+                                            <span id="unameSpan">
 							                   <font>2-4位汉字</font>
                                             </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div  class="layui-form-item">
-                                    <label class="layui-form-label">密码</label>
-                                    <div class="layui-inline" >
-                                        <input type="password" name="pwd" id="pwd1" value="" onblur="checkPwd()" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"/>
-                                        <span id="pwdSpan">
+                                    <div  class="layui-form-item">
+                                        <label class="layui-form-label">密码</label>
+                                        <div class="layui-inline" >
+                                            <input type="password" name="pwd" id="pwd1" value="" onblur="checkPwd()" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input"/>
+                                            <span id="pwdSpan">
 						                        <font>要求6-8位密码，首位为字母</font>
                                         </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div  class="layui-form-item">
-                                    <label class="layui-form-label">确认</label>
-                                    <div class="layui-inline" >
-                                        <input type="password" name="pwd2" id="pwd2" value=""  onblur="checkPwd2()" required  lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input"/>
-                                        <span id="pwd2Span"></span>
+                                    <div  class="layui-form-item">
+                                        <label class="layui-form-label">确认</label>
+                                        <div class="layui-inline" >
+                                            <input type="password" name="pwd2" id="pwd2" value=""  onblur="checkPwd2()" required  lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input"/>
+                                            <span id="pwd2Span"></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="layui-upload">
-                                    <label class="layui-form-label"></label>
-                                    <button type="button" class="layui-btn" id="test1">上传图片</button>
-                                    <div class="layui-upload-list">
-                                        <label class="layui-form-label">证件</label>
-                                        <img class="layui-upload-img" id="deme1" style="width: 50px;height: 50px">
-                                        <p id="demoText"></p>
-                                        <input type="hidden" id="tx" name="filename">
+                                    <div class="layui-upload">
+                                        <label class="layui-form-label"></label>
+                                        <button type="button" class="layui-btn" id="test1">上传图片</button>
+                                        <div class="layui-upload-list">
+                                            <label class="layui-form-label">证件</label>
+                                            <img class="layui-upload-img" id="deme1" style="width: 50px;height: 50px">
+                                            <p id="demoText"></p>
+                                            <input type="hidden" id="tx" name="filename">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <button class="layui-btn" lay-submit lay-filter="formDemo" id="butt"><i class="layui-icon layui-icon-username" >注册</i></button>
-                                <p><a href="1.html" class="fl">已有账号？立即登录</a></p>
-                            </div>
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo" id="butt"><i class="layui-icon layui-icon-username" >注册</i></button>
+                                    <p><a href="1.html" class="fl">已有账号？立即登录</a></p>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
         //自定义验证规则
         form.verify({
 
-              vercodes: function(value){
+            vercodes: function(value){
                 //获取验证码
                 var zylVerCode = $(".zylVerCode").html();
                 if(value!=zylVerCode){
@@ -267,12 +267,12 @@
     }
     //提交判断
     function checkSub(){
-         if(checkUname() && checkPwd() && checkPwd2()){
-             return true;
-         }else{
-             alert("请检查你的格式是否正确")
-             return false;
-         }
+        if(checkUname() && checkPwd() && checkPwd2()){
+            return true;
+        }else{
+            alert("请检查你的格式是否正确")
+            return false;
+        }
     }
     //----------------------------------------------------------------------------------------------------------------------
     //封装校验：相同的保留，不同的传参

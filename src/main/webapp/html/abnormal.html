@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +33,44 @@
         }
     </style>
 </head>
+=======
+<html lang="en">
+<head>
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>异常优化页面</title>
+        <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+        <script src="../layui/layui.js"></script>
+        <script>
+            function countDown(){
+                //获取初始时间
+                var time = document.getElementById("Time");
+
+                //获取到id为time标签中的数字时间
+                if(time.innerHTML == 0){
+                    //等于0时清除计时，并跳转该指定页面
+                    window.location.href="/html/1.html";
+                }else{
+                    time.innerHTML = time.innerHTML-1;
+                }
+            }
+            //1000毫秒调用一次
+            window.setInterval("countDown()",1000);
+        </script>
+        <style>
+            #Time,#p{
+                font-size: 150px;
+                text-align: center;
+            }
+            #Font,#p{
+                font-size: 100px;
+                text-align: center;
+            }
+        </style>
+    </head>
+>>>>>>> e9458178a0187392bda5e62dca8f602ba28be5ee
 <body>
 
 <div style="display: inline-block;width: 100%;float: right;">

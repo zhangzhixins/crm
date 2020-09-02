@@ -41,6 +41,9 @@ public class CustumRealm extends AuthorizingRealm {
         /*simpleAuthenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(username));*/
         return simpleAuthenticationInfo;
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e9458178a0187392bda5e62dca8f602ba28be5ee
 }
