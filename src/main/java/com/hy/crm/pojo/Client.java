@@ -249,28 +249,4 @@ public class Client implements Serializable {
     public void setNewtime(Date newtime) {
         this.newtime = newtime;
     }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-            ", cliname=" + cliname +
-            ", clistr=" + clistr +
-            ", ifyid=" + ifyid +
-            ", clisource=" + clisource +
-            ", industry=" + industry +
-            ", website=" + website +
-            ", regions=" + regions +
-            ", city=" + city +
-            ", address=" + address +
-            ", postalcode=" + postalcode +
-            ", clifax=" + clifax +
-            ", climail=" + climail +
-            ", cliphone=" + cliphone +
-            ", legalperson=" + legalperson +
-            ", capital=" + capital +
-            ", explain=" + explain +
-            ", state=" + state +
-            ", newtime=" + newtime +
-        "}";
-    }
 }

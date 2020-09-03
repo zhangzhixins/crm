@@ -223,28 +223,4 @@ public class Contract implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @Override
-    public String toString() {
-        return "Contract{" +
-            "conid=" + conid +
-            ", busid=" + busid +
-            ", cliid=" + cliid +
-            ", conname=" + conname +
-            ", conserial=" + conserial +
-            ", conmoney=" + conmoney +
-            ", contime=" + contime +
-            ", entrytime=" + entrytime +
-            ", endtime=" + endtime +
-            ", technicalterm=" + technicalterm +
-            ", commerceterm=" + commerceterm +
-            ", conaccessory=" + conaccessory +
-            ", condept=" + condept +
-            ", affiliated=" + affiliated +
-            ", state=" + state +
-            ", conpriority=" + conpriority +
-            ", newtime=" + newtime +
-            ", updtime=" + updtime +
-        "}";
-    }
 }

@@ -78,7 +78,9 @@ public class Business implements Serializable {
     public void setCliid(Integer cliid) {
         this.cliid = cliid;
     }
-
+    public String getBusname() {
+        return busname;
+    }
 
     public void setBusname(String busname) {
         this.busname = busname;
@@ -226,26 +228,5 @@ public class Business implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-    @Override
-    public String toString() {
-        return "Business{" +
-            " busid=" +  busid +
-            ", cliid=" + cliid +
-            ", busname=" + busname +
-            ", makemoney=" + makemoney +
-            ", statementdate=" + statementdate +
-            ", busdemand=" + busdemand +
-            ", busaccessory=" + busaccessory +
-            ", busdept=" + busdept +
-            ", busprincipal=" + busprincipal +
-            ", busparticipant=" + busparticipant +
-            ", busfollower=" + busfollower +
-            ", buspriority=" + buspriority +
-            ", busstage=" + busstage +
-            ", state=" + state +
-            ", newtime=" + newtime +
-            ", updtime=" + updtime +
-        "}";
     }
 }
