@@ -2,15 +2,12 @@ package com.hy.crm.mapper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hy.crm.pojo.Aftersale;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hy.crm.pojo.Aftersale;
 import com.hy.crm.pojo.Contract;
 import com.hy.crm.pojo.vo.AftersaleExt;
 import com.hy.crm.utils.SqlUtils;
 import org.apache.ibatis.annotations.*;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
 
 /**
  * <p>

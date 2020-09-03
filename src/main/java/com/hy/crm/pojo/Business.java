@@ -178,11 +178,6 @@ public class Business implements Serializable {
         this.updtime = updtime;
     }
 
-
-    public String getBusname() {
-        return busname;
-    }
-
     public String getLinkname() {
         return linkname;
     }

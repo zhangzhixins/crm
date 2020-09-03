@@ -12,7 +12,6 @@ import java.io.Serializable;
  * @since 2020-08-28
  */
 public class Auth implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "authid", type = IdType.AUTO)

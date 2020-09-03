@@ -6,16 +6,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+
 /**
- * <p>
- * 售后服务表
- * </p>
- *
- * @author zzx
- * @since 2020-08-28
+ * @ProjectName: crm
+ * @Package: com.hy.crm.pojo
+ * @ClassName: Aftersale
+ * @Author: Xiaobai
+ * @Description:
+ * @Date: 2020/9/3 8:56
+ * @Version: 1.0
  */
 public class Aftersale implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "aftid", type = IdType.AUTO)
@@ -244,28 +245,28 @@ public class Aftersale implements Serializable {
     @Override
     public String toString() {
         return "Aftersale{" +
-            "aftid=" + aftid +
-            ", afttheme='" + afttheme + '\'' +
-            ", step='" + step + '\'' +
-            ", duty='" + duty + '\'' +
-            ", participant='" + participant + '\'' +
-            ", cliname='" + cliname + '\'' +
-            ", conid='" + conid + '\'' +
-            ", coninfo='" + coninfo + '\'' +
-            ", linkname='" + linkname + '\'' +
-            ", linkphone=" + linkphone +
-            ", phone=" + phone +
-            ", email='" + email + '\'' +
-            ", afttype='" + afttype + '\'' +
-            ", aftmode='" + aftmode + '\'' +
-            ", starttime=" + starttime +
-            ", endtime=" + endtime +
-            ", aftcontent='" + aftcontent + '\'' +
-            ", aftback='" + aftback + '\'' +
-            ", aftpeo='" + aftpeo + '\'' +
-            ", aftgrade=" + aftgrade +
-            ", accessoryim='" + accessoryim + '\'' +
-            ", state='" + state + '\'' +
-            '}';
+                "aftid=" + aftid +
+                ", afttheme='" + afttheme + '\'' +
+                ", step='" + step + '\'' +
+                ", duty='" + duty + '\'' +
+                ", participant='" + participant + '\'' +
+                ", cliname='" + cliname + '\'' +
+                ", conid='" + conid + '\'' +
+                ", coninfo='" + coninfo + '\'' +
+                ", linkname='" + linkname + '\'' +
+                ", linkphone=" + linkphone +
+                ", phone=" + phone +
+                ", email='" + email + '\'' +
+                ", afttype='" + afttype + '\'' +
+                ", aftmode='" + aftmode + '\'' +
+                ", starttime=" + starttime +
+                ", endtime=" + endtime +
+                ", aftcontent='" + aftcontent + '\'' +
+                ", aftback='" + aftback + '\'' +
+                ", aftpeo='" + aftpeo + '\'' +
+                ", aftgrade=" + aftgrade +
+                ", accessoryim='" + accessoryim + '\'' +
+                ", state='" + state + '\'' +
+                '}';
     }
 }

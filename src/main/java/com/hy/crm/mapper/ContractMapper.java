@@ -1,6 +1,5 @@
 package com.hy.crm.mapper;
 
-import com.hy.crm.pojo.Contract;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

@@ -1,22 +1,22 @@
 package com.hy.crm.pojo;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
-
 /**
- * <p>
- * 合同表
- * </p>
- *
- * @author zzx
- * @since 2020-08-28
+ * @ProjectName: crm
+ * @Package: com.hy.crm.pojo
+ * @ClassName: Contract
+ * @Author: Xiaobai
+ * @Description:
+ * @Date: 2020/9/3 8:57
+ * @Version: 1.0
  */
 public class Contract implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "conid", type = IdType.AUTO)
