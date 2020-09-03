@@ -3,16 +3,13 @@ package com.hy.crm.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hy.crm.pojo.vo.AftersaleExt;
+import com.hy.crm.pojo.vo.AftersaleExt1;
 import com.hy.crm.service.IAftersaleService;
 import com.hy.crm.utils.MsgUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 /**
  * <p>
@@ -39,6 +36,20 @@ public class AftersaleController {
         msgUtils.setCount(Integer.parseInt(String.valueOf(iPage.getTotal())));
         msgUtils.setData(iPage.getRecords());
         return msgUtils;
+    }
 
+
+    @RequestMapping("/insert.do")
+    @ResponseBody
+    public MsgUtils insert(AftersaleExt1 aftersale){
+        System.out.println("========================================================================");
+        System.out.println(aftersale.toString());
+        System.out.println("=====评分"+ aftersale.getAftgrades());
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("查询成功");
+        //msgUtils.setCount();
+        //msgUtils.setData();
+        return msgUtils;
     }
 }

@@ -1,10 +1,9 @@
 package com.hy.crm.pojo;
 
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -224,5 +223,4 @@ public class Contract implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }
