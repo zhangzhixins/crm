@@ -8,7 +8,10 @@ import com.hy.crm.utils.MsgUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * <p>
@@ -19,17 +22,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 2020-08-28
  */
 @Controller
+@RequestMapping("//client")
 public class ClientController {
+
     @Autowired
-    private IClientService iClientService;
+    IClientService clientService;
 
     @Autowired
     private IFinanceService iFinanceService;
 
+    @RequestMapping("/query.do")
+    @ResponseBody
+    public MsgUtils query(){
+        MsgUtils msgUtils = new MsgUtils();
+        List<Client> list=clientService.queryClient();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("查询成功");
+        msgUtils.setData(list);
+        return msgUtils;
+    }
+
+
     @GetMapping(value = "/queryadd.do")
     @ResponseBody
     public MsgUtils queryAdd(Client client, Finance finance) {
-        iClientService.save(client);
+        clientService.save(client);
         iFinanceService.save(finance);
         MsgUtils msgUtils = new MsgUtils();
         msgUtils.setCode("0");

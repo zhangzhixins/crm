@@ -43,14 +43,15 @@ public class AftersaleController {
     @RequestMapping("/insert.do")
     @ResponseBody
     public MsgUtils insert(AftersaleExt1 aftersale){
-        System.out.println("========================================================================");
-        System.out.println(aftersale.toString());
-        System.out.println("=====评分"+ aftersale.getAftgrades());
+        boolean bol=aftersaleService.save(aftersale);
         MsgUtils msgUtils = new MsgUtils();
-        msgUtils.setCode("0");
-        msgUtils.setMsg("查询成功");
-        //msgUtils.setCount();
-        //msgUtils.setData();
+        if(bol==false){
+            msgUtils.setCode("1");
+            msgUtils.setMsg("查询失败");
+        }else {
+            msgUtils.setCode("0");
+            msgUtils.setMsg("查询成功");
+        }
         return msgUtils;
     }
 }

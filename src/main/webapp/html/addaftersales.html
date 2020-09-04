@@ -14,7 +14,7 @@
         left: 20%;
         border: 1px black solid;
         width: 950px;
-        height: 1600px;
+        height: 1650px;
     }
     .box2{
         background-color: #f8ffb3;
@@ -81,7 +81,7 @@
         width: 100%;
         height: 35px;
         position:absolute;
-        top: 1100px;
+        top: 1160px;
     }
     .box16{
         position:absolute;
@@ -114,7 +114,7 @@
     }
     .box20{
         position:absolute;
-        top: 1500px;
+        top: 1550px;
         left: 150px;
     }
     .box21{
@@ -130,7 +130,7 @@
         <div class="layui-inline" style="width: 200px;font-size: 25px;float: left">新增售后服务
         </div>
         <div class="layui-inline" style="width: 100px;float: right">
-            <button type="button" class="layui-btn">
+            <button type="button" class="layui-btn" id="fanhui">
                 <i class="layui-icon">&#xe608;</i> 返回
             </button>
         </div>
@@ -145,7 +145,7 @@
         <div class="layui-form-item box4">
             <label class="layui-form-label"><font color="red">*</font>主题</label>
             <div class="layui-input-block">
-                <input type="text" name="afttheme"  autocomplete="off" class="layui-input box5">
+                <input type="text" name="afttheme"  autocomplete="off" class="layui-input box5" id="afttheme">
             </div>
         </div>
         <div class="layui-form-item layui-inline box4">
@@ -174,57 +174,59 @@
         <div class="layui-form-item box4 layui-inline">
             <label class="layui-form-label">客户名称:</label>
             <div class="layui-input-block box9">
-                <select name="cliname" lay-filter="aihao">
-                    <option value="">请选择</option>
-                    <option value="0">写作</option>
+                <select name="cliname" lay-filter="cliname" id="cliname">
+                    <option value="">请选择部门</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item box4 layui-inline">
             <label class="layui-form-label">合同编号:</label>
             <div class="layui-input-block box9">
-                <select name="conid" lay-filter="aihao">
-                    <option value="">请选择</option>
-                    <option value="0">写作</option>
+                <select name="conid" lay-filter="conid" id="conid">
+                    <option value="">请选择合同编号</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item box4">
-            <label class="layui-form-label box10">合同主要信息:</label>
+            <label class="layui-form-label">合同主要信息:</label>
             <div class="layui-input-block">
-                <input type="text" name="coninfo"  autocomplete="off" class="layui-input box5">
+                <textarea  name="coninfo" type="text/plain" style="width:85%;height:120px" id="coninfo"></textarea>
             </div>
         </div>
         <div class="layui-form-item layui-inline box4">
             <label class="layui-form-label box10">对方联系人:</label>
             <div class="layui-input-block">
-                <input type="text" name="linkname"  autocomplete="off" class="layui-input box11">
+                <input type="text" name="linkname" id="linkname"  autocomplete="off" class="layui-input box11">
             </div>
         </div>
         <div class="layui-form-item layui-inline box4">
             <label class="layui-form-label box10">固定电话:</label>
             <div class="layui-input-block">
-                <input type="text" name="linkphone"  autocomplete="off" class="layui-input box11">
+                <input type="text" name="linkphone" id="linkphone"  autocomplete="off" class="layui-input box11">
             </div>
         </div>
         <div class="layui-form-item layui-inline box4">
             <label class="layui-form-label box10">移动电话:</label>
             <div class="layui-input-block">
-                <input type="text" name="phone"  autocomplete="off" class="layui-input box11">
+                <input type="text" name="phone" id="phone"  autocomplete="off" class="layui-input box11">
             </div>
         </div>
         <div class="layui-form-item layui-inline box4">
             <label class="layui-form-label box10">邮件/QQ:</label>
             <div class="layui-input-block">
-                <input type="text" name="email"  autocomplete="off" class="layui-input box11">
+                <input type="text" name="email" id="email"  autocomplete="off" class="layui-input box11">
             </div>
         </div>
         <div class="layui-form-item box4 layui-inline">
             <label class="layui-form-label">服务类型:</label>
             <div class="layui-input-block box9">
                 <select name="afttype" lay-filter="aihao">
-                    <option value="">请选择</option>
-                    <option value="0">写作</option>
+                    <option value="">请选择服务类型</option>
+                    <option value="故障申报">故障申报</option>
+                    <option value="业务咨询">业务咨询</option>
+                    <option value="实施或培训">实施或培训</option>
+                    <option value="主动关怀">主动关怀</option>
+                    <option value="其他">其他</option>
                 </select>
             </div>
         </div>
@@ -232,8 +234,10 @@
             <label class="layui-form-label">服务方式:</label>
             <div class="layui-input-block box9">
                 <select name="aftmode" lay-filter="aihao">
-                    <option value="">请选择</option>
-                    <option value="0">写作</option>
+                    <option value="">请选择服务方式</option>
+                    <option value="电话">电话</option>
+                    <option value="视频">视频</option>
+                    <option value="见面">见面</option>
                 </select>
             </div>
         </div>
@@ -270,17 +274,18 @@
         <div class="layui-form-item layui-inline box13">
             <label class="layui-form-label">服务评分:</label>
             <div class="layui-input-block">
-                <input type="checkbox" lay-skin="primary" name="aftgrades[0]" value="5" title="5分">
-                <input type="checkbox" lay-skin="primary" name="aftgrades[1]" value="4" title="4分">
-                <input type="checkbox" lay-skin="primary" name="aftgrades[2]" value="3" title="3分">
-                <input type="checkbox" lay-skin="primary" name="aftgrades[3]" value="2" title="2分">
-                <input type="checkbox" lay-skin="primary" name="aftgrades[4]" value="1" title="1分">
+                <input type="radio" lay-skin="primary" name="aftgrade" value="5" title="5分">
+                <input type="radio" lay-skin="primary" name="aftgrade" value="4" title="4分">
+                <input type="radio" lay-skin="primary" name="aftgrade" value="3" title="3分">
+                <input type="radio" lay-skin="primary" name="aftgrade" value="2" title="2分">
+                <input type="radio" lay-skin="primary" name="aftgrade" value="1" title="1分">
             </div>
         </div>
         <div class="layui-form-item layui-inline box14">
+            <input type="hidden" name="accessoryim" id="img">
             <label class="layui-form-label">附件:</label>
             <div class="layui-input-block">
-                <button type="button" class="layui-btn" id="test3">
+                <button type="button" class="layui-btn" id="upload1">
                     <i class="layui-icon">&#xe67c;</i>上传文件
                 </button>
             </div>
@@ -333,7 +338,6 @@
             ,$=layui.jquery
             ,laydate = layui.laydate
             ,upload = layui.upload;
-
         //时间
         laydate.render({
             elem: '#test1' //指定元素
@@ -342,26 +346,166 @@
             elem: '#test2' //指定元素
         });
 
+        //文件上传
+        upload.render({
+            elem: '#upload1' //绑定元素
+            ,url: '/upload/upload.do' //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                if(res.code=='0'){
+                    layer.msg('酷毙了。。', {icon: 1});
+                }else{
+                    layer.msg('不开心。。', {icon: 5});
+                }
+                //展示图片
+                $("#img").val(res.data);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+
         //保存
         form.on('submit(formTest)', function(data){
-            alert("数据提交");
             $.get({
                 url:"/aftersale/insert.do",
                 data:data.field,
                 success:function (data) {
-                    alert(data.msg());
+                    if(data.code=="0"){
+                        layer.msg("成功");
+                        location.href="/html/aftersales.html";
+                    }else{
+                        layer.msg("重新添加");
+                    }
                 }
             })
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });
 
+        //监听客户名称下拉框
+        form.on('select(cliname)', function(data){
+            //当合同名称选择后-主题展示
+            var clival=$("#cliname").find("option:selected").text();
+            if(clival!="请选择部门"){
+                $("#conid").empty();
+                $("#conid").append(new Option("请选择合同编号",""));
+                $("#afttheme").val(clival);
+            }else{
+                $("#afttheme").val("");
+            }
+
+            //给合同编号赋值
+            $.get({
+                url:"/contract/query.do",
+                data:"cliid="+$("#cliname").val(),
+                success:function (data) {
+                    if(data.code=="0"){
+                        var list=data.data;
+                        if(list!=null){
+                            for (var i = 0; i < list.length; i++) {
+                                $("#conid").append(new Option(list[i].conserial, list[i].conid))
+                            }
+                            form.render();//渲染数据
+                        }else{
+                            $("#conid").empty();
+                            $("#conid").append(new Option("请选择合同编号",""));
+                            form.render();//渲染数据
+                        }
+                    }
+                }
+            })
+        });
+
+        //监听合同编号
+        form.on('select(conid)',function (data) {
+            var conval = $("#conid").find("option:selected").text();
+            var clival = $("#cliname").find("option:selected").text();
+            var myDate = new Date();
+            var year = myDate.getFullYear();        //获取当前年
+            var month = myDate.getMonth() + 1;        //获取当前月
+            var date = myDate.getDate();            //获取当前日
+            if (conval != "请选择合同编号" && clival != "请选择部门") {
+                $("#afttheme").val(clival + "-" + conval + "-" + year + month + date);
+            } else {
+                $("#afttheme").val("");
+            }
+            //选择合同编号时拿到当前合同信息
+            $.get({
+                url: "/contract/queryById.do",
+                data: "conid=" + $("#conid").val(),
+                success: function (data) {
+                    if (data.code == "0") {
+                        var contract = data.data;
+                        if (contract != null) {
+                            var ss = [contract.contime, contract.entrytime, contract.endtime];
+                            var sss = Array();
+                            for (var i = 0; i < ss.length; i++) {
+                                var str = ss[i];
+                                var oDate = new Date(str),
+                                    year = oDate.getFullYear(),
+                                    oMonth = oDate.getMonth() + 1,
+                                    oDay = oDate.getDate(),
+                                    oTime = year + '-' + getzf(oMonth) + '-' + getzf(oDay);//最后拼接时间
+                                sss[i] = oTime;
+                            }
+                            var allname = contract.allname;
+                            var condept = contract.condept;
+                            var aff = contract.affiliated;
+                            var contime = sss[0];
+                            var entry = sss[1];
+                            var sta = contract.state;
+                            var end = sss[2];
+                            $("#coninfo").val("【合同名称】" + allname + "【合同所属部门】" + condept + "【关联人员】" + aff
+                                + "【签约日期】" + contime + "【生效日期】" + entry + "【合同状态】" + sta + "【服务期至】" + end);
+                            //对方联系人
+                            $("#linkname").val(contract.linkname);
+                            //固定电话
+                            $("#linkphone").val(contract.linkphone);
+                            //移动电话
+                            $("#phone").val(contract.phone);
+                            //邮件
+                            $("#email").val(contract.email);
+                            form.render();//渲染数据
+                        } else {
+
+                            form.render();//渲染数据
+                        }
+                    }
+                }
+            });
+        });
         //预加载函数
         $(function () {
-
-
+            //拿到全部的客户名称
+            $.get({
+                url:"/client/query.do",//查询全部的客户信息
+                success:function (data) {
+                    if(data.code=="0"){
+                        var list=data.data;
+                        for (var i = 0; i < list.length; i++) {
+                            $("#cliname").append(new Option(list[i].cliname, list[i].cliid))
+                        }
+                        form.render();//渲染数据
+                    }else{
+                        layer.msg("获取数据失败")
+                    }
+                }
+            })
         })
 
+        $("#fanhui").click(function () {
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index);
+        })
     });
+    //补0操作
+    function getzf(num){
+        if(parseInt(num) < 10){
+            num = '0'+num;
+        }
+        return num;
+    }
+
 </script>
 </body>
 </html>

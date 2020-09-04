@@ -29,7 +29,7 @@ public class Business implements Serializable {
 
     private String busname;
 
-    private String clisource;
+    private String clisources;
 
     private BigDecimal makemoney;
 
@@ -69,6 +69,23 @@ public class Business implements Serializable {
 
     private Date updtime;
 
+
+    public String getClisources() {
+        return clisources;
+    }
+
+    public void setClisources(String clisources) {
+        this.clisources = clisources;
+    }
+
+    public String getAllname() {
+        return allname;
+    }
+
+    public void setAllname(String allname) {
+        this.allname = allname;
+    }
+
     public Integer getBusid() {
         return  busid;
     }
@@ -83,25 +100,8 @@ public class Business implements Serializable {
     public void setCliid(Integer cliid) {
         this.cliid = cliid;
     }
-
-    public String getAllname() {
-        return allname;
-    }
-
-    public void setAllname(String allname) {
-        this.allname = allname;
-    }
-
     public String getBusname() {
         return busname;
-    }
-
-    public String getClisource() {
-        return clisource;
-    }
-
-    public void setClisource(String clisource) {
-        this.clisource = clisource;
     }
 
     public void setBusname(String busname) {
