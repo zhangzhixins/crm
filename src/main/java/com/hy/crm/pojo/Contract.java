@@ -95,6 +95,15 @@ public class Contract implements Serializable {
     public void setCliid(Integer cliid) {
         this.cliid = cliid;
     }
+
+    public String getAllname() {
+        return allname;
+    }
+
+    public void setAllname(String allname) {
+        this.allname = allname;
+    }
+
     public String getConname() {
         return conname;
     }

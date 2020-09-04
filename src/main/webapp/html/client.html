@@ -28,20 +28,22 @@
 
             <!-- Unnamed (Image) -->
             <div id="u210" class="ax_default _图片">
-                <img id="u210_img" class="img " src="http://www.axshare.cn/gsc/S3EWE1/0c/7f/0a/0c7f0a102aa0468792ba30e848859a83/images/我的桌面/u81.png?token=302a29da78b4c720de7ef15d61969729e85be95c222e548ccd0118588bf066f8"/> <span style="font-size:20px">客户管理</span>
+                <img src="../static/u81.png" height="38" width="36"/>
+                <span style="font-size:20px">客户管理</span>
 
             </div>
         </div>
         <div>
             <blockquote class="layui-elem-quote" style="height: 10px ">分类</blockquote>
             <blockquote class="layui-elem-quote layui-quote-nm">
-                <img id="u214_img" class="img " src="http://www.axshare.cn/gsc/S3EWE1/0c/7f/0a/0c7f0a102aa0468792ba30e848859a83/images/客户管理/u214.png?token=c554a139e8b77f00b5cefc3d67345969dfe861e096dcd8c6a84c030e7d4e5e5f"/>
+                <img src="../static/u214.png" height="20" width="20"/>
                 <span>所有分类</span><br>
-                <img id="u217_img" class="img " src="http://www.axshare.cn/gsc/S3EWE1/0c/7f/0a/0c7f0a102aa0468792ba30e848859a83/images/客户管理/u214.png?token=c554a139e8b77f00b5cefc3d67345969dfe861e096dcd8c6a84c030e7d4e5e5f"/>
-                <span><a href="">客户分类1</a></span><br>
-                <img id="u220_img" class="img " src="http://www.axshare.cn/gsc/S3EWE1/0c/7f/0a/0c7f0a102aa0468792ba30e848859a83/images/客户管理/u214.png?token=c554a139e8b77f00b5cefc3d67345969dfe861e096dcd8c6a84c030e7d4e5e5f"/>
+                <img src="../static/u214.png" height="20" width="20"/>
+                <span><a href="">客户分类
+                </a></span><br>
+                <img src="../static/u214.png" height="20" width="20"/>
                 <span><a href="">客户分类2</a></span><br>
-                <img id="u223_img" class="img " src="http://www.axshare.cn/gsc/S3EWE1/0c/7f/0a/0c7f0a102aa0468792ba30e848859a83/images/客户管理/u214.png?token=c554a139e8b77f00b5cefc3d67345969dfe861e096dcd8c6a84c030e7d4e5e5f"/>
+                <img src="../static/u214.png" height="20" width="20"/>
                 <span><a href="">客户分类3</a></span><br>
             </blockquote>
         </div>
@@ -109,11 +111,14 @@
             ,page: true //开启分页
             ,cols: [[ //表头
 
-                {field: 'afttheme', title: '主题', width:300,templet: '<div><a href="editclient.html" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.afttheme}}</a></div>'}
-                ,{field: 'afttype', title: '服务类型', width:120}
-                ,{field: 'starttime', title: '开始时间', width:200,templet: "<div>{{layui.util.toDateString(d.starttime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
-                ,{field: 'aftpeo', title: '服务人员', width: 120}
-                ,{field: 'aftgrade', title: '服务评分', width: 120}
+                {field: 'afttheme', title: '客户名称', width:300,templet: '<div><a href="editclient.html" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.afttheme}}</a></div>'}
+                ,{field: 'afttype', title: '商机数', width:120}
+                ,{field: 'starttime', title: '预计成交金额', width:200,templet: "<div>{{layui.util.toDateString(d.starttime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
+                ,{field: 'aftpeo', title: '合同数', width: 120}
+                ,{field: 'aftgrade', title: '合同金额', width: 120}
+                ,{field: 'aftpeo', title: '回款额', width: 120}
+                ,{field: 'aftgrade', title: '售后服务类', width: 120}
+                ,{field: 'aftpeo', title: '服务评分', width: 120}
             ]]
         });
 
