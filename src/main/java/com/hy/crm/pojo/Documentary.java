@@ -21,6 +21,8 @@ public class Documentary implements Serializable {
     @TableId(value = "docid", type = IdType.AUTO)
     private Integer docid;
 
+    private  String docname;
+
     private Integer busid;
 
     private Date doctime;
@@ -108,6 +110,14 @@ public class Documentary implements Serializable {
 
     public void setUpdtime(Date updtime) {
         this.updtime = updtime;
+    }
+
+    public String getDocname() {
+        return docname;
+    }
+
+    public void setDocname(String docname) {
+        this.docname = docname;
     }
 
     @Override
