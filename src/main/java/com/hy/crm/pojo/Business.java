@@ -25,7 +25,7 @@ public class Business implements Serializable {
 
     private Integer cliid;
 
-    private  String allname;
+    private String allname;
 
     private String busname;
 
@@ -68,6 +68,23 @@ public class Business implements Serializable {
     private Date newtime;
 
     private Date updtime;
+
+
+    public String getClisources() {
+        return clisources;
+    }
+
+    public void setClisources(String clisources) {
+        this.clisources = clisources;
+    }
+
+    public String getAllname() {
+        return allname;
+    }
+
+    public void setAllname(String allname) {
+        this.allname = allname;
+    }
 
     public Integer getBusid() {
         return  busid;
@@ -228,21 +245,5 @@ public class Business implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAllname() {
-        return allname;
-    }
-
-    public void setAllname(String allname) {
-        this.allname = allname;
-    }
-
-    public String getClisources() {
-        return clisources;
-    }
-
-    public void setClisources(String clisources) {
-        this.clisources = clisources;
     }
 }

@@ -4,7 +4,11 @@ import com.hy.crm.pojo.Client;
 import com.hy.crm.mapper.ClientMapper;
 import com.hy.crm.service.IClientService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.misc.Cleaner;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +20,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ClientServiceImpl extends ServiceImpl<ClientMapper, Client> implements IClientService {
+    @Autowired
+    ClientMapper clientMapper;
 
+    @Override
+    public List<Client> queryClient(){
+       return clientMapper.queryClient();
+    }
 }

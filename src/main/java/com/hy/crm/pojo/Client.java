@@ -59,7 +59,7 @@ public class Client implements Serializable {
 
     private String capital;
 
-    private String explain;
+    private String explains;
 
     private Integer state;
 
@@ -227,11 +227,11 @@ public class Client implements Serializable {
     }
 
     public String getExplain() {
-        return explain;
+        return explains;
     }
 
     public void setExplain(String explain) {
-        this.explain = explain;
+        this.explains = explain;
     }
 
     public Integer getState() {

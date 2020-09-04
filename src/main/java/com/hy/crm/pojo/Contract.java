@@ -66,6 +66,14 @@ public class Contract implements Serializable {
 
     private Date updtime;
 
+    public String getAllname() {
+        return allname;
+    }
+
+    public void setAllname(String allname) {
+        this.allname = allname;
+    }
+
     public Integer getConid() {
         return conid;
     }

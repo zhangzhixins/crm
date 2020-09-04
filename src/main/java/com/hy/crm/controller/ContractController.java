@@ -1,9 +1,16 @@
 package com.hy.crm.controller;
 
 
+import com.hy.crm.pojo.Contract;
+import com.hy.crm.service.IContractService;
+import com.hy.crm.utils.MsgUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +23,30 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("//contract")
 public class ContractController {
+
+    @Autowired
+    IContractService contractService;
+
+    @RequestMapping("/query.do")
+    @ResponseBody
+    public MsgUtils query(Integer cliid){
+        List<Contract> list = contractService.queryContract(cliid);
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("查询成功");
+        msgUtils.setData(list);
+        return msgUtils;
+    }
+
+    @RequestMapping("/queryById.do")
+    @ResponseBody
+    public MsgUtils queryById(Integer conid){
+        Contract contract=contractService.getById(conid);
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("查询成功");
+        msgUtils.setData(contract);
+        return msgUtils;
+    }
 
 }

@@ -1,9 +1,17 @@
 package com.hy.crm.controller;
 
 
+import com.hy.crm.pojo.Client;
+import com.hy.crm.service.IClientService;
+import com.hy.crm.utils.MsgUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +25,17 @@ import org.springframework.stereotype.Controller;
 @RequestMapping("//client")
 public class ClientController {
 
+    @Autowired
+    IClientService clientService;
+
+    @RequestMapping("/query.do")
+    @ResponseBody
+    public MsgUtils query(){
+        MsgUtils msgUtils = new MsgUtils();
+        List<Client> list=clientService.queryClient();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("查询成功");
+        msgUtils.setData(list);
+        return msgUtils;
+    }
 }
