@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 /**
@@ -33,11 +34,11 @@ public class UserController {
     @Autowired
     private IUserService iUserService;
     @RequestMapping(value = "/login.do")
-    public  String sub(User user, Model model){
+    public  String sub(User user, Model model) throws UnsupportedEncodingException {
         System.out.println("他来了");
         System.out.println(user.getUsername()+user.getPwd()+"===");
         Subject subject= SecurityUtils.getSubject();
-        UsernamePasswordToken token=new UsernamePasswordToken(user.getUsername(),user.getPwd());
+        UsernamePasswordToken token=new UsernamePasswordToken(new String(user.getUsername().getBytes("ISO-8859-1"),"utf-8"),user.getPwd());
         int count=0;
         try {
             subject.login(token);

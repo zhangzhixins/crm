@@ -25,7 +25,11 @@ public class Business implements Serializable {
 
     private Integer cliid;
 
+    private String allname;
+
     private String busname;
+
+    private String clisource;
 
     private BigDecimal makemoney;
 
@@ -37,9 +41,9 @@ public class Business implements Serializable {
 
     private String linkduty;
 
-    private Integer linkphone;
+    private String linkphone;
 
-    private Integer phone;
+    private String phone;
 
     private String email;
 
@@ -79,8 +83,25 @@ public class Business implements Serializable {
     public void setCliid(Integer cliid) {
         this.cliid = cliid;
     }
+
+    public String getAllname() {
+        return allname;
+    }
+
+    public void setAllname(String allname) {
+        this.allname = allname;
+    }
+
     public String getBusname() {
         return busname;
+    }
+
+    public String getClisource() {
+        return clisource;
+    }
+
+    public void setClisource(String clisource) {
+        this.clisource = clisource;
     }
 
     public void setBusname(String busname) {
@@ -202,19 +223,19 @@ public class Business implements Serializable {
         this.linkduty = linkduty;
     }
 
-    public Integer getLinkphone() {
+    public String getLinkphone() {
         return linkphone;
     }
 
-    public void setLinkphone(Integer linkphone) {
+    public void setLinkphone(String linkphone) {
         this.linkphone = linkphone;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

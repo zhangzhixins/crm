@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css">
+
 </head>
 <style>
     .box{
@@ -72,17 +73,15 @@
     }
     .box15{
         background-color: #f8ffb3;
-        width: 100%;
-        height: 35px;
         position:absolute;
         top: 930px;
     }
     .box16{
         position:absolute;
-        top: 50px;
+        top: 20px;
         left: 30px;
         border: 1px black solid;
-        width: 460px;
+        width: 760px;
         height: 310px;
     }
     .box17{
@@ -92,19 +91,19 @@
     }
     .box18{
         position:absolute;
-        top: 50px;
-        left: 510px;
+        top: 20px;
+        left: 790px;
         border: 1px black solid;
-        width: 400px;
+        width: 450px;
         height: 150px;
     }
     .box19{
         position:absolute;
-        top: 210px;
-        left: 510px;
+        top: 171px;
+        left: 790px;
         border: 1px black solid;
-        width: 400px;
-        height: 150px;
+        width: 450px;
+        height: 160px;
     }
     .box20{
         position:absolute;
@@ -114,184 +113,215 @@
     .box21{
         position:absolute;
         top: 10px;
-        left: 370px;
+        left: 590px;
     }
+    body{ text-align:right}
+    .div{ margin:0 auto; width:800px; height:50px; border:1px  }
+    /* css注释：为了观察效果设置宽度 边框 高度等样式 */
 </style>
+<script type="text/javascript">
+    var shh=function(){
+        window.location.href="/html/business.html";
+    }
+    var abc=function(){
+        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        parent.layer.close(index);
+    }
+</script>
 <body>
-<div class="box1">
-    <form class="layui-form" method="post">
-        <div class="layui-form-item box" ><!--页面头部信息-->
-            <div class="layui-inline" style="width: 200px;font-size: 25px;float: left">新增商机服务
-            </div>
-            <div class="layui-inline" style="width: 100px;float: right">
-                <button type="button" class="layui-btn">
-                    <i class="layui-icon">&#xe608;</i> 返回
-                </button>
-            </div>
-            <div class="layui-inline" style="width: 100px;float: right">
-                <button type="button" class="layui-btn">
-                    <i class="layui-icon">&#xe666;</i> 刷新
-                </button>
-            </div>
+<div style="width:100%;text-align:center">
+    <form class="layui-form">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend><strong>新增客户</strong><br /></legend>
+        </fieldset>
+        <div class="layui-inline" style="width: 100px;float: right">
+            <button type="button" class="layui-btn" onclick="abc()">
+                <i class="layui-icon layui-icon-return"></i> 返回
+            </button>
         </div>
-        <div>
-            <div class="layui-form-item layui-inline">
-                <label class="layui-form-label box10">商机名称:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline" style="float: right">
+        <div class="layui-inline" style="width: 100px;float: right">
+            <button type="button" class="layui-btn" onclick="shh()">
+                <i class="layui-icon">&#xe666;</i> 刷新
+            </button>
+        </div>
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+            <label class="layui-form-label"><font color="red">*</font>客户网址</label>
+               <div class="layui-input-block">
+                <input type="text" name="website" lay-verify="required" lay-reqtext="请输入网站" placeholder="请输入网站" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+               </div>
+             </div>
+        <div class="layui-form-item layui-inline">
                 <label class="layui-form-label">优先级:</label>
                 <div class="layui-input-block">
-                    <input type="checkbox" lay-skin="primary" name="" value="1" title="低">
-                    <input type="checkbox" lay-skin="primary" name="" value="2" title="中">
-                    <input type="checkbox" lay-skin="primary" name="" value="3" title="高">
+                    <input type="checkbox" lay-skin="primary" name="buspriority" value="1" title="低">
+                    <input type="checkbox" lay-skin="primary" name="buspriority" value="2" title="中">
+                    <input type="checkbox" lay-skin="primary" name="buspriority" value="3" title="高">
                 </div>
-            </div>
         </div>
-        <div class="box2"><!--基本信息-->
-            <p class="box3">客户信息</p>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">客户名称:</label>
+        </div>
+        <div style="background:#e2d982; color:#FFF;width:1250px; height:38px;" class="div"><h2>基本信息</h2></div>
+        <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:1200px; height:38px;" class="div"></div>
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label"><font color="red">*</font>客户名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="cliname" lay-verify="required" lay-reqtext="客户名是必填项" placeholder="请输入客户名" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">所属行业:</label>
-                <div class="layui-input-block box11">
-                    <select name="" lay-filter="aihao">
+            <div class="layui-inline">
+                <label class="layui-form-label">所属行业</label>
+                <div class="layui-input-block" style="width:400px; height:38px;">
+                    <select name="industry" lay-filter="aihao">
                         <option value="">请选择</option>
                         <option value="0">写作</option>
                     </select>
                 </div>
             </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">所在城市:</label>
+        </div>
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label">国家/地区</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="cliname" lay-verify="required" lay-reqtext="请输入国家" placeholder="请输入国家" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">详细地址:</label>
+            <div class="layui-inline">
+                <label class="layui-form-label">所在城市</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="city" lay-verify="required" lay-reqtext="请输入您当前所在城市" placeholder="请输入所在城市" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
         </div>
-        <div class="box5"><!--商机信息-->
-            <p class="box3">商机信息</p>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">商机名称:</label>
+        <div style="background:#e2d982; color:#FFF;width:1250px; height:38px;" class="div"><h2>商机信息</h2></div>
+        <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:1200px; height:38px;" class="div"></div>
+
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label"><font color="red">*</font>商机名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="cliname" lay-verify="required" lay-reqtext="请输入国家" placeholder="请输入国家" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">客户来源:</label>
-                <div class="layui-input-block box11">
-                    <select name="" lay-filter="aihao">
+            <div class="layui-inline">
+                <label class="layui-form-label">所属行业</label>
+                <div class="layui-input-block" style="width:400px; height:38px;">
+                    <select name="industry" lay-filter="aihao">
                         <option value="">请选择</option>
                         <option value="0">写作</option>
                     </select>
                 </div>
             </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">预计成交金额:</label>
+        </div>
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label">国家/地区</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="regions" lay-verify="required" lay-reqtext="请输入国家" placeholder="请输入国家" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box12">预计结单日期:</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="starttime" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">联系人:</label>
+            <div class="layui-inline">
+                <label class="layui-form-label">开始时间:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">部门:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">职位:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">固定电话:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">移动电话:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">邮件/QQ:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item box14">
-                <label class="layui-form-label">客户反馈:</label>
-                <div class="layui-input-block">
-                    <textarea  name="aftback" type="text/plain" style="width:85%;height:150px"></textarea>
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">相关附件:</label>
-                <div class="layui-input-block">
-                    <input type="file" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4"><!--这个不用啥也不用写-->
-                <label class="layui-form-label box10"></label>
-                <div class="layui-input-block">
-                <input type="text" name=""  autocomplete="off" class="layui-input box11" style="border: none">
-            </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">商机所属部门:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">商机负责人:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">商机参与人:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
-                </div>
-            </div>
-            <div class="layui-form-item layui-inline box4">
-                <label class="layui-form-label box10">商机关注人:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="starttime" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11"  style="width:400px; height:38px;">
                 </div>
             </div>
         </div>
+
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label">国家/地区</label>
+                <div class="layui-input-block">
+                    <input type="text" name="regions" lay-verify="required" lay-reqtext="请输入国家" placeholder="请输入国家" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">所在城市</label>
+                <div class="layui-input-block">
+                    <input type="text" name="city" lay-verify="required" lay-reqtext="请输入您当前所在城市" placeholder="请输入所在城市" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label">国家/地区</label>
+                <div class="layui-input-block">
+                    <input type="text" name="regions" lay-verify="required" lay-reqtext="请输入国家" placeholder="请输入国家" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">所在城市</label>
+                <div class="layui-input-block">
+                    <input type="text" name="city" lay-verify="required" lay-reqtext="请输入您当前所在城市" placeholder="请输入所在城市" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label">国家/地区</label>
+                <div class="layui-input-block">
+                    <input type="text" name="regions" lay-verify="required" lay-reqtext="请输入国家" placeholder="请输入国家" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">所在城市</label>
+                <div class="layui-input-block">
+                    <input type="text" name="city" lay-verify="required" lay-reqtext="请输入您当前所在城市" placeholder="请输入所在城市" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label">图片</label>
+                <div class="layui-input-block">
+                    <input type="file" name="regions" lay-verify="required" lay-reqtext="请输入国家" placeholder="请输入国家" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+                <div class="layui-inline">
+                    <div class="layui-input-block">
+                        <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:400px; height:38px;" class="div"></div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label">开户银行</label>
+                <div class="layui-input-block">
+                    <input type="text" name="finbank" lay-verify="required" lay-reqtext="开户银行是必填项" placeholder="请输入开户银行    " autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">银行地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="finaddress" lay-verify="required" lay-reqtext="银行地址是必填项" placeholder="请输入银行地址" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item" >
+            <div class="layui-inline">
+                <label class="layui-form-label">开户银行</label>
+                <div class="layui-input-block">
+                    <input type="text" name="finbank" lay-verify="required" lay-reqtext="开户银行是必填项" placeholder="请输入开户银行    " autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">银行地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="finaddress" lay-verify="required" lay-reqtext="银行地址是必填项" placeholder="请输入银行地址" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div style="background:#e2d982; color:#FFF;width:1250px; height:38px;" class="div"><h2>处理流程日志</h2></div>
+        <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:1200px; height:38px;" class="div"></div>
+
+
+
         <div class="box15"><!--处理流程信息-->
-            <p class="box8">
-                处理流程信息
-            </p>
+
             <div class="box16">
                 <P class="box17">【处理过程】</P>
                 <span class="box21"><a><font color="red">>>查看流程图</font></a></span>
@@ -315,7 +345,7 @@
         <div class="layui-form-item box20">
             <div class="layui-input-block">
                 <button class="layui-btn layui-btn-radius layui-btn-normal" lay-submit lay-filter="formTest">保存</button>
-                <button class="layui-btn layui-btn-radius layui-btn-normal">提交审核</button>
+                <button class="layui-btn layui-btn-radius layui-btn-normal" type="submit"  lay-filter="demo1">提交审核</button>
                 <button class="layui-btn layui-btn-radius layui-btn-normal">登记完成转跟单</button>
                 <button class="layui-btn layui-btn-radius layui-btn-normal">取消</button>
             </div>
@@ -336,6 +366,19 @@
             ,laydate = layui.laydate
             ,upload = layui.upload;
 
+        form.on('submit(demo1)', function(data){
+            $.get({
+                url:"/business/queryadd.do",
+                data:data.field,
+                success:function (data) {
+                    if(data.code="0"){
+                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                        parent.layer.close(index);
+                    }
+                }
+            })
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
         //时间
         laydate.render({
             elem: '#test1' //指定元素

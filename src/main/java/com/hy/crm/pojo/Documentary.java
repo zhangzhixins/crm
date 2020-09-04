@@ -21,6 +21,8 @@ public class Documentary implements Serializable {
     @TableId(value = "docid", type = IdType.AUTO)
     private Integer docid;
 
+    private String docname;
+
     private Integer busid;
 
     private Date doctime;
@@ -46,6 +48,15 @@ public class Documentary implements Serializable {
     public void setDocid(Integer docid) {
         this.docid = docid;
     }
+
+    public String getDocname() {
+        return docname;
+    }
+
+    public void setDocname(String docname) {
+        this.docname = docname;
+    }
+
     public Integer getBusid() {
         return busid;
     }
@@ -113,16 +124,17 @@ public class Documentary implements Serializable {
     @Override
     public String toString() {
         return "Documentary{" +
-            "docid=" + docid +
-            ", busid=" + busid +
-            ", doctime=" + doctime +
-            ", docify=" + docify +
-            ", docpeople=" + docpeople +
-            ", doccontent=" + doccontent +
-            ", docaccessory=" + docaccessory +
-            ", state=" + state +
-            ", newtime=" + newtime +
-            ", updtime=" + updtime +
-        "}";
+                "docid=" + docid +
+                ", docname='" + docname + '\'' +
+                ", busid=" + busid +
+                ", doctime=" + doctime +
+                ", docify='" + docify + '\'' +
+                ", docpeople='" + docpeople + '\'' +
+                ", doccontent='" + doccontent + '\'' +
+                ", docaccessory='" + docaccessory + '\'' +
+                ", state='" + state + '\'' +
+                ", newtime=" + newtime +
+                ", updtime=" + updtime +
+                '}';
     }
 }

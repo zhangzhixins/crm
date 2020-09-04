@@ -49,17 +49,17 @@ public class Client implements Serializable {
 
     private String linkduty;
 
-    private Integer linkphone;
+    private String linkphone;
 
     private String climail;
 
-    private Integer cliphone;
+    private String cliphone;
 
     private String legalperson;
 
     private String capital;
 
-    private String explain;
+    private String explains;
 
     private Integer state;
 
@@ -186,11 +186,11 @@ public class Client implements Serializable {
         this.linkduty = linkduty;
     }
 
-    public Integer getLinkphone() {
+    public String getLinkphone() {
         return linkphone;
     }
 
-    public void setLinkphone(Integer linkphone) {
+    public void setLinkphone(String linkphone) {
         this.linkphone = linkphone;
     }
 
@@ -202,11 +202,11 @@ public class Client implements Serializable {
         this.climail = climail;
     }
 
-    public Integer getCliphone() {
+    public String getCliphone() {
         return cliphone;
     }
 
-    public void setCliphone(Integer cliphone) {
+    public void setCliphone(String cliphone) {
         this.cliphone = cliphone;
     }
 
@@ -227,11 +227,11 @@ public class Client implements Serializable {
     }
 
     public String getExplain() {
-        return explain;
+        return explains;
     }
 
     public void setExplain(String explain) {
-        this.explain = explain;
+        this.explains = explain;
     }
 
     public Integer getState() {
