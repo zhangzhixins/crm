@@ -1,6 +1,7 @@
 package com.hy.crm.service.impl;
 
 import com.hy.crm.mapper.ContractMapper;
+import com.hy.crm.pojo.Contract;
 import com.hy.crm.service.IContractService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

@@ -15,4 +15,5 @@ import java.util.ArrayList;
  */
 public interface IDocumentaryService extends IService<Documentary> {
     ArrayList<Documentary> selectdoc(Integer page, Integer limit, Documentary documentary);
+    ArrayList<Documentary> selectdocbus(Integer busid);
 }

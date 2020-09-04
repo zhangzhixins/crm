@@ -15,6 +15,6 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 @RequestMapping("//auth")
-public class AuthController {
+public class  AuthController {
 
 }

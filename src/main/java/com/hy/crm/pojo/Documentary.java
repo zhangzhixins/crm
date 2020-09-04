@@ -2,6 +2,8 @@ package com.hy.crm.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -21,8 +23,10 @@ public class Documentary implements Serializable {
     @TableId(value = "docid", type = IdType.AUTO)
     private Integer docid;
 
-    private Integer busid;
+    private String docname;
 
+    private Integer busid;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date doctime;
 
     private String docify;
@@ -34,9 +38,9 @@ public class Documentary implements Serializable {
     private String docaccessory;
 
     private String state;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date newtime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date updtime;
 
     public Integer getDocid() {
@@ -110,19 +114,28 @@ public class Documentary implements Serializable {
         this.updtime = updtime;
     }
 
+    public String getDocname() {
+        return docname;
+    }
+
+    public void setDocname(String docname) {
+        this.docname = docname;
+    }
+
     @Override
     public String toString() {
         return "Documentary{" +
-            "docid=" + docid +
-            ", busid=" + busid +
-            ", doctime=" + doctime +
-            ", docify=" + docify +
-            ", docpeople=" + docpeople +
-            ", doccontent=" + doccontent +
-            ", docaccessory=" + docaccessory +
-            ", state=" + state +
-            ", newtime=" + newtime +
-            ", updtime=" + updtime +
-        "}";
+                "docid=" + docid +
+                ", docname='" + docname + '\'' +
+                ", busid=" + busid +
+                ", doctime=" + doctime +
+                ", docify='" + docify + '\'' +
+                ", docpeople='" + docpeople + '\'' +
+                ", doccontent='" + doccontent + '\'' +
+                ", docaccessory='" + docaccessory + '\'' +
+                ", state='" + state + '\'' +
+                ", newtime=" + newtime +
+                ", updtime=" + updtime +
+                '}';
     }
 }

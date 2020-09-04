@@ -1,6 +1,7 @@
 package com.hy.crm.utils;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hy.crm.pojo.Documentary;
 import com.hy.crm.pojo.vo.AftersaleExt;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,5 +12,14 @@ public class SqlUtils {
             sql.append(" and ${val} like '%${keyWord}%'");
         }
         return sql.toString();
+    }
+    public String select2(Page<Documentary> page,Documentary documentary){
+        StringBuffer sql=new StringBuffer("select * from documentary where 1=1");
+        if (documentary.getDocify()!=null && !documentary.getDocify().equals("")){
+            if (documentary.getDocify()!="0"){
+                sql.append("and ${documentary.getDocify()} like '%${documentary.getdoccontent()}%'");
+            }
+        }
+        return  sql.toString();
     }
 }

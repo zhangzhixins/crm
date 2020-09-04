@@ -35,17 +35,15 @@ public class DocumentaryServiceImpl extends ServiceImpl<DocumentaryMapper, Docum
             limit=10;
         }
         Page page1=new Page(page,limit);
-        QueryWrapper<Documentary> wrapper=new QueryWrapper<>();
-        if (documentary.equals('1')){
-            wrapper.eq("doctime",documentary.getDoctime());
-        }else if (documentary.equals('2')){
-            wrapper.eq("busid",documentary.getBusid());
-        }else if (documentary.equals('3')){
-            wrapper.eq("docpeople",documentary.getDocpeople());
-        }
-        IPage doclist=documentaryMapper.selectPage(page1,wrapper);
+
+        IPage doclist=documentaryMapper.selectdoc(page1, documentary);
         List<Documentary> listdoc=doclist.getRecords();
         return (ArrayList<Documentary>) listdoc;
 
+    }
+
+    @Override
+    public ArrayList<Documentary> selectdocbus(Integer busid) {
+       return documentaryMapper.iddocbus(busid);
     }
 }

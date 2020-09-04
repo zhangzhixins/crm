@@ -26,6 +26,8 @@ public class Contract implements Serializable {
 
     private Integer cliid;
 
+    private String allname;
+
     private String conname;
 
     private String conserial;
@@ -40,9 +42,9 @@ public class Contract implements Serializable {
 
     private String linkname;
 
-    private Integer linkphone;
+    private String linkphone;
 
-    private Integer phone;
+    private String phone;
 
     private String email;
 
@@ -200,19 +202,19 @@ public class Contract implements Serializable {
         this.linkname = linkname;
     }
 
-    public Integer getLinkphone() {
+    public String getLinkphone() {
         return linkphone;
     }
 
-    public void setLinkphone(Integer linkphone) {
+    public void setLinkphone(String linkphone) {
         this.linkphone = linkphone;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -222,5 +224,13 @@ public class Contract implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAllname() {
+        return allname;
+    }
+
+    public void setAllname(String allname) {
+        this.allname = allname;
     }
 }
