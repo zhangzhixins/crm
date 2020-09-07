@@ -226,12 +226,12 @@ public class Client implements Serializable {
         this.capital = capital;
     }
 
-    public String getExplain() {
+    public String getExplains() {
         return explains;
     }
 
-    public void setExplain(String explain) {
-        this.explains = explain;
+    public void setExplains(String explains) {
+        this.explains = explains;
     }
 
     public Integer getState() {

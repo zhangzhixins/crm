@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>我的桌面</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/echarts/echarts.min.js"></script>
+</head>
+<style>
+    .box1{
+        border: 1px solid;
+        position: absolute;
+        top: 100px;
+        width: 450px;
+        height: 500px;
+    }
+    .box2{
+        border: 1px solid;
+        position: absolute;
+        top: 100px;
+        left: 480px;
+        width: 790px;
+        height: 500px;
+    }
+    .box3{
+        height: 30px;
+        font-size: 20px;
+        background-color: rgba(245, 245, 245, 1);
+    }
+    .box4{
+        border: 1px rgba(245, 245, 245, 1);
+        font-size: 20px;
+    }
+</style>
+<body>
+<div class="box">
+    <div><font color="black" size="20px">我的桌面</font></div>
+    <div class="box1"><!--左边的div-->
+        <div class="box3">待处理的事务</div>
+    </div>
+
+    <div class="box2"><!--右边的div-->
+        <div class="box3">客户关系</div>
+        <div class="box4">
+            <pre>              全部客户           全部商机            全部合同             </pre>
+        </div>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="main" style="width: 600px;height:400px;"></div>
+
+    </div>
+</div>
+<!-- 你的HTML代码 -->
+
+<script src="/layui/layui.js"></script>
+<script>
+
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form','table','jquery'], function(){
+        var layer = layui.layer
+            ,form = layui.form
+            ,table = layui.table
+            ,$=layui.jquery;
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        var option = {
+            series : [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    left:200,
+                    data:[
+                        {value:1, name:'已成交'},
+                        {value:2, name:'已丢单'},
+                        {value:3, name:'已搁置'},
+                        {value:4, name:'进行中'},
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+    });
+</script>
+</body>
+</html>
