@@ -1,5 +1,6 @@
 package com.hy.crm.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hy.crm.pojo.Client;
 import com.hy.crm.mapper.ClientMapper;
 import com.hy.crm.service.IClientService;
@@ -24,7 +25,9 @@ public class ClientServiceImpl extends ServiceImpl<ClientMapper, Client> impleme
     ClientMapper clientMapper;
 
     @Override
-    public List<Client> queryClient(){
-       return clientMapper.queryClient();
+    public List<Client> verifyClient(String cliname){
+        QueryWrapper<Client> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("cliname",cliname);
+        return clientMapper.selectList(queryWrapper);
     }
 }

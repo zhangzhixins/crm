@@ -14,6 +14,6 @@ import java.util.List;
  * @since 2020-08-28
  */
 public interface IClientService extends IService<Client> {
-    public List<Client> queryClient();
+    public List<Client> verifyClient(String cliname);
 
 }

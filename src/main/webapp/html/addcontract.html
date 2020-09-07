@@ -138,7 +138,7 @@
             <div class="layui-form-item layui-inline">
                 <label class="layui-form-label box10"><font color="red">*</font>合同名称:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="cliname" id="cliname" onblur="myFunction()"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline" style="float: right">
@@ -351,13 +351,24 @@
             })
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });
+        form.blur('input(myFunction)',function () {
+          layer.msg("fawefwafeaaaaaaaaaaaaaaa");
+        })
 
         //预加载函数
         $(function () {
+            $.ajax({
+                url:"/query.do/query.do",
+                type:'post',
+                success:function (data) {
+                    if (data){
 
+                    }
+                    form.render();
+                }
+            })
 
         })
-
     });
 </script>
 </body>

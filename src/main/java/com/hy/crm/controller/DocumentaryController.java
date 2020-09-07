@@ -35,6 +35,8 @@ public class DocumentaryController {
     private IDocumentaryService iDocumentaryService;
     @Autowired
     private IBusinessService iBusinessService;
+
+
     /*添加跟单*/
     @RequestMapping("/adddoc.do")
     @ResponseBody
@@ -44,6 +46,8 @@ public class DocumentaryController {
         documentary.setDocname(theme+"-"+documentary.getDocify());
         iDocumentaryService.save(documentary);
     }
+
+
     /*跟单查询*/
     @RequestMapping("/selectdoc.do")
     @ResponseBody
@@ -56,6 +60,8 @@ public class DocumentaryController {
         msg.setData(doclist);
         return msg;
     }
+
+
     /*商机查询*/
     @RequestMapping("/selectbusiness.do")
     @ResponseBody
@@ -68,6 +74,8 @@ public class DocumentaryController {
         msg.setData(buslist);
         return msg;
     }
+
+
     /*根据id查询跟单记录*/
     @PostMapping("/idselectdoc.do")
     @ResponseBody
