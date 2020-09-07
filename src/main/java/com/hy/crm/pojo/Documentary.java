@@ -2,6 +2,8 @@ package com.hy.crm.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -24,7 +26,7 @@ public class Documentary implements Serializable {
     private  String docname;
 
     private Integer busid;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date doctime;
 
     private String docify;
@@ -36,9 +38,9 @@ public class Documentary implements Serializable {
     private String docaccessory;
 
     private String state;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date newtime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date updtime;
 
     public Integer getDocid() {

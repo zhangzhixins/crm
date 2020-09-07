@@ -4,9 +4,11 @@ package com.hy.crm.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hy.crm.pojo.vo.AftersaleExt;
 import com.hy.crm.pojo.vo.AftersaleExt1;
+import com.hy.crm.pojo.vo.TypeExt;
 import com.hy.crm.service.IAftersaleService;
 import com.hy.crm.utils.MsgUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -29,8 +31,8 @@ public class AftersaleController {
 
     @RequestMapping("/queryAll.do")
     @ResponseBody
-    public MsgUtils queryAll(String val,String keyWord,Integer page,Integer limit){
-        IPage<AftersaleExt> iPage=aftersaleService.queryAll(val,keyWord,page,limit);
+    public MsgUtils queryAll(TypeExt typeExt,String val,String keyWord,Integer page,Integer limit){
+        IPage<AftersaleExt> iPage=aftersaleService.queryAll(val,keyWord,page,limit,typeExt);
         MsgUtils msgUtils = new MsgUtils();
         msgUtils.setCode("0");
         msgUtils.setMsg("查询成功");
@@ -43,6 +45,7 @@ public class AftersaleController {
     @RequestMapping("/insert.do")
     @ResponseBody
     public MsgUtils insert(AftersaleExt1 aftersale){
+        aftersale.setState("1001");
         boolean bol=aftersaleService.save(aftersale);
         MsgUtils msgUtils = new MsgUtils();
         if(bol==false){
@@ -53,5 +56,21 @@ public class AftersaleController {
             msgUtils.setMsg("查询成功");
         }
         return msgUtils;
+    }
+
+    @RequestMapping("/conut.do")
+    @ResponseBody
+    public MsgUtils queryCount(){
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("查询成功");
+        msgUtils.setData(aftersaleService.queryCount());
+        return msgUtils;
+    }
+
+    @RequestMapping("/queryById.do")
+    public String queryById(Integer aftid, Model model){
+        model.addAttribute("aftersale",aftersaleService.queryById(aftid));
+        return "html/aftersalesprt";
     }
 }

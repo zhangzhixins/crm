@@ -135,7 +135,7 @@
             </button>
         </div>
         <div class="layui-inline" style="width: 100px;float: right">
-            <button type="button" class="layui-btn">
+            <button type="button" class="layui-btn" id="shuaxin">
                 <i class="layui-icon">&#xe666;</i> 刷新
             </button>
         </div>
@@ -320,7 +320,7 @@
                 <button class="layui-btn layui-btn-radius layui-btn-normal" lay-submit lay-filter="formTest">保存</button>
                 <button class="layui-btn layui-btn-radius layui-btn-normal">转服务人员处理</button>
                 <button class="layui-btn layui-btn-radius layui-btn-normal">本次服务完成</button>
-                <button class="layui-btn layui-btn-radius layui-btn-normal">取消</button>
+                <button class="layui-btn  layui-btn-normal" id="quxiao">取消</button>
             </div>
         </div>
     </form>
@@ -338,6 +338,7 @@
             ,$=layui.jquery
             ,laydate = layui.laydate
             ,upload = layui.upload;
+
         //时间
         laydate.render({
             elem: '#test1' //指定元素
@@ -493,9 +494,18 @@
             })
         })
 
+        //页面返回
         $("#fanhui").click(function () {
-            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var index = parent.layer.getFrameIndex(window.name);
+            console.log("页面返回"+index);
             parent.layer.close(index);
+        })
+
+        //页面取消
+        $("#quxiao").click(function () {
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            console.log("页面取消"+index);
+            parent.layer.close(index); //再执行关闭
         })
     });
     //补0操作

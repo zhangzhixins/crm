@@ -35,7 +35,7 @@ public class ClientController {
     @ResponseBody
     public MsgUtils query(){
         MsgUtils msgUtils = new MsgUtils();
-        List<Client> list=clientService.queryClient();
+        List<Client> list=clientService.list();
         msgUtils.setCode("0");
         msgUtils.setMsg("查询成功");
         msgUtils.setData(list);

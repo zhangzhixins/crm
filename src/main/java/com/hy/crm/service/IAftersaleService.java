@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.hy.crm.pojo.Aftersale;
 import com.hy.crm.pojo.vo.AftersaleExt;
+import com.hy.crm.pojo.vo.TypeExt;
 
 /**
  * <p>
@@ -14,5 +15,7 @@ import com.hy.crm.pojo.vo.AftersaleExt;
  * @since 2020-08-28
  */
 public interface IAftersaleService extends IService<Aftersale> {
-    public IPage<AftersaleExt> queryAll(String val, String keyWord, Integer page, Integer limit);
+    public IPage<AftersaleExt> queryAll(String val, String keyWord, Integer page, Integer limit,TypeExt typeExt);
+    public TypeExt queryCount();
+    public Aftersale queryById(Integer aftid);
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>统计分析</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<style>
+    .box1{
+        width: 17%;
+        position: absolute;
+        top: 47px;
+    }
+    .box2{
+        width: 83%;
+        position: absolute;
+        left:18%;
+    }
+    .box26{
+        position: relative;
+        left: 80px;
+    }
+    .box27{
+        position: relative;
+        left: 108px;
+    }
+    .box28{
+        position: relative;
+        left: 92px;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="box1"><!--左边的div-->
+        <div>
+            <blockquote class="layui-elem-quote" style="height: 10px ">分类</blockquote>
+            <blockquote class="layui-elem-quote layui-quote-nm">
+                <span><a href="#" onclick="clistate('hand')">我的统计<span class="box26 layui-badge layui-bg-blue" id="s1"></span></a></span><br>
+                <span><a href="#" onclick="clistate('end')">本周统计<span class="box26 layui-badge layui-bg-blue" id="s2"></span></a></span><br>
+                <span><a href="#" onclick="clistate('withdraw')">本月统计<span class="box26 layui-badge layui-bg-blue" id="s3"></span></a></span><br>
+                <span><a href="#" onclick="clistate('withdraw')">本季度统计<span class="box26 layui-badge layui-bg-blue" id="s3"></span></a></span><br>
+                <span><a href="#" onclick="clistate('withdraw')">本年度统计<span class="box26 layui-badge layui-bg-blue" id="s3"></span></a></span><br>
+                <span><a href="#" onclick="clistate('withdraw')">本月统计<span class="box26 layui-badge layui-bg-blue" id="s3"></span></a></span><br>
+                <span><a href="#" onclick="clistate('withdraw')">商机销售漏斗<span class="box26 layui-badge layui-bg-blue" id="s3"></span></a></span><br>
+                <span><a href="#" onclick="clistate('withdraw')">按行业分布<span class="box26 layui-badge layui-bg-blue" id="s3"></span></a></span><br>
+                <span><a href="#" onclick="clistate('withdraw')">按商机来源<span class="box26 layui-badge layui-bg-blue" id="s3"></span></a></span><br>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="box2"><!--右边的div-->
+
+    </div>
+</div>
+<!-- 你的HTML代码 -->
+<script src="/layui/layui.js"></script>
+<script>
+    layui.use(['layer', 'form','table','jquery'], function(){
+        var layer = layui.layer
+            ,form = layui.form
+            ,table = layui.table
+            ,$=layui.jquery;
+
+        //点击页面左侧的分类进行查询
+        window.clistate=function(val){
+
+        };
+    });
+</script>
+</body>
+</html>
