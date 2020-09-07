@@ -53,4 +53,15 @@ public class ClientController {
         msgUtils.setMsg("添加成功");
         return msgUtils;
     }
+
+
+    @RequestMapping("verify.do")
+    @ResponseBody
+    public MsgUtils verify(String cliname){
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("添加成功");
+        msgUtils.setData(clientService.verifyClient(cliname));
+        return msgUtils;
+    }
 }

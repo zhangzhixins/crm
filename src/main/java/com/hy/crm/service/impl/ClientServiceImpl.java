@@ -1,12 +1,12 @@
 package com.hy.crm.service.impl;
 
-import com.hy.crm.pojo.Client;
-import com.hy.crm.mapper.ClientMapper;
-import com.hy.crm.service.IClientService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hy.crm.mapper.ClientMapper;
+import com.hy.crm.pojo.Client;
+import com.hy.crm.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.misc.Cleaner;
 
 import java.util.List;
 
@@ -27,4 +27,12 @@ public class ClientServiceImpl extends ServiceImpl<ClientMapper, Client> impleme
     public List<Client> queryClient(){
        return clientMapper.queryClient();
     }
+
+    @Override
+    public List<Client> verifyClient(String cliname) {
+        QueryWrapper<Client> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("cliname",cliname);
+        return clientMapper.selectList(queryWrapper);
+    }
+
 }

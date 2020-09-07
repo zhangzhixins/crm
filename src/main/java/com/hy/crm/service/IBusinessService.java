@@ -1,7 +1,9 @@
 package com.hy.crm.service;
 
-import com.hy.crm.pojo.Business;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hy.crm.pojo.Business;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-08-28
  */
 public interface IBusinessService extends IService<Business> {
+    public List<Business> verifyBusiness(String busname);
+
 
 }

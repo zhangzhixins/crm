@@ -137,7 +137,7 @@
             </blockquote>
             <div  align="right" style="position:relative;top:10px">
                 <button type="button" class="layui-btn layui-btn-normal" id="badd">
-                    <i class="layui-icon layui-icon-add-1"></i> 新增客户
+                    <i class="layui-icon layui-icon-add-1"></i> 新增商机
                 </button>
             </div>
 
@@ -162,15 +162,16 @@
         table.render({
             elem: '#demo'
             ,height: 312
-            ,url: '/aftersale/queryAll.do' //数据接口
+            ,url: '/business/queryAll.do' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
 
-                {field: 'afttheme', title: '主题', width:300,templet: '<div><a href="editclient.html" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.afttheme}}</a></div>'}
-                ,{field: 'afttype', title: '服务类型', width:120}
-                ,{field: 'starttime', title: '开始时间', width:200,templet: "<div>{{layui.util.toDateString(d.starttime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
-                ,{field: 'aftpeo', title: '服务人员', width: 120}
-                ,{field: 'aftgrade', title: '服务评分', width: 120}
+                {field: 'busname', title: '商机名称', width:300,templet: '<div><a href="/business/querylist.do?cliid={{d.cliid}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.busname}}</a></div>'}
+                ,{field: 'busstage', title: '商机阶段', width:120}
+                ,{field: 'makemoney', title: '预计成交金额', width:200}
+                ,{field: 'busprincipal', title: '商机负责人', width: 120}
+                ,{field: '', title: '最后跟单', width:200}
+                ,{field: '', title: '讨论版', width: 120}
             ]]
         });
 

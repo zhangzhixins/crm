@@ -18,4 +18,6 @@ public interface ClientMapper extends BaseMapper<Client> {
 
     @Select("select * from client")
     public List<Client> queryClient();
+
+
 }

@@ -2,6 +2,7 @@ package com.hy.crm.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -33,6 +34,7 @@ public class Business implements Serializable {
 
     private BigDecimal makemoney;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date statementdate;
 
     private String linkname;
@@ -245,5 +247,35 @@ public class Business implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Business{" +
+                "busid=" + busid +
+                ", cliid=" + cliid +
+                ", allname='" + allname + '\'' +
+                ", busname='" + busname + '\'' +
+                ", clisources='" + clisources + '\'' +
+                ", makemoney=" + makemoney +
+                ", statementdate=" + statementdate +
+                ", linkname='" + linkname + '\'' +
+                ", linkdept='" + linkdept + '\'' +
+                ", linkduty='" + linkduty + '\'' +
+                ", linkphone='" + linkphone + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", busdemand='" + busdemand + '\'' +
+                ", busaccessory='" + busaccessory + '\'' +
+                ", busdept='" + busdept + '\'' +
+                ", busprincipal='" + busprincipal + '\'' +
+                ", busparticipant='" + busparticipant + '\'' +
+                ", busfollower='" + busfollower + '\'' +
+                ", buspriority=" + buspriority +
+                ", busstage='" + busstage + '\'' +
+                ", state=" + state +
+                ", newtime=" + newtime +
+                ", updtime=" + updtime +
+                '}';
     }
 }

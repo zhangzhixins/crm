@@ -1,15 +1,23 @@
 package com.hy.crm.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.hy.crm.pojo.Business;
 import com.hy.crm.pojo.Client;
 import com.hy.crm.service.IBusinessService;
 import com.hy.crm.service.IClientService;
+import com.hy.crm.service.IStateService;
+import com.hy.crm.utils.Layui;
 import com.hy.crm.utils.MsgUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * <p>
@@ -28,6 +36,11 @@ public class BusinessController {
     @Autowired
     private IBusinessService iBusinessService;
 
+
+    @Autowired
+    private IStateService iStateService;
+
+
     @GetMapping(value = "/queryadd.do")
     @ResponseBody
     public MsgUtils queryAdd(Client client, Business business) {
@@ -38,4 +51,39 @@ public class BusinessController {
         msgUtils.setMsg("添加成功");
         return msgUtils;
     }
+
+    @RequestMapping("ver.do")
+    @ResponseBody
+    public MsgUtils ver(String busname){
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("添加成功");
+        msgUtils.setData(iBusinessService.verifyBusiness(busname));
+        return msgUtils;
+    }
+
+    @RequestMapping("/queryAll.do")
+    @ResponseBody
+    public Layui queryAll(Layui layui,  int limit, int page) {
+        Page page1 = PageHelper.startPage(page, limit);
+        List<Business> users=iBusinessService.list(null);
+        layui.setCode(0);
+        layui.setMsg(":");
+        layui.setCount((int) page1.getTotal());
+        layui.setData(users);
+        return layui;
+    }
+
+    @GetMapping("/querylist.do")
+    public String queryList(Model model,int cliid){
+         QueryWrapper queryWrapper=new QueryWrapper<>();
+         queryWrapper.eq("cliid",cliid);
+         Client client=iClientService.getOne(queryWrapper);
+         Business business=iBusinessService.getOne(queryWrapper);
+         model.addAttribute("client",client);
+         model.addAttribute("business",business);
+         return "/html/editbusiness.html";
+    }
+
+
 }

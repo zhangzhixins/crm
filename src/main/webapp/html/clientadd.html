@@ -99,15 +99,15 @@
                     <option value="1">IT|互联网|通信|电子</option>
                     <option value="2">金融|银行|保险</option>
                     <option value="3">房产|建筑建设|物业</option>
-                    <option value="1">广告|传媒|印刷出版</option>
-                    <option value="2">消费零售|贸易|交通物流</option>
-                    <option value="3">加工制造|仪表设备</option>
-                    <option value="1">管理咨询|教育科研|中介服务</option>
-                    <option value="2">医药生物|医疗保健</option>
-                    <option value="3">酒店旅游</option>
-                    <option value="1">能源矿产|石油化工</option>
-                    <option value="2">政府|非赢利机构|科研</option>
-                    <option value="3">其他</option>
+                    <option value="4">广告|传媒|印刷出版</option>
+                    <option value="5">消费零售|贸易|交通物流</option>
+                    <option value="6">加工制造|仪表设备</option>
+                    <option value="7">管理咨询|教育科研|中介服务</option>
+                    <option value="8">医药生物|医疗保健</option>
+                    <option value="9">酒店旅游</option>
+                    <option value="10">能源矿产|石油化工</option>
+                    <option value="11">政府|非赢利机构|科研</option>
+                    <option value="12">其他</option>
                 </select>
             </div>
         </div>
@@ -279,7 +279,7 @@
 
             form.on('submit(demo1)', function(data){
                 $.get({
-                    url:"/queryadd.do",
+                    url:"/client/queryadd.do",
                     data:data.field,
                     success:function (data) {
                         if(data.code="0"){

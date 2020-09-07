@@ -1,10 +1,14 @@
 package com.hy.crm.service.impl;
 
-import com.hy.crm.pojo.Business;
-import com.hy.crm.mapper.BusinessMapper;
-import com.hy.crm.service.IBusinessService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hy.crm.mapper.BusinessMapper;
+import com.hy.crm.pojo.Business;
+import com.hy.crm.service.IBusinessService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +21,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> implements IBusinessService {
 
+    @Autowired
+    private BusinessMapper businessMapper;
+    @Override
+    public List<Business> verifyBusiness(String busname) {
+        QueryWrapper<Business> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("busname",busname);
+        return businessMapper.selectList(queryWrapper);
+    }
 }
