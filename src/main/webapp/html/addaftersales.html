@@ -174,7 +174,7 @@
         <div class="layui-form-item box4 layui-inline">
             <label class="layui-form-label">客户名称:</label>
             <div class="layui-input-block box9">
-                <select name="cliname" lay-filter="cliname" id="cliname">
+                <select name="cliid" lay-filter="cliid" id="cliid">
                     <option value="">请选择部门</option>
                 </select>
             </div>
@@ -384,9 +384,9 @@
         });
 
         //监听客户名称下拉框
-        form.on('select(cliname)', function(data){
+        form.on('select(cliid)', function(data){
             //当合同名称选择后-主题展示
-            var clival=$("#cliname").find("option:selected").text();
+            var clival=$("#cliid").find("option:selected").text();
             if(clival!="请选择部门"){
                 $("#conid").empty();
                 $("#conid").append(new Option("请选择合同编号",""));
@@ -398,7 +398,7 @@
             //给合同编号赋值
             $.get({
                 url:"/contract/query.do",
-                data:"cliid="+$("#cliname").val(),
+                data:"cliid="+$("#cliid").val(),
                 success:function (data) {
                     if(data.code=="0"){
                         var list=data.data;
@@ -420,7 +420,7 @@
         //监听合同编号
         form.on('select(conid)',function (data) {
             var conval = $("#conid").find("option:selected").text();
-            var clival = $("#cliname").find("option:selected").text();
+            var clival = $("#cliid").find("option:selected").text();
             var myDate = new Date();
             var year = myDate.getFullYear();        //获取当前年
             var month = myDate.getMonth() + 1;        //获取当前月
@@ -484,7 +484,7 @@
                     if(data.code=="0"){
                         var list=data.data;
                         for (var i = 0; i < list.length; i++) {
-                            $("#cliname").append(new Option(list[i].cliname, list[i].cliid))
+                            $("#cliid").append(new Option(list[i].cliname, list[i].cliid))
                         }
                         form.render();//渲染数据
                     }else{

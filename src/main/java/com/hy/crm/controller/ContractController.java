@@ -47,6 +47,7 @@ public class ContractController {
     @ResponseBody
     public MsgUtils queryById(Integer conid){
         Contract contract=contractService.getById(conid);
+        System.out.println("============================"+contract.getConserial());
         MsgUtils msgUtils = new MsgUtils();
         msgUtils.setCode("0");
         msgUtils.setMsg("查询成功");

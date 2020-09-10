@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>我的统计</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<style>
+    .box1{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+    }
+    .box2{
+        font-size: 14px;
+        background-color:rgba(245, 245, 245, 1);
+        width: 240px;
+        height: 40px;
+        text-align: left;
+    }
+    .box3{
+        position: relative;
+        top: 10px;
+        left: 30px;
+        font-weight:bold;
+    }
+    .box4{
+        border: 1px solid;
+        height: 110px;
+        width: 115px;
+    }
+    .box5{
+        position: relative;
+        left: 35px;
+        top: 25px;
+    }
+    .box7{
+        position: relative;
+        top: 30px;
+        left: 30px;
+        font-size: 20px;
+    }
+    .box8{
+        position: relative;
+        top: 30px;
+        left: 30px;
+        font-size: 10px;
+    }
+    .box6{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 270px;
+        top:0px;
+    }
+    .box9{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 545px;
+        top: 0px;
+    }
+    .box10{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 810px;
+        top: 0px;
+    }
+    .box11{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        top: 170px;
+    }
+    .box12{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 270px;
+        top: 170px;
+    }
+    .box13{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 545px;
+        top: 170px;
+    }
+    .box14{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 810px;
+        top: 170px;
+    }
+    .box15{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        top: 340px;
+    }
+    .box16{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 270px;
+        top: 340px;
+    }
+    .box17{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 545px;
+        top: 340px;
+    }
+    .box18{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 810px;
+        top: 340px;
+    }
+    .box19{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        top: 510px;
+    }
+    .box20{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 270px;
+        top: 510px;
+    }
+    .box21{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 545px;
+        top: 510px;
+    }
+    .box22{
+        border: 1px solid;
+        width: 240px;
+        height: 150px;
+        position: absolute;
+        left: 810px;
+        top: 510px;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="box1">
+        <div class="box2"><span class="box3">商机数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本周</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上周</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box6">
+        <div class="box2"><span class="box3">成交数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本周</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上周</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box9">
+        <div class="box2"><span class="box3">跟单数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本周</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上周</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box10">
+        <div class="box2"><span class="box3">合同数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本周</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上周</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="box11">
+        <div class="box2"><span class="box3">商机数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本月</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上月</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box12">
+        <div class="box2"><span class="box3">成交数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本月</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上月</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box13">
+        <div class="box2"><span class="box3">跟单数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本月</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上月</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box14">
+        <div class="box2"><span class="box3">合同数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本月</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上月</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="box15">
+    <div class="box2"><span class="box3">商机数</span></div>
+    <div style="float:left">
+        <div class="box4">
+                <span>
+                    <p class="box5">本季度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+        </div>
+    </div>
+    <div style="float:right;">
+        <div class="box4">
+                <span>
+                    <p class="box5">上季度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+        </div>
+    </div>
+</div>
+
+    <div class="box16">
+        <div class="box2"><span class="box3">成交数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本季度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上季度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box17">
+        <div class="box2"><span class="box3">跟单数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本季度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上季度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box18">
+        <div class="box2"><span class="box3">合同数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本季度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上季度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="box19">
+        <div class="box2"><span class="box3">商机数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本年度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上年度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box20">
+        <div class="box2"><span class="box3">成交数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本年度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上年度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box21">
+        <div class="box2"><span class="box3">跟单数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本年度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上年度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box22">
+        <div class="box2"><span class="box3">合同数</span></div>
+        <div style="float:left">
+            <div class="box4">
+                <span>
+                    <p class="box5">本年度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+        <div style="float:right;">
+            <div class="box4">
+                <span>
+                    <p class="box5">上年度</p>
+                    <span class="box7">0.0</span>
+                    <span class="box8">万</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- 你的HTML代码 -->
+<script src="/layui/layui.js"></script>
+<script>
+    layui.use(['layer', 'form','table','jquery'], function(){
+        var layer = layui.layer
+            ,form = layui.form
+            ,table = layui.table
+            ,$=layui.jquery;
+
+
+    });
+</script>
+</body>
+</html>

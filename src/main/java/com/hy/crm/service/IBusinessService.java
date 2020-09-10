@@ -16,6 +16,7 @@ import java.util.List;
  */
 public interface IBusinessService extends IService<Business> {
     public List<Business> verifyBusiness(String busname);
+    public IPage<Business> queryAll(Integer limit, Integer page1);
 
     public IPage<Business> queryAll(Integer limit, Integer page);
 

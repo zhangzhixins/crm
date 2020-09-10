@@ -2,6 +2,7 @@ package com.hy.crm.controller;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.hy.crm.pojo.Aftersale;
 import com.hy.crm.pojo.vo.AftersaleExt;
 import com.hy.crm.pojo.vo.AftersaleExt1;
 import com.hy.crm.pojo.vo.TypeExt;
@@ -45,6 +46,7 @@ public class AftersaleController {
     @RequestMapping("/insert.do")
     @ResponseBody
     public MsgUtils insert(AftersaleExt1 aftersale){
+        System.out.println("=========="+aftersale.getCliid());
         aftersale.setState("1001");
         boolean bol=aftersaleService.save(aftersale);
         MsgUtils msgUtils = new MsgUtils();
@@ -70,6 +72,7 @@ public class AftersaleController {
 
     @RequestMapping("/queryById.do")
     public String queryById(Integer aftid, Model model){
+        System.out.println("=======进入查询准备跳转页面");
         model.addAttribute("aftersale",aftersaleService.queryById(aftid));
         return "html/aftersalesprt";
     }

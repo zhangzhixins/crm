@@ -34,12 +34,6 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
     }
 
     @Override
-    public IPage<Business> queryAll(Integer limit, Integer page1){
-        Page<Business> page = new Page<>(page1,limit);
-        return businessMapper.selectPage(page,null);
-    }
-
-    @Override
     public IPage<Business> QueryBusiness(Integer limit, Integer page,Business business) {
         Layui layui = new Layui();
         if(limit==null){
@@ -70,4 +64,10 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
         return iPage1;
     }
 
+
+    @Override
+    public IPage<Business> queryAll(Integer limit, Integer page1){
+        Page<Business> page = new Page<>(page1,limit);
+        return businessMapper.selectPage(page,null);
+    }
 }

@@ -44,6 +44,9 @@ public class SqlUtils {
         }
         return sql.toString();
     }
+
+
+
     public String select2(Page<Documentary> page, @Param("doc") Documentary documentary){
         StringBuffer sql=new StringBuffer("select * from documentary where 1=1");
         if (documentary.getDocify()!=null && !documentary.getDocify().equals("")) {

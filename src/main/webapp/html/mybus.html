@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>按商机分布</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/echarts/echarts.min.js"></script>
+</head>
+<style>
+    .box1{
+        border: 1px solid;
+        width: 1000px;
+        height: 1500px;
+    }
+    .box2{
+        border: 1px solid;
+        width: 1000px;
+        height: 450px;
+    }
+    .box4{
+        border: 1px red solid;
+        width: 1000px;
+        height: 600px;
+    }
+    .box5{
+        border: 1px solid;
+        width: 1000px;
+        height: 600px;
+    }
+</style>
+<body>
+<div class="box1">
+    <div class="box2">
+        <table id="demo" lay-filter="tabledemo"></table>
+    </div>
+    <div>
+        <button type="button" onclick="hid(1)" class="layui-btn layui-btn-normal">商机数-柱状图</button>
+        <button type="button" onclick="hid(2)" class="layui-btn layui-btn-normal">金额-柱状图</button>
+        <button type="button" onclick="hid(3)" class="layui-btn layui-btn-normal">商机数-饼状图</button>
+        <button type="button" onclick="hid(4)" class="layui-btn layui-btn-normal">金额-饼状图</button>
+    </div>
+    <div class="box4">
+        <div id="d1" class="box5" style="display: block"></div>
+        <div id="d2" class="box5" style="display: none"></div>
+        <div id="d3" class="box5" style="display: none"></div>
+        <div id="d4" class="box5" style="display: none"></div>
+    </div>
+</div>
+<!-- 你的HTML代码 -->
+<script src="/layui/layui.js"></script>
+<script>
+    layui.use(['layer', 'form','table','jquery'], function(){
+        var layer = layui.layer
+            ,form = layui.form
+            ,table = layui.table
+            ,$=layui.jquery;
+
+        table.render({
+            elem: '#demo'
+            ,height: 400
+            ,url: 'bb' //数据接口
+            ,cols: [[ //表头
+                ,{field: '', title: '商机来源', width:600}
+                ,{field: '', title: '商机数', width:200}
+                ,{field: '', title: '金额', width: 200}
+            ]]
+            ,done: function(res, curr, count){
+                this.where={};
+            }
+        });
+
+        window.hid=function (val) {
+            if(val==1){
+                $("#d1").css("display","block");
+                $("#d2").css("display","none");
+                $("#d3").css("display","none");
+                $("#d4").css("display","none");
+            }
+            if(val==2){
+                $("#d1").css("display","none");
+                $("#d2").css("display","block");
+                $("#d3").css("display","none");
+                $("#d4").css("display","none");
+            }
+            if(val==3){
+                $("#d1").css("display","none");
+                $("#d2").css("display","none");
+                $("#d3").css("display","block");
+                $("#d4").css("display","none");
+            }
+            if(val==4){
+                $("#d1").css("display","none");
+                $("#d2").css("display","none");
+                $("#d3").css("display","none");
+                $("#d4").css("display","block");
+            }
+        }
+
+
+        /**
+         * 第一个
+         */
+        // 基于准备好的dom，初始化echarts实例
+        var myChart1 = echarts.init(document.getElementById('d1'));
+        // 指定图表的配置项和数据
+        var option1 = {
+            xAxis: {
+                type: 'category',
+                data: ['1', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [120, 200, 150, 200, 70, 110, 130],
+                type: 'bar',
+                showBackground: true,
+                backgroundStyle: {
+                    color: 'rgba(220, 220, 220, 0.8)'
+                }
+                ,itemStyle: {
+                    normal: {
+                        label: {
+                            show: true, //开启显示
+                            position: 'top', //在上方显示
+                            textStyle: { //数值样式
+                                color: 'black',
+                                fontSize: 16
+                            }
+                        }
+                    }
+                },
+                dataZoom: [
+                    {
+                        show: true,//dataZoom，框选区域缩放，自动与存在的dataZoom控件同步，分别是启用，缩放后退
+                        start: 0,
+                        end: 10
+                    }
+                ],
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart1.setOption(option1);
+
+
+
+
+        /**
+         * 第二个
+         */
+            // 基于准备好的dom，初始化echarts实例
+        var myChart2 = echarts.init(document.getElementById('d2'));
+        // 指定图表的配置项和数据
+        var option2 = {
+            xAxis: {
+                type: 'category',
+                data: ['3', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [120, 200, 150, 80, 70, 200, 130],
+                type: 'bar',
+                showBackground: true,
+                backgroundStyle: {
+                    color: 'rgba(220, 220, 220, 0.8)'
+                }
+            }]
+            ,itemStyle: {
+                normal: {
+                    label: {
+                        show: true, //开启显示
+                        position: 'top', //在上方显示
+                        textStyle: { //数值样式
+                            color: 'black',
+                            fontSize: 16
+                        }
+                    }
+                }
+            },
+            dataZoom: [
+                {
+                    show: true,//dataZoom，框选区域缩放，自动与存在的dataZoom控件同步，分别是启用，缩放后退
+                    start: 0,
+                    end: 10
+                }
+            ],
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option2);
+
+
+
+        /**
+         * 第三个
+         */
+            // 基于准备好的dom，初始化echarts实例
+        var myChart3 = echarts.init(document.getElementById('d3'));
+        // 指定图表的配置项和数据
+        var option3 = {
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    left: 200,
+                    data: [
+                        {value: 1, name: '已成交'},
+                        {value: 2, name: '已丢单'},
+                        {value: 3, name: '已搁置'},
+                        {value: 4, name: '进行中'},
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart3.setOption(option3);
+
+
+
+
+        /**
+         * 第四个
+         */
+            // 基于准备好的dom，初始化echarts实例
+        var myChart4 = echarts.init(document.getElementById('d4'));
+        // 指定图表的配置项和数据
+        var option4 = {
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: '55%',
+                    left: 200,
+                    data: [
+                        {value: 1, name: '已成交'},
+                        {value: 2, name: '已丢单'},
+                        {value: 3, name: '已搁置'},
+                        {value: 4, name: '进行中'},
+                    ]
+                }
+            ]
+        }
+        // 使用刚指定的配置项和数据显示图表。
+        myChart4.setOption(option4);
+
+    });
+</script>
+</body>
+</html>

@@ -17,5 +17,5 @@ import com.hy.crm.pojo.vo.TypeExt;
 public interface IAftersaleService extends IService<Aftersale> {
     public IPage<AftersaleExt> queryAll(String val, String keyWord, Integer page, Integer limit,TypeExt typeExt);
     public TypeExt queryCount();
-    public Aftersale queryById(Integer aftid);
+    public AftersaleExt queryById(Integer aftid);
 }
