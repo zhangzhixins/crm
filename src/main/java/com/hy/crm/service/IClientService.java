@@ -1,7 +1,8 @@
 package com.hy.crm.service;
 
-import com.hy.crm.pojo.Client;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hy.crm.pojo.Client;
+import com.hy.crm.pojo.vo.ClientExt2;
 
 import java.util.List;
 
@@ -16,5 +17,8 @@ import java.util.List;
 public interface IClientService extends IService<Client> {
     public List<Client> queryClient();
     public List<Client> verifyClient(String cliname);
+
+    public List<ClientExt2> QueryBusinesss(Integer limit, Integer page,ClientExt2 clientExt2);
+
 
 }

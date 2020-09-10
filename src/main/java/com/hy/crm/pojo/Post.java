@@ -27,6 +27,8 @@ public class Post implements Serializable {
 
     private int busid;
 
+    private Integer pusid;
+
     private String label;
 
     private String theme;
@@ -129,6 +131,14 @@ public class Post implements Serializable {
 
     public void setBusid(int busid) {
         this.busid = busid;
+    }
+
+    public Integer getPusid() {
+        return pusid;
+    }
+
+    public void setPusid(Integer pusid) {
+        this.pusid = pusid;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.hy.crm.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hy.crm.pojo.Business;
 import com.hy.crm.pojo.Client;
 import com.hy.crm.service.IBusinessService;
@@ -64,13 +64,13 @@ public class BusinessController {
 
     @RequestMapping("/queryAll.do")
     @ResponseBody
-    public Layui queryAll(Layui layui,  int limit, int page) {
-        Page page1 = PageHelper.startPage(page, limit);
-        List<Business> users=iBusinessService.list(null);
+    public Layui queryAll(Integer limit, Integer page,Business business) {
+        IPage<Business> iPage=iBusinessService.QueryBusiness(limit,page,business);
+        Layui layui = new Layui();
         layui.setCode(0);
         layui.setMsg(":");
-        layui.setCount((int) page1.getTotal());
-        layui.setData(users);
+        layui.setCount(Integer.parseInt(String.valueOf(iPage.getTotal())));
+        layui.setData(iPage.getRecords());
         return layui;
     }
 
@@ -84,6 +84,14 @@ public class BusinessController {
          model.addAttribute("business",business);
          return "/html/editbusiness.html";
     }
+
+    @GetMapping("/queryupdate.do")
+    public String queryUpdate( Business business){
+        iBusinessService.updateById(business);
+        return "redirect:business.html";
+    }
+
+
 
 
 }
