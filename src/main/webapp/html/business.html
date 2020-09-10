@@ -91,47 +91,47 @@
     </div>
 
     <div class="box2"><!--右边的div-->
-        <form class="layui-form" action="/aftersale/queryAll.do" id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+        <form class="layui-form"  id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
             <blockquote class="layui-elem-quote layui-quote-nm">
                 <div class="layui-inline">
                     <label class="layui-form-label">商机全称</label>
                     <div class="layui-input-block">
-                        <input type="text" name="keyWord" placeholder="请输入商机全称" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                        <input type="text" name="allname" placeholder="请输入商机全称" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">商机阶段</label>
                     <div class="layui-input-block">
-                        <input type="text" name="keyWord" placeholder="请输入商机阶段" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                        <input type="text" name="busstage" placeholder="请输入商机阶段" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">商机负责人</label>
                     <div class="layui-input-block">
-                        <input type="text" name="keyWord" placeholder="请输入商机负责人" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                        <input type="text" name="busprincipal" placeholder="请输入商机负责人" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
                     </div>
                 </div><br>
                 <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:1200px; height:18px;" class="div" ></div>
                 <div class="layui-inline">
                     <label class="layui-form-label">所属部门</label>
                     <div class="layui-input-block">
-                        <input type="text" name="keyWord" placeholder="请输入所属部门" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                        <input type="text" name="linkduty" placeholder="请输入所属部门" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">预成交金额</label>
                     <div class="layui-input-block">
-                        <input type="text" name="keyWord" placeholder="请输入预成交金额" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                        <input type="text" name="makemoney" placeholder="请输入预成交金额" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">预结算日期</label>
                     <div class="layui-input-block">
-                        <input type="text" class="layui-input" id="test1" placeholder="yyyy-MM-dd" style="width:220px; height:38px;">
+                        <input type="text" name="statementdate" class="layui-input" id="test1" placeholder="yyyy-MM-dd" style="width:220px; height:38px;">
                     </div>
                 </div>
                 <div align="center" style="position:relative;top:10px">
-                    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">查询商机</button>
+                    <button type="submit" class="layui-btn layui-btn-radius" lay-submit lay-filter="submitdemo">确认</button>
                     <button type="reset" class="layui-btn layui-btn-primary layui-btn-radius">重置</button>
                 </div>
             </blockquote>
@@ -140,10 +140,7 @@
                     <i class="layui-icon layui-icon-add-1"></i> 新增商机
                 </button>
             </div>
-
         </form>
-
-
         <table id="demo" lay-filter="test"></table>
     </div>
 </div>
@@ -152,11 +149,12 @@
 <script src="/layui/layui.js"></script>
 <script>
     //一般直接写在一个js文件中
-    layui.use(['layer', 'form','table','jquery'], function(){
+    layui.use(['layer', 'form','table','jquery','laydate'], function(){
         var layer = layui.layer
             ,form = layui.form
             ,table = layui.table
-            ,$=layui.jquery;
+            ,$=layui.jquery
+            ,laydate = layui.laydate
 
         //表格加载数据
         table.render({
@@ -165,7 +163,6 @@
             ,url: '/business/queryAll.do' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
-
                 {field: 'busname', title: '商机名称', width:300,templet: '<div><a href="/business/querylist.do?cliid={{d.cliid}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.busname}}</a></div>'}
                 ,{field: 'busstage', title: '商机阶段', width:120}
                 ,{field: 'makemoney', title: '预计成交金额', width:200}
@@ -173,14 +170,29 @@
                 ,{field: '', title: '最后跟单', width:200}
                 ,{field: '', title: '讨论版', width: 120}
             ]]
+            ,done: function(res, curr, count){
+                this.where={};
+            }
         });
 
-
+        form.on('submit(submitdemo)',function (data) {
+            table.reload('demo', {//表格重载
+                url: '/business/queryAll.do'
+                ,where: data.field
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+            return false;
+        })
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
         $(function () {
             //点击刷新按钮表格重载
             $("#brefresh").click(function () {
                 table.reload('demo', {
-                    url: '/aftersale/queryAll.do'
+                    url: '/business/queryAll.do'
                     ,where: {}
                 });
             })
@@ -200,285 +212,6 @@
             })
         })
 
-        //form表格
-        form.on('submit(formDemo)', function(data){
-            table.reload('demo', {
-                url: '/aftersale/queryAll.do'
-                ,where:data.field //设定异步数据接口的额外参数
-            });
-            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-        });
-
-    });
-</script>
-<script>
-    layui.use('laydate', function(){
-        var laydate = layui.laydate;
-
-        //常规用法
-        laydate.render({
-            elem: '#test1'
-        });
-
-        //国际版
-        laydate.render({
-            elem: '#test1-1'
-            ,lang: 'en'
-        });
-
-        //年选择器
-        laydate.render({
-            elem: '#test2'
-            ,type: 'year'
-        });
-
-        //年月选择器
-        laydate.render({
-            elem: '#test3'
-            ,type: 'month'
-        });
-
-        //时间选择器
-        laydate.render({
-            elem: '#test4'
-            ,type: 'time'
-        });
-
-        //日期时间选择器
-        laydate.render({
-            elem: '#test5'
-            ,type: 'datetime'
-        });
-
-        //日期范围
-        laydate.render({
-            elem: '#test6'
-            ,range: true
-        });
-
-        //年范围
-        laydate.render({
-            elem: '#test7'
-            ,type: 'year'
-            ,range: true
-        });
-
-        //年月范围
-        laydate.render({
-            elem: '#test8'
-            ,type: 'month'
-            ,range: true
-        });
-
-        //时间范围
-        laydate.render({
-            elem: '#test9'
-            ,type: 'time'
-            ,range: true
-        });
-
-        //日期时间范围
-        laydate.render({
-            elem: '#test10'
-            ,type: 'datetime'
-            ,range: true
-        });
-
-        //自定义格式
-        laydate.render({
-            elem: '#test11'
-            ,format: 'yyyy年MM月dd日'
-        });
-        laydate.render({
-            elem: '#test12'
-            ,format: 'dd/MM/yyyy'
-        });
-        laydate.render({
-            elem: '#test13'
-            ,format: 'yyyyMMdd'
-        });
-        laydate.render({
-            elem: '#test14'
-            ,type: 'time'
-            ,format: 'H点m分'
-        });
-        laydate.render({
-            elem: '#test15'
-            ,type: 'month'
-            ,range: '~'
-            ,format: 'yyyy-MM'
-        });
-        laydate.render({
-            elem: '#test16'
-            ,type: 'datetime'
-            ,range: '到'
-            ,format: 'yyyy年M月d日H时m分s秒'
-        });
-
-        //开启公历节日
-        laydate.render({
-            elem: '#test17'
-            ,calendar: true
-        });
-
-        //自定义重要日
-        laydate.render({
-            elem: '#test18'
-            ,mark: {
-                '0-10-14': '生日'
-                ,'0-12-31': '跨年' //每年的日期
-                ,'0-0-10': '工资' //每月某天
-                ,'0-0-15': '月中'
-                ,'2017-8-15': '' //如果为空字符，则默认显示数字+徽章
-                ,'2099-10-14': '呵呵'
-            }
-            ,done: function(value, date){
-                if(date.year === 2017 && date.month === 8 && date.date === 15){ //点击2017年8月15日，弹出提示语
-                    layer.msg('这一天是：中国人民抗日战争胜利72周年');
-                }
-            }
-        });
-
-        //限定可选日期
-        var ins22 = laydate.render({
-            elem: '#test-limit1'
-            ,min: '2016-10-14'
-            ,max: '2080-10-14'
-            ,ready: function(){
-                ins22.hint('日期可选值设定在 <br> 2016-10-14 到 2080-10-14');
-            }
-        });
-
-        //前后若干天可选，这里以7天为例
-        laydate.render({
-            elem: '#test-limit2'
-            ,min: -7
-            ,max: 7
-        });
-
-        //限定可选时间
-        laydate.render({
-            elem: '#test-limit3'
-            ,type: 'time'
-            ,min: '09:30:00'
-            ,max: '17:30:00'
-            ,btns: ['clear', 'confirm']
-        });
-
-        //同时绑定多个
-        lay('.test-item').each(function(){
-            laydate.render({
-                elem: this
-                ,trigger: 'click'
-            });
-        });
-
-        //初始赋值
-        laydate.render({
-            elem: '#test19'
-            ,value: '1989-10-14'
-            ,isInitValue: true
-        });
-
-        //选中后的回调
-        laydate.render({
-            elem: '#test20'
-            ,done: function(value, date){
-                layer.alert('你选择的日期是：' + value + '<br>获得的对象是' + JSON.stringify(date));
-            }
-        });
-
-        //日期切换的回调
-        laydate.render({
-            elem: '#test21'
-            ,change: function(value, date){
-                layer.msg('你选择的日期是：' + value + '<br><br>获得的对象是' + JSON.stringify(date));
-            }
-        });
-        //不出现底部栏
-        laydate.render({
-            elem: '#test22'
-            ,showBottom: false
-        });
-
-        //只出现确定按钮
-        laydate.render({
-            elem: '#test23'
-            ,btns: ['confirm']
-        });
-
-        //自定义事件
-        laydate.render({
-            elem: '#test24'
-            ,trigger: 'mousedown'
-        });
-
-        //点我触发
-        laydate.render({
-            elem: '#test25'
-            ,eventElem: '#test25-1'
-            ,trigger: 'click'
-        });
-
-        //双击我触发
-        lay('#test26-1').on('dblclick', function(){
-            laydate.render({
-                elem: '#test26'
-                ,show: true
-                ,closeStop: '#test26-1'
-            });
-        });
-
-        //日期只读
-        laydate.render({
-            elem: '#test27'
-            ,trigger: 'click'
-        });
-
-        //非input元素
-        laydate.render({
-            elem: '#test28'
-        });
-
-        //墨绿主题
-        laydate.render({
-            elem: '#test29'
-            ,theme: 'molv'
-        });
-
-        //自定义颜色
-        laydate.render({
-            elem: '#test30'
-            ,theme: '#393D49'
-        });
-
-        //格子主题
-        laydate.render({
-            elem: '#test31'
-            ,theme: 'grid'
-        });
-
-
-        //直接嵌套显示
-        laydate.render({
-            elem: '#test-n1'
-            ,position: 'static'
-        });
-        laydate.render({
-            elem: '#test-n2'
-            ,position: 'static'
-            ,lang: 'en'
-        });
-        laydate.render({
-            elem: '#test-n3'
-            ,type: 'month'
-            ,position: 'static'
-        });
-        laydate.render({
-            elem: '#test-n4'
-            ,type: 'time'
-            ,position: 'static'
-        });
     });
 </script>
 </body>

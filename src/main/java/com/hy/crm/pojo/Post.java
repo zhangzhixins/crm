@@ -25,6 +25,8 @@ public class Post implements Serializable {
 
     private String postify;
 
+    private Integer pusid;
+
     private int busid;
 
     private String label;
@@ -131,12 +133,20 @@ public class Post implements Serializable {
         this.busid = busid;
     }
 
+    public Integer getPusid() {
+        return pusid;
+    }
+
+    public void setPusid(Integer pusid) {
+        this.pusid = pusid;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
                 "postid=" + postid +
                 ", postify='" + postify + '\'' +
-                ", busid=" + busid +
+                ", pusid=" + pusid +
                 ", label='" + label + '\'' +
                 ", theme='" + theme + '\'' +
                 ", sendid=" + sendid +
@@ -147,5 +157,6 @@ public class Post implements Serializable {
                 ", newtime=" + newtime +
                 ", updtime=" + updtime +
                 '}';
+
     }
 }

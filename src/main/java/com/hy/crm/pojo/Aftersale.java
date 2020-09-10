@@ -30,7 +30,7 @@ public class Aftersale implements Serializable {
 
     private String participant;
 
-    private String cliname;
+    private String cliid;
 
     private String conid;
 
@@ -106,12 +106,12 @@ public class Aftersale implements Serializable {
         this.participant = participant;
     }
 
-    public String getCliname() {
-        return cliname;
+    public String getCliid() {
+        return cliid;
     }
 
-    public void setCliname(String cliname) {
-        this.cliname = cliname;
+    public void setCliid(String cliid) {
+        this.cliid = cliid;
     }
 
     public String getConid() {
@@ -250,12 +250,12 @@ public class Aftersale implements Serializable {
                 ", step='" + step + '\'' +
                 ", duty='" + duty + '\'' +
                 ", participant='" + participant + '\'' +
-                ", cliname='" + cliname + '\'' +
+                ", cliid='" + cliid + '\'' +
                 ", conid='" + conid + '\'' +
                 ", coninfo='" + coninfo + '\'' +
                 ", linkname='" + linkname + '\'' +
-                ", linkphone=" + linkphone +
-                ", phone=" + phone +
+                ", linkphone='" + linkphone + '\'' +
+                ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", afttype='" + afttype + '\'' +
                 ", aftmode='" + aftmode + '\'' +
