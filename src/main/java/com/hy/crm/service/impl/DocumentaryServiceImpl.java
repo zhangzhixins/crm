@@ -27,7 +27,7 @@ public class DocumentaryServiceImpl extends ServiceImpl<DocumentaryMapper, Docum
     private DocumentaryMapper documentaryMapper;
 
     @Override
-    public ArrayList<Documentary> selectdoc(Integer page, Integer limit, Documentary documentary) {
+    public IPage<Documentary> selectdoc(Integer page, Integer limit, Documentary documentary) {
         if (page==null || page.equals("")){
             page=1;
         }
@@ -35,10 +35,8 @@ public class DocumentaryServiceImpl extends ServiceImpl<DocumentaryMapper, Docum
             limit=10;
         }
         Page page1=new Page(page,limit);
-
         IPage doclist=documentaryMapper.selectdoc(page1, documentary);
-        List<Documentary> listdoc=doclist.getRecords();
-        return (ArrayList<Documentary>) listdoc;
+        return  doclist;
 
     }
 

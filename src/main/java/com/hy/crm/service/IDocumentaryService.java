@@ -1,5 +1,6 @@
 package com.hy.crm.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hy.crm.pojo.Documentary;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -14,6 +15,6 @@ import java.util.ArrayList;
  * @since 2020-08-28
  */
 public interface IDocumentaryService extends IService<Documentary> {
-    ArrayList<Documentary> selectdoc(Integer page, Integer limit, Documentary documentary);
+    IPage<Documentary> selectdoc(Integer page, Integer limit, Documentary documentary);
     ArrayList<Documentary> selectdocbus(Integer busid);
 }

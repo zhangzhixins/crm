@@ -2,6 +2,7 @@ package com.hy.crm.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -33,11 +34,11 @@ public class Contract implements Serializable {
     private String conserial;
 
     private BigDecimal conmoney;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date contime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date entrytime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endtime;
 
     private String linkname;
@@ -61,9 +62,9 @@ public class Contract implements Serializable {
     private Integer state;
 
     private Integer conpriority;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date newtime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date updtime;
 
 

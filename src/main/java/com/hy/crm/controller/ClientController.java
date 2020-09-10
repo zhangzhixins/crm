@@ -64,4 +64,14 @@ public class ClientController {
         msgUtils.setData(clientService.verifyClient(cliname));
         return msgUtils;
     }
+
+    @RequestMapping("idcli.do")
+    @ResponseBody
+    public MsgUtils idcli(String cliid){
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("添加成功");
+        msgUtils.setData(clientService.getById(cliid));
+        return msgUtils;
+    }
 }

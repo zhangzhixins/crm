@@ -2,6 +2,8 @@ package com.hy.crm.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,6 +25,8 @@ public class Post implements Serializable {
 
     private String postify;
 
+    private int busid;
+
     private String label;
 
     private String theme;
@@ -36,9 +40,9 @@ public class Post implements Serializable {
     private Integer num;
 
     private String stick;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date newtime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date updtime;
 
     public Integer getPostid() {
@@ -119,20 +123,29 @@ public class Post implements Serializable {
         this.updtime = updtime;
     }
 
+    public int getBusid() {
+        return busid;
+    }
+
+    public void setBusid(int busid) {
+        this.busid = busid;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
-            "postid=" + postid +
-            ", postify=" + postify +
-            ", label=" + label +
-            ", theme=" + theme +
-            ", sendid=" + sendid +
-            ", postaccessory=" + postaccessory +
-            ", postcontent=" + postcontent +
-            ", num=" + num +
-            ", stick=" + stick +
-            ", newtime=" + newtime +
-            ", updtime=" + updtime +
-        "}";
+                "postid=" + postid +
+                ", postify='" + postify + '\'' +
+                ", busid=" + busid +
+                ", label='" + label + '\'' +
+                ", theme='" + theme + '\'' +
+                ", sendid=" + sendid +
+                ", postaccessory='" + postaccessory + '\'' +
+                ", postcontent='" + postcontent + '\'' +
+                ", num=" + num +
+                ", stick='" + stick + '\'' +
+                ", newtime=" + newtime +
+                ", updtime=" + updtime +
+                '}';
     }
 }
