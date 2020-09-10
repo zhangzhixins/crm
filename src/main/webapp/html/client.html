@@ -50,7 +50,7 @@
     </div>
 
     <div class="box2"><!--右边的div-->
-        <form class="layui-form" action="/aftersale/queryAll.do" id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+        <form class="layui-form" action="/client/queryAll.do" id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
 
             <div class="layui-inline">
                 <div class="layui-input-block">
@@ -107,18 +107,18 @@
         table.render({
             elem: '#demo'
             ,height: 312
-            ,url: '/aftersale/queryAll.do' //数据接口
+            ,url: '/client/queryAll.do' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
 
-                {field: 'afttheme', title: '客户名称', width:300,templet: '<div><a href="editclient.html" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.afttheme}}</a></div>'}
-                ,{field: 'afttype', title: '商机数', width:120}
-                ,{field: 'starttime', title: '预计成交金额', width:200,templet: "<div>{{layui.util.toDateString(d.starttime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
-                ,{field: 'aftpeo', title: '合同数', width: 120}
-                ,{field: 'aftgrade', title: '合同金额', width: 120}
-                ,{field: 'aftpeo', title: '回款额', width: 120}
-                ,{field: 'aftgrade', title: '售后服务类', width: 120}
-                ,{field: 'aftpeo', title: '服务评分', width: 120}
+                {field:'cliname',title: '客户名称', width:300,templet: '<div><a href="/client/querylist.do?cliid={{d.cliid}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.cliname}}</a></div>'}
+                ,{field: 'opportunities', title: '商机数', width:120}
+                ,{field: 'makemoney', title: '预计成交金额', width:120}
+                ,{field: 'contract', title: '合同数', width:120}
+                ,{field: 'conmoney', title: '合同金额', width:120}
+                ,{field: 'returned', title: '回款额', width:120}
+                ,{field: 'number', title: '售后服务数', width:120}
+                ,{field: 'aftgrade', title: '服务均分', width:120}
             ]]
         });
 
@@ -127,7 +127,7 @@
             //点击刷新按钮表格重载
             $("#brefresh").click(function () {
                 table.reload('demo', {
-                    url: '/aftersale/queryAll.do'
+                    url: '/client/queryAll.do'
                     ,where: {}
                 });
             })
@@ -150,7 +150,7 @@
         //form表格
         form.on('submit(formDemo)', function(data){
             table.reload('demo', {
-                url: '/aftersale/queryAll.do'
+                url: '/client/queryAll.do'
                 ,where:data.field //设定异步数据接口的额外参数
             });
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
