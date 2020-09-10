@@ -27,7 +27,7 @@ public class Post implements Serializable {
 
     private Integer pusid;
 
-    private int busid;
+    private Integer busid;
 
     private String label;
 
@@ -125,11 +125,11 @@ public class Post implements Serializable {
         this.updtime = updtime;
     }
 
-    public int getBusid() {
+    public Integer getBusid() {
         return busid;
     }
 
-    public void setBusid(int busid) {
+    public void setBusid(Integer busid) {
         this.busid = busid;
     }
 

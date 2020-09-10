@@ -87,7 +87,7 @@ public class ClientController {
 
     @RequestMapping("idcli.do")
     @ResponseBody
-    public MsgUtils idcli(String cliid){
+    public MsgUtils idcli(Integer cliid){
         MsgUtils msgUtils = new MsgUtils();
         msgUtils.setCode("0");
         msgUtils.setMsg("添加成功");
