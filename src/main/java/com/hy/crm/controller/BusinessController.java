@@ -51,6 +51,8 @@ public class BusinessController {
         return msgUtils;
     }
 
+
+
     @RequestMapping("ver.do")
     @ResponseBody
     public MsgUtils ver(String busname){
@@ -63,12 +65,13 @@ public class BusinessController {
 
     @RequestMapping("/queryAll.do")
     @ResponseBody
-    public Layui queryAll(Layui layui,int limit, int page) {
-        IPage<Business> page1 =iBusinessService.queryAll(limit,page);
+    public Layui queryAll(Integer limit, Integer page,Business business) {
+        IPage<Business> iPage=iBusinessService.QueryBusiness(limit,page,business);
+        Layui layui = new Layui();
         layui.setCode(0);
         layui.setMsg(":");
-        layui.setCount(Integer.parseInt(String.valueOf(page1.getTotal())));
-        layui.setData(page1.getRecords());
+        layui.setCount(Integer.parseInt(String.valueOf(iPage.getTotal())));
+        layui.setData(iPage.getRecords());
         return layui;
     }
 
@@ -82,6 +85,14 @@ public class BusinessController {
          model.addAttribute("business",business);
          return "/html/editbusiness.html";
     }
+
+    @GetMapping("/queryupdate.do")
+    public String queryUpdate( Business business){
+        iBusinessService.updateById(business);
+        return "redirect:business.html";
+    }
+
+
 
 
 }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>帖子详情</title>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+</head>
+<script src="/layui/layui.js"></script>
+<style>
+    .box1{
+        position: absolute;
+        border: 1px black solid;
+        right: 23%;
+        left: 20%;
+        width: 70%;
+        height: 35%;
+        top: 39%;
+    }
+</style>
+<body>
+<br>
+<div style="margin:0 auto; width:80%;height:auto;">
+    <form class="layui-form" method="post" action="" enctype="multipart/form-data">
+        <div class="layui-inline" style="float: left">
+            <input align="left" readonly type="text" th:value="${p.post.theme}" style="border:0px;font-size:30px"/>
+        </div>
+        <div class="layui-inline"style="float: right">
+            <a href="javascript:window.opener=null;window.open('','_self');window.close()"
+               class="layui-btn layui-icon layui-icon-return layui-btn-primary">返回</a>
+            <a href="javascript:void(0);" th:onclick="'set('+${p.post.postid}+')'" class="layui-btn layui-icon layui-icon-set-fill layui-btn-primary">设置</a>
+            <a href="javascript:void(0);" th:onclick="'de('+${p.post.postid}+')'" class="layui-btn layui-icon layui-icon-delete layui-btn-primary">删除</a>
+            <a href="javascript:;" id="flush" class="layui-btn layui-icon layui-icon-refresh layui-btn-primary">刷新</a>
+        </div>
+
+        <br><br><hr class="layui-bg-black"><br>
+        <div class="layui-form-item" style="height:35px;font-size: 20px;">
+            <div class="layui-inline layui-show-xs-block">
+                点击([[${p.post.num}]])
+            </div>
+            <div class="layui-inline layui-show-xs-block">
+                回复([[${p.replies}]])
+            </div>
+            <div class="layui-inline layui-show-xs-block">
+                <i class="layui-icon layui-icon-file-b" style="font-size:25px;color:#77787b"></i>[[${p.post.postify}]]  &nbsp;
+            </div>
+            <div class="layui-inline">
+                <i class="layui-icon layui-icon-note" style="font-size:25px;color:#7b7877"></i>[[${p.post.label}]]
+            </div>
+            <div style="margin-top:10px;margin-bottom:10px;"><!-- 楼主1楼 -->
+                <div style="float: left;width: 15%;text-align:center; top: 90px"><!-- 左边图片 -->
+                    <div class="layui-icon layui-icon-user" style="font-size:55px;color:blue"></div>
+                    <font style="size:45px">楼主</font>
+                </div>
+                <div style="float: right;width: 83%;border:solid 1px #dfdfdf"><!-- 右边内容 -->
+                    <div style="padding:10px 10px 10px 10px;background-color: #f5f5f5;font-size: 18px;">
+                        &nbsp;&nbsp;
+                        <span th:text="${p.user.username}"/>
+                        发布与:
+                        <span th:text="${p.post.newtime}"/>
+                    </div>
+                    <div style="padding:30px 30px 25px 50px;">
+                        <div>
+                            <span th:text="${p.post.postcontent}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </form>
+</div>
+<div style="margin:0 auto; width:80%;height:auto;">
+    <form class="layui-form" action="/crm/forum-reply/saveForumReply.do">
+        <div class="layui-form-item layui-form-text">
+            <div class="layui-input-block" style="float: right;width: 83%;border:solid 1px #dfdfdf">
+                <label class="layui-form-label" size="45">发表回复:</label>
+                <textarea name="desc" lay-verify="required" placeholder="请输入内容" th:name="replyinfo" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <div class="layui-inline layui-input-block">
+               <input type="hidden" th:name="postid" th:value="${p.user.userid}">
+            </div>
+            <div class="layui-inline layui-input-block">
+               <input type="hidden" th:name="replyId" th:value="${p.post.postid}">
+            </div>
+            <div class="layui-inline layui-input-block">
+                 <button style="width: 85px;height: 35px;" class="layui-btn layui-btn-radius layui-btn-primary" lay-submit lay-filter="*">发表</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    var de=function(a){
+        if (!confirm("确定要删除吗?")) {
+            return false;
+        }else{
+            window.location.href="/forum/delete.do?forid="+a;
+        }
+    }
+
+    var set=function(b){
+        window.location.href="/forum/set.do?forid="+b;
+    }
+
+    var aaa=function(b){
+        var a=$("[name='d']").css("display");
+        if(a=="none"){
+            $("[name='d']").show();
+            $("#forRevert").val(b)
+        }else{
+            $("[name='d']").hide();
+        }
+
+    }
+    layui.use(['form','upload','jquery','laydate'], function(){
+        var form = layui.form;
+        var $=layui.jquery;//异步
+        var upload=layui.upload;
+        var laydate = layui.laydate;
+
+        form.verify({
+            forContent:function (value,item) {
+                if(value.length==0){
+                    return '请输入回复内容';
+                }
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

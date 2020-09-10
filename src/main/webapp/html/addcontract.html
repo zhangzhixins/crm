@@ -124,29 +124,29 @@
             <div class="layui-inline" style="width: 200px;font-size: 25px;float: left">新增合同服务
             </div>
             <div class="layui-inline" style="width: 100px;float: right">
-                <button type="button" class="layui-btn">
+                <button type="button" class="layui-btn layui-btn-primary">
                     <i class="layui-icon">&#xe608;</i> 返回
                 </button>
             </div>
             <div class="layui-inline" style="width: 100px;float: right">
-                <button type="button" class="layui-btn">
+                <button type="button" class="layui-btn layui-btn-primary">
                     <i class="layui-icon">&#xe666;</i> 刷新
                 </button>
             </div>
         </div>
         <div>
             <div class="layui-form-item layui-inline">
-                <label class="layui-form-label box10"><font color="red">*</font>合同名称:</label>
+                <label class="layui-form-label box10"><font color="red">*</font>合同全称:</label>
                 <div class="layui-input-block">
-                    <input type="text" name="cliname" id="cliname" onblur="myFunction()"  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="allname" id="allname"   autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline" style="float: right">
                 <label class="layui-form-label">优先级:</label>
                 <div class="layui-input-block">
-                    <input type="checkbox" lay-skin="primary" name="" value="1" title="低">
-                    <input type="checkbox" lay-skin="primary" name="" value="2" title="中">
-                    <input type="checkbox" lay-skin="primary" name="" value="3" title="高">
+                    <input type="radio" lay-skin="primary" name="conpriority" value="1" title="低">
+                    <input type="radio" lay-skin="primary" name="conpriority" value="2" title="中">
+                    <input type="radio" lay-skin="primary" name="conpriority" value="3" title="高">
                 </div>
             </div>
         </div>
@@ -154,29 +154,37 @@
             <p class="box3">客户信息</p>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10"><font color="red">*</font>客户名称:</label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                <div class="layui-input-block" style = "width:300px;">
+                    <select id="allcli" name="allcli" lay-filter="allcli">
+                        <option value="0" selected >请选择</option>
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">所属行业:</label>
                 <div class="layui-input-block box11">
-                    <select name="" lay-filter="aihao">
-                        <option value="">请选择</option>
-                        <option value="0">写作</option>
+                    <select name="industry" id="industry">
+                        <option value="0">请选择</option>
+                        <option value="IT|互联网|通信|电子">IT|互联网|通信|电子</option>
+                        <option value="金融|银行|保险">金融|银行|保险</option>
+                        <option value="房产|建筑建设|物业">房产|建筑建设|物业</option>
+                        <option value="广告|传媒|印刷出版">广告|传媒|印刷出版</option>
+                        <option value="加工制造|仪表设备">加工制造|仪表设备</option>
+                        <option value="管理咨询|教育科研|中介服务">管理咨询|教育科研|中介服务</option>
+                        <option value="医药生物|医疗保健">医药生物|医疗保健</option>
                     </select>
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">所在城市:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="regions" id="regions" autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">详细地址:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="city"  id="city" autocomplete="off" class="layui-input box11">
                 </div>
             </div>
         </div>
@@ -185,73 +193,73 @@
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10"><font color="red">*</font>合同名称:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="conname" id="conname" autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10"><font color="red">*</font>合同编号:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="conserial"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">合同金额:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="conmoney"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box12"><font color="red">*</font>签约日期:</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="starttime" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
+                    <input type="text" name="contime" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">生效日期:</label>
                 <div class="layui-input-block">
-                    <input type="text" name="starttime" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11">
+                    <input type="text" name="entrytime" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box12">服务期至:</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="starttime" id="test3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
+                    <input type="text" name="endtime" id="test3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10"><font color="red">*</font>对方联系人:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="linkname"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">固定电话:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="linkphone"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">移动电话:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="phone"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">邮件/QQ:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="email"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item box14">
                 <label class="layui-form-label">主要技术条款:</label>
                 <div class="layui-input-block">
-                    <textarea  name="aftback" type="text/plain" style="width:85%;height:150px"></textarea>
+                    <textarea  name="technicalterm" type="text/plain" style="width:85%;height:150px"></textarea>
                 </div>
             </div>
             <div class="layui-form-item box14">
                 <label class="layui-form-label">主要商务条款:</label>
                 <div class="layui-input-block">
-                    <textarea  name="aftback" type="text/plain" style="width:85%;height:150px"></textarea>
+                    <textarea  name="commerceterm" type="text/plain" style="width:85%;height:150px"></textarea>
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
@@ -269,13 +277,13 @@
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">商机所属部门:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="condept"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">关联人员:</label>
                 <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="affiliated"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
         </div>
@@ -313,7 +321,6 @@
             </div>
         </div>
     </form>
-
 </div>
 
 <!-- 你的HTML代码 -->
@@ -341,33 +348,64 @@
 
         //保存
         form.on('submit(formTest)', function(data){
-            alert("数据提交");
             $.get({
-                url:"/aftersale/insert.do",
+                url:"/contract/addcon.do",
                 data:data.field,
                 success:function (data) {
-                    alert(data.msg());
+                    layer.msg(data.msg());
+                    layer.open({
+                        content: ["/html/contract.html"],
+                        //content  是一个url，可以访问后台，如果不想让iframe出现滚动条，这样写content: ['http://baidu.com', 'no']
+                    });
                 }
             })
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });
-        form.blur('input(myFunction)',function () {
-          layer.msg("fawefwafeaaaaaaaaaaaaaaa");
-        })
 
+        form.on('select(allcli)',function (data) {
+            $("#allname").val(data.elem[data.elem.selectedIndex].text);
+            $.ajax({
+                type: 'post',
+                url: '/client/idcli.do?cliid='+ data.value,
+                dataType: "json",
+                success: function (data) {
+                    var client=data.data;//获取对象
+                    var industry=client.industry;//拿到值
+                    $("#industry option").each(function () {
+                        if($(this).val()==industry){
+                            form.render();
+                            $(this).attr("selected","selected");
+                            form.render('select');
+                        }
+                    })
+                    $("#city").val(client.city);
+                    $("#regions").val(client.regions);
+                }
+            })
+        })
         //预加载函数
         $(function () {
             $.ajax({
-                url:"/query.do/query.do",
+                url:"/client/query.do",
                 type:'post',
                 success:function (data) {
-                    if (data){
-
+                    for (var i=0;i<data.data.length;i++) {
+                        $("#allcli").append(new Option(data.data[i].cliname, data.data[i].cliid));
                     }
                     form.render();
                 }
             })
 
+            $("#conname").blur(function () {
+                var value = this.value;
+                var value1 = $("#allname").val();
+                if (value != "") {
+                    $("#allname").val(value1 + "-" + value );
+                } else {
+                    $("#allname").val("");
+                }
+
+            })
         })
     });
 </script>

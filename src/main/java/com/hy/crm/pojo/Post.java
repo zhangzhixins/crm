@@ -2,6 +2,8 @@ package com.hy.crm.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -23,6 +25,12 @@ public class Post implements Serializable {
 
     private String postify;
 
+    private Integer pusid;
+
+    private Integer busid;
+
+    private Integer pusid;
+
     private String label;
 
     private String theme;
@@ -36,9 +44,9 @@ public class Post implements Serializable {
     private Integer num;
 
     private String stick;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date newtime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
     private Date updtime;
 
     public Integer getPostid() {
@@ -119,20 +127,38 @@ public class Post implements Serializable {
         this.updtime = updtime;
     }
 
+    public Integer getBusid() {
+        return busid;
+    }
+
+    public void setBusid(Integer busid) {
+        this.busid = busid;
+    }
+
+    public Integer getPusid() {
+        return pusid;
+    }
+
+    public void setPusid(Integer pusid) {
+        this.pusid = pusid;
+    }
+
     @Override
     public String toString() {
         return "Post{" +
-            "postid=" + postid +
-            ", postify=" + postify +
-            ", label=" + label +
-            ", theme=" + theme +
-            ", sendid=" + sendid +
-            ", postaccessory=" + postaccessory +
-            ", postcontent=" + postcontent +
-            ", num=" + num +
-            ", stick=" + stick +
-            ", newtime=" + newtime +
-            ", updtime=" + updtime +
-        "}";
+                "postid=" + postid +
+                ", postify='" + postify + '\'' +
+                ", pusid=" + pusid +
+                ", label='" + label + '\'' +
+                ", theme='" + theme + '\'' +
+                ", sendid=" + sendid +
+                ", postaccessory='" + postaccessory + '\'' +
+                ", postcontent='" + postcontent + '\'' +
+                ", num=" + num +
+                ", stick='" + stick + '\'' +
+                ", newtime=" + newtime +
+                ", updtime=" + updtime +
+                '}';
+
     }
 }

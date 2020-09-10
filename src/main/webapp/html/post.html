@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>全部帖子</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<div class="box2"><!--右边的div-->
+    <form class="layui-form" action="/contract/querycon.do" id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <select name="conname" lay-filter="search">
+                    <option value="0">请选择</option>
+                    <option value="allname">按主题</option>
+                    <option value="conserial">按作者</option>
+                    <option value="starttime">按标签</option>
+                    <option value="affiliated">按点击</option>
+                    <option value="conmoney">按回复</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <input type="text" name="allname" id="allname" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-inline">
+                <button class="layui-btn layui-btn-primary" lay-submit lay-filter="formDemo">查找</button>
+        </div>
+        <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-primary" id="addpost"  lay-submit lay-filter="addcon">
+                    <i class="layui-icon">&#xe608;</i> 社区发贴
+                </button>
+                <button type="button" class="layui-btn layui-btn-primary" id="refresh" lay-submit lay-filter="refresh">
+                    <i class="layui-icon">&#xe666;</i> 刷新
+                </button>
+            </div>
+        </div>
+    </form>
+    <table id="demo" lay-filter="tabledemo"></table>
+</div>
+<script src="/layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form','table','jquery'], function() {
+            var layer = layui.layer
+                , form = layui.form
+                , table = layui.table
+                , $ = layui.jquery;
+
+            //表格加载数据
+            table.render({
+                elem: '#demo'
+                , height: 312
+                , url: '/post/post.do' //数据接口
+                , page: true //开启分页
+                , limits: [15, 20, 25, 30, 5]
+                , cols: [[ //表头
+                    {
+                        field: 'allname',
+                        title: '主题',
+                        width: 400,
+                        templet: '<div><a href="/post/updatepost.do?postid={{d.post.postid}}&num={{d.post.num}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.post.theme}}</a></div>'
+                    }
+                    , {
+                        field: 'username',
+                        title: '作者',
+                        width: 250,
+                        templet:"<div>{{d.user.username}}({{layui.util.toDateString(d.post.newtime, 'yyyy-MM-dd HH:mm')}})</div>"
+                    }
+                    , {
+                        field: 'busname',
+                        title: '所属商机',
+                        width: 300,
+                        templet:'<div>{{d.business.busname}}</div>'
+                    }
+                    , {
+                        field: 'num',
+                        title: '点击量',
+                        width: 120,
+                        templet:'<div>{{d.post.num}}</div>'
+                    }
+                    , {
+                        field: 'replies',
+                        title: '回复数',
+                        width: 120,
+                        templet:'<div>{{d.replies}}</div>'
+                    }
+                    , {
+                        field: 'contime',
+                        title: '签约日期',
+                        width: 200,
+                        templet: "<div>{{layui.util.toDateString(d.post.updtime, 'yyyy-MM-dd HH:mm:ss')}}</div>"
+                    }
+                ]]
+                , done: function (res, curr, count) {
+                    this.where = {};
+                }
+            });
+
+        })
+</script>
+</body>
+</html>

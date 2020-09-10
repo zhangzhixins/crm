@@ -317,7 +317,7 @@
             </div>
             <div class="layui-inline">
                 <div class="layui-input-block">
-                    <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:400px; height:38px;" class="div"></div>
+                    <input type="text" name="busid" id="busid" th:value="${business.busid}" style="visibility:hidden;width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
         </div>
@@ -409,7 +409,7 @@
             </div>
         </div>
         <div align="center" style="position:relative;top:10px">
-            <button type="button" class="layui-btn layui-btn-radius" lay-submit="" lay-filter="demo1" >编辑</button>
+            <button type="submit" class="layui-btn layui-btn-radius" lay-submit="" lay-filter="demo1" >确认</button>
             <button type="button" class="layui-btn layui-btn-primary layui-btn-radius" onclick="abc()">取消</button>
         </div>
     </form>
@@ -430,7 +430,7 @@
 
         form.on('submit(demo1)', function(data){
             $.get({
-                url:"/business/queryadd.do",
+                url:"/business/queryupdate.do",
                 data:data.field,
                 success:function (data) {
                     if(data.code="0"){
@@ -441,6 +441,7 @@
             })
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });
+
         //时间
         laydate.render({
             elem: '#test1' //指定元素
@@ -470,56 +471,7 @@
                 var cliname=$("#cliname").val();
                 $("#allname").val(cliname+"-"+busname);
             })
-            //当焦点移开客户名称时
-            //1.拿到文本框的值去数据库查询
-            //2.把查询对象返回  如果有值就把数据渲染页面
-            //3.如果没有值，就弹窗提示需要添加用户（一个取消，和确认）  点击取消可在当前页面继续输入客户名称，点击确认跳转到添加客户页面
-            $("#cliname").blur(function () {
 
-                var cliname=$("#cliname").val();
-                $.get({
-                    url:"/client/verify.do",
-                    data:"cliname="+cliname,
-                    success:function (data) {
-                        if(data.code=="0"){
-                            var list=data.data;
-                            if(list.length==0){
-                                //说明没有数据弹窗提示
-                                layer.confirm('该客户信息不存在，是否去添加！', {
-                                    btn : [ '确定', '取消' ]//按钮
-                                }, function(index) {
-                                    layer.close(index);
-                                    //此处请求后台程序，下方是成功后的前台处理……
-                                    var index = layer.load(0,{shade: [0.7, '#393D49']}, {shadeClose: true}); //0代表加载的风格，支持0-2
-                                    location.href="/html/clientadd.html";
-                                });
-                            }else{
-                                if(list.left>1){
-                                    //名字有重复的
-                                    alert("名字有重复的");
-                                }else{
-                                    //有值得情况
-                                    $("#cliname").val(list[0].cliname);
-                                    var  industry=list[0].industry;
-                                    $("#industry option").each(function () {
-                                        if($(this).val()==list[0].industry){
-                                            form.render();
-                                            $(this).attr("selected","selected");
-                                            form.render('select');// 再次渲染sele
-                                        }
-                                    })
-                                    $("#city").val(list[0].city);
-                                    $("#address").val(list[0].address);
-
-                                    $("#allname").val($("#cliname").val());
-
-                                }
-                            }
-                        }
-                    }
-                })
-
-            })
 
         })
 

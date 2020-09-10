@@ -1,12 +1,11 @@
 package com.hy.crm.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hy.crm.pojo.Business;
 import com.hy.crm.pojo.Documentary;
 import com.hy.crm.service.IBusinessService;
 import com.hy.crm.service.IDocumentaryService;
-import com.hy.crm.service.impl.DocumentaryServiceImpl;
 import com.hy.crm.utils.MsgUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.xml.crypto.Data;
-import java.text.SimpleDateFormat;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -51,13 +49,13 @@ public class DocumentaryController {
     /*跟单查询*/
     @RequestMapping("/selectdoc.do")
     @ResponseBody
-    public MsgUtils selectdocumentary(Integer page, Integer limit, Documentary documentary){
-        ArrayList<Documentary> doclist =iDocumentaryService.selectdoc(page,limit,documentary);
+    public MsgUtils selectDocumentary(Integer page, Integer limit, Documentary documentary){
+        IPage<Documentary> doclist =iDocumentaryService.selectdoc(page,limit,documentary);
         MsgUtils msg=new MsgUtils();
         msg.setCode("0");
         msg.setMsg("doc");
-        msg.setCount(doclist.size());
-        msg.setData(doclist);
+        msg.setCount(Integer.parseInt(String.valueOf(doclist.getTotal())));
+        msg.setData(doclist.getRecords());
         return msg;
     }
 
@@ -65,7 +63,7 @@ public class DocumentaryController {
     /*商机查询*/
     @RequestMapping("/selectbusiness.do")
     @ResponseBody
-    public MsgUtils selectbusiness(){
+    public MsgUtils selectBusiness(){
         ArrayList<Business> buslist= (ArrayList<Business>) iBusinessService.list();
         MsgUtils msg=new MsgUtils();
         msg.setCode("0");
@@ -75,8 +73,7 @@ public class DocumentaryController {
         return msg;
     }
 
-
-    /*根据id查询跟单记录*/
+    //根据id查询跟单记录
     @PostMapping("/idselectdoc.do")
     @ResponseBody
     public MsgUtils idselectdoc(Integer busid){
