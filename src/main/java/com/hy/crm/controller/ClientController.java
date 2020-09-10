@@ -106,12 +106,30 @@ public class ClientController {
 
     @RequestMapping("idcli.do")
     @ResponseBody
-    public MsgUtils idcli(String cliid){
+    public MsgUtils idcli(Integer cliid){
         MsgUtils msgUtils = new MsgUtils();
         msgUtils.setCode("0");
         msgUtils.setMsg("添加成功");
         msgUtils.setData(clientService.getById(cliid));
         return msgUtils;
+    }
+
+    @GetMapping("/querylist.do")
+    public String queryList(Model model, int cliid){
+        QueryWrapper queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("cliid",cliid);
+        Client client=clientService.getOne(queryWrapper);
+        Finance finance=iFinanceService.getOne(queryWrapper);
+        model.addAttribute("client",client);
+        model.addAttribute("finance",finance);
+        return "/html/editclient.html";
+    }
+
+    @GetMapping("/queryupdate.do")
+    public String queryUpdate( Client client,Finance finance){
+        clientService.updateById(client);
+        iFinanceService.updateById(finance);
+        return "redirect:client.html";
     }
 
     @RequestMapping("queryById.do")

@@ -2,7 +2,6 @@ package com.hy.crm.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hy.crm.pojo.Business;
 import com.hy.crm.pojo.Client;
 import com.hy.crm.service.IBusinessService;
@@ -16,8 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 /**
  * <p>
@@ -36,7 +33,6 @@ public class BusinessController {
     @Autowired
     private IBusinessService iBusinessService;
 
-
     @Autowired
     private IStateService iStateService;
 
@@ -51,6 +47,8 @@ public class BusinessController {
         msgUtils.setMsg("添加成功");
         return msgUtils;
     }
+
+
 
     @RequestMapping("ver.do")
     @ResponseBody
