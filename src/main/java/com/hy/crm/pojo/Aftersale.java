@@ -2,6 +2,7 @@ package com.hy.crm.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.util.Date;
  * @Date: 2020/9/3 8:56
  * @Version: 1.0
  */
+@TableName("aftersale")
 public class Aftersale implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -30,9 +32,9 @@ public class Aftersale implements Serializable {
 
     private String participant;
 
-    private String cliname;
+    private Integer cliid;
 
-    private String conid;
+    private Integer conid;
 
     private String coninfo;
 
@@ -106,19 +108,19 @@ public class Aftersale implements Serializable {
         this.participant = participant;
     }
 
-    public String getCliname() {
-        return cliname;
+    public Integer getCliid() {
+        return cliid;
     }
 
-    public void setCliname(String cliname) {
-        this.cliname = cliname;
+    public void setCliid(Integer cliid) {
+        this.cliid = cliid;
     }
 
-    public String getConid() {
+    public Integer getConid() {
         return conid;
     }
 
-    public void setConid(String conid) {
+    public void setConid(Integer conid) {
         this.conid = conid;
     }
 
@@ -250,7 +252,7 @@ public class Aftersale implements Serializable {
                 ", step='" + step + '\'' +
                 ", duty='" + duty + '\'' +
                 ", participant='" + participant + '\'' +
-                ", cliname='" + cliname + '\'' +
+                ", cliid='" + cliid + '\'' +
                 ", conid='" + conid + '\'' +
                 ", coninfo='" + coninfo + '\'' +
                 ", linkname='" + linkname + '\'' +

@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hy.crm.mapper.AftersaleMapper;
 import com.hy.crm.pojo.Aftersale;
+import com.hy.crm.pojo.Contract;
 import com.hy.crm.pojo.vo.AftersaleExt;
+import com.hy.crm.pojo.vo.ContractExt;
 import com.hy.crm.pojo.vo.TypeExt;
 import com.hy.crm.service.IAftersaleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -64,7 +66,6 @@ public class AftersaleServiceImpl extends ServiceImpl<AftersaleMapper, Aftersale
         for (int i = 0; i < lis.size(); i++) {
             //传入日期函数 string
             list.add(aftersaleMapper.queryCount(lis.get(i)));
-            System.out.println(aftersaleMapper.queryCount(lis.get(i)));
         }
         typeExt.setHand(String.valueOf(list.get(0)));
         typeExt.setEnd(String.valueOf(list.get(1)));
@@ -80,7 +81,16 @@ public class AftersaleServiceImpl extends ServiceImpl<AftersaleMapper, Aftersale
 
 
     @Override
-    public Aftersale queryById(Integer aftid){
-        return aftersaleMapper.queryId(aftid);
+    public AftersaleExt queryById(Integer aftid){
+       /* AftersaleExt aftersaleExt=aftersaleMapper.queryId(aftid);
+        *//*Contract contract=aftersaleMapper.queryById(aftersaleExt.getConid());
+        aftersaleExt.setContract(contract);
+        System.out.println("-=pp=-=-=-"+contract);*//*
+        System.out.println("-----------------"+aftersaleExt.getContract().toString());
+        System.out.println("==============="+aftersaleExt.getContract().getConserial());*/
+        System.out.println("=================================");
+        AftersaleExt aftersaleExt=aftersaleMapper.queryId(aftid);
+        System.out.println(aftersaleExt.getContract().getConserial());
+        return aftersaleExt;
     }
 }

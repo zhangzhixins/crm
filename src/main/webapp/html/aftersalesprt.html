@@ -23,11 +23,11 @@
         height: 35px;
     }
     .box3{
-         position: relative;
-         top: 4px;
-         left: 20px;
-         font-size: 18px;
-     }
+        position: relative;
+        top: 4px;
+        left: 20px;
+        font-size: 18px;
+    }
     .box4{
         position: relative;
         top: 20px;
@@ -47,11 +47,11 @@
         top: 225px;
     }
     .box8{
-         position: relative;
-         top: 4px;
-         left: 20px;
-         font-size: 18px;
-     }
+        position: relative;
+        top: 4px;
+        left: 20px;
+        font-size: 18px;
+    }
     .box9{
         width:300px;
         height: 25px;
@@ -62,9 +62,9 @@
         left: -10px;
     }
     .box11{
-         width:300px;
-         height: 40px;
-     }
+        width:300px;
+        height: 40px;
+    }
     .box12{
         position: relative;
         top: 40px;
@@ -126,158 +126,158 @@
 </style>
 <body>
 <div class="box1" >
-    <form class="layui-form" method="post">
-    <div class="layui-form-item box" ><!--页面头部信息-->
-        <div class="layui-inline" style="width: 200px;font-size: 25px;float: left">售后服务详情
-        </div>
-        <div class="layui-inline" style="width: 100px;float: right">
-            <button type="button" class="layui-btn" id="fanhui">
-                <i class="layui-icon">&#xe608;</i> 返回
-            </button>
-        </div>
-        <div class="layui-inline" style="width: 100px;float: right">
-            <button type="button" class="layui-btn" id="shuaxin">
-                <i class="layui-icon">&#xe666;</i> 刷新
-            </button>
-        </div>
-    </div>
-    <div class="box2"><!--基本信息-->
-        <p class="box3">基本信息</p>
-        <div class="layui-form-item box4">
-            <label class="layui-form-label"><font color="red">*</font>主题</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="afttheme" th:value="${aftersale.afttheme}" autocomplete="off" class="layui-input box5" id="afttheme">
+        <div class="layui-form-item box" ><!--页面头部信息-->
+            <div class="layui-inline" style="width: 200px;font-size: 25px;float: left">售后服务详情
             </div>
-        </div>
-        <div class="layui-form-item layui-inline box4">
-            <label class="layui-form-label">步骤:</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="step"  th:value="${aftersale.step}" autocomplete="off" class="layui-input box6">
+            <div class="layui-inline" style="width: 100px;float: right">
+                <button type="button" class="layui-btn" id="fanhui">
+                    <i class="layui-icon">&#xe608;</i> 返回
+                </button>
             </div>
-        </div>
-        <div class="layui-form-item layui-inline box4">
-            <label class="layui-form-label">责任人:</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="duty"  th:value="${aftersale.duty}" autocomplete="off" class="layui-input box6">
-            </div>
-        </div>
-        <div class="layui-form-item layui-inline box4">
-            <label class="layui-form-label">参与人:</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="participant"  th:value="${aftersale.participant}" autocomplete="off" class="layui-input box6">
-            </div>
-        </div>
-    </div>
-    <div class="box7"><!--售后服务信息-->
-        <p class="box8">
-            售后服务信息
-        </p>
-        <div class="layui-form-item box4 layui-inline">
-            <label class="layui-form-label">客户名称:</label>
-            <div class="layui-input-block box9">
-                <input type="text" readonly name="cliname"  th:value="${aftersale.cliname}" autocomplete="off" class="layui-input box6">
-            </div>
-        </div>
-        <div class="layui-form-item box4 layui-inline">
-            <label class="layui-form-label">合同编号:</label>
-            <div class="layui-input-block box9">
-                <select name="conid" disabled lay-filter="conid" id="conid">
-                    <option th:value="${aftersale.conid}" th:text="${aftersale.contract.conserial}"></option>
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item box4">
-            <label class="layui-form-label">合同主要信息:</label>
-            <div class="layui-input-block">
-                <textarea  name="coninfo" readonly th:text="${aftersale.coninfo}" type="text/plain" style="width:85%;height:120px" id="coninfo"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item layui-inline box4">
-            <label class="layui-form-label box10">对方联系人:</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="linkname" th:value="${aftersale.linkname}" id="linkname"  autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-form-item layui-inline box4">
-            <label class="layui-form-label box10">固定电话:</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="linkphone" th:value="${aftersale.linkphone}" id="linkphone"  autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-form-item layui-inline box4">
-            <label class="layui-form-label box10">移动电话:</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="phone" th:value="${aftersale.phone}" id="phone"  autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-form-item layui-inline box4">
-            <label class="layui-form-label box10">邮件/QQ:</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="email" th:value="${aftersale.email}" id="email"  autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-form-item box4 layui-inline">
-            <label class="layui-form-label">服务类型:</label>
-            <div class="layui-input-block box9">
-                <input type="text" readonly name="afttype" th:value="${aftersale.afttype}"   autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-form-item box4 layui-inline">
-            <label class="layui-form-label">服务方式:</label>
-            <div class="layui-input-block box9">
-                <input type="text" readonly name="aftmode" th:value="${aftersale.aftmode}"   autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-inline box4">
-            <label class="layui-form-label"><font color="red">*</font>开始时间:</label>
-            <div class="layui-input-inline">
-                <input type="text" readonly name="starttime" id="test1" th:value="${#dates.format(aftersale.starttime, 'yyyy-MM-dd')}"  lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-inline box4">
-            <label class="layui-form-label">结束时间:</label>
-            <div class="layui-input-inline">
-                <input type="text" readonly name="endtime" th:value="${#dates.format(aftersale.endtime, 'yyyy-MM-dd')}" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-form-item box12">
-            <label class="layui-form-label">服务内容:</label>
-            <div class="layui-input-block">
-                <textarea disabled name="aftcontent" th:text="${aftersale.aftcontent}" type="text/plain" style="width:85%;height:150px"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item box12">
-            <label class="layui-form-label">客户反馈:</label>
-            <div class="layui-input-block">
-                <textarea  disabled name="aftback" th:text="${aftersale.aftback}" type="text/plain" style="width:85%;height:150px"></textarea>
-            </div>
-        </div>
-        <div class="layui-form-item layui-inline box13">
-            <label class="layui-form-label box10">服务人员:</label>
-            <div class="layui-input-block">
-                <input type="text" readonly name="aftpeo" th:value="${aftersale.aftpeo}"  autocomplete="off" class="layui-input box11">
-            </div>
-        </div>
-        <div class="layui-form-item layui-inline box13">
-            <label class="layui-form-label">服务评分:</label>
-            <div class="layui-input-block">
-                <input type="radio" readonly th:checked="${aftersale.aftgrade==5} ? true:false" lay-skin="primary" name="aftgrade" value="5" title="5分">
-                <input type="radio" readonly th:checked="${aftersale.aftgrade==4} ? true:false" lay-skin="primary" name="aftgrade" value="4" title="4分">
-                <input type="radio" readonly th:checked="${aftersale.aftgrade==3} ? true:false" lay-skin="primary" name="aftgrade" value="3" title="3分">
-                <input type="radio" readonly th:checked="${aftersale.aftgrade==2} ? true:false" lay-skin="primary" name="aftgrade" value="2" title="2分">
-                <input type="radio" readonly th:checked="${aftersale.aftgrade==1} ? true:false" lay-skin="primary" name="aftgrade" value="1" title="1分">
-            </div>
-        </div>
-        <div class="layui-form-item layui-inline box14">
-            <input type="hidden" name="accessoryim" id="img">
-            <label class="layui-form-label">附件:</label>
-            <div class="layui-input-block">
-                <button type="button" class="layui-btn" id="upload1">
-                    <i class="layui-icon">&#xe67c;</i>上传文件
+            <div class="layui-inline" style="width: 100px;float: right">
+                <button type="button" class="layui-btn" id="shuaxin">
+                    <i class="layui-icon">&#xe666;</i> 刷新
                 </button>
             </div>
         </div>
-    </div>
+        <div class="box2"><!--基本信息-->
+            <p class="box3">基本信息</p>
+            <div class="layui-form-item box4">
+                <label class="layui-form-label"><font color="red">*</font>主题</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="afttheme" th:value="${aftersale.afttheme}" autocomplete="off" class="layui-input box5" id="afttheme">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box4">
+                <label class="layui-form-label">步骤:</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="step"  th:value="${aftersale.step}" autocomplete="off" class="layui-input box6">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box4">
+                <label class="layui-form-label">责任人:</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="duty"  th:value="${aftersale.duty}" autocomplete="off" class="layui-input box6">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box4">
+                <label class="layui-form-label">参与人:</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="participant"  th:value="${aftersale.participant}" autocomplete="off" class="layui-input box6">
+                </div>
+            </div>
+        </div>
+        <div class="box7"><!--售后服务信息-->
+            <p class="box8">
+                售后服务信息
+            </p>
+            <div class="layui-form-item box4 layui-inline">
+                <label class="layui-form-label">客户名称:</label>
+                <div class="layui-input-block box9">
+                    <input type="hidden" name="cliid" id="cliid" th:value="${aftersale.cliid}">
+                    <input type="text" readonly name="cliname" id="cliname"  autocomplete="off" class="layui-input box6">
+                </div>
+            </div>
+            <div class="layui-form-item box4 layui-inline">
+                <label class="layui-form-label">合同编号:</label>
+                <div class="layui-input-block box9">
+                    <select name="conid" disabled lay-filter="conid" id="conid">
+                        <option th:value="${aftersale.conid}" th:text="${aftersale.contract.conserial}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item box4">
+                <label class="layui-form-label">合同主要信息:</label>
+                <div class="layui-input-block">
+                    <textarea  name="coninfo" readonly th:text="${aftersale.coninfo}" type="text/plain" style="width:85%;height:120px" id="coninfo"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box4">
+                <label class="layui-form-label box10">对方联系人:</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="linkname" th:value="${aftersale.linkname}" id="linkname"  autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box4">
+                <label class="layui-form-label box10">固定电话:</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="linkphone" th:value="${aftersale.linkphone}" id="linkphone"  autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box4">
+                <label class="layui-form-label box10">移动电话:</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="phone" th:value="${aftersale.phone}" id="phone"  autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box4">
+                <label class="layui-form-label box10">邮件/QQ:</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="email" th:value="${aftersale.email}" id="email"  autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-form-item box4 layui-inline">
+                <label class="layui-form-label">服务类型:</label>
+                <div class="layui-input-block box9">
+                    <input type="text" readonly name="afttype" th:value="${aftersale.afttype}"   autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-form-item box4 layui-inline">
+                <label class="layui-form-label">服务方式:</label>
+                <div class="layui-input-block box9">
+                    <input type="text" readonly name="aftmode" th:value="${aftersale.aftmode}"   autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-inline box4">
+                <label class="layui-form-label"><font color="red">*</font>开始时间:</label>
+                <div class="layui-input-inline">
+                    <input type="text" readonly name="starttime" id="test1" th:value="${#dates.format(aftersale.starttime, 'yyyy-MM-dd')}"  lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-inline box4">
+                <label class="layui-form-label">结束时间:</label>
+                <div class="layui-input-inline">
+                    <input type="text" readonly name="endtime" th:value="${#dates.format(aftersale.endtime, 'yyyy-MM-dd')}" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-form-item box12">
+                <label class="layui-form-label">服务内容:</label>
+                <div class="layui-input-block">
+                    <textarea disabled name="aftcontent" th:text="${aftersale.aftcontent}" type="text/plain" style="width:85%;height:150px"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item box12">
+                <label class="layui-form-label">客户反馈:</label>
+                <div class="layui-input-block">
+                    <textarea  disabled name="aftback" th:text="${aftersale.aftback}" type="text/plain" style="width:85%;height:150px"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box13">
+                <label class="layui-form-label box10">服务人员:</label>
+                <div class="layui-input-block">
+                    <input type="text" readonly name="aftpeo" th:value="${aftersale.aftpeo}"  autocomplete="off" class="layui-input box11">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box13">
+                <label class="layui-form-label">服务评分:</label>
+                <div class="layui-input-block">
+                    <input type="radio" readonly th:checked="${aftersale.aftgrade==5} ? true:false" lay-skin="primary" name="aftgrade" value="5" title="5分">
+                    <input type="radio" readonly th:checked="${aftersale.aftgrade==4} ? true:false" lay-skin="primary" name="aftgrade" value="4" title="4分">
+                    <input type="radio" readonly th:checked="${aftersale.aftgrade==3} ? true:false" lay-skin="primary" name="aftgrade" value="3" title="3分">
+                    <input type="radio" readonly th:checked="${aftersale.aftgrade==2} ? true:false" lay-skin="primary" name="aftgrade" value="2" title="2分">
+                    <input type="radio" readonly th:checked="${aftersale.aftgrade==1} ? true:false" lay-skin="primary" name="aftgrade" value="1" title="1分">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline box14">
+                <input type="hidden" name="accessoryim" id="img">
+                <label class="layui-form-label">附件:</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn" id="upload1">
+                        <i class="layui-icon">&#xe67c;</i>上传文件
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="box15"><!--处理流程信息-->
             <p class="box8">
                 处理流程信息
@@ -302,7 +302,6 @@
                 </div>
             </div>
         </div>
-    </form>
 
 </div>
 
@@ -317,7 +316,18 @@
             , $ = layui.jquery
             , laydate = layui.laydate
             , upload = layui.upload;
-
+        $(function () {
+            $.get({
+                url:"/client/queryById.do",
+                data:"cliid="+$("#cliid").val(),
+                success:function (data) {
+                    if(data.code=="0"){
+                        var client=data.data;
+                        $("#cliname").val(client.cliname);
+                    }
+                }
+            })
+        })
 
         //页面返回
         $("#fanhui").click(function () {

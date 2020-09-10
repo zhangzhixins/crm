@@ -1,5 +1,6 @@
 package com.hy.crm.pojo.vo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.hy.crm.pojo.Aftersale;
 import com.hy.crm.pojo.Contract;
 
@@ -13,12 +14,21 @@ import com.hy.crm.pojo.Contract;
  * @Version: 1.0
  */
 public class AftersaleExt extends Aftersale {
+
     private Contract contract;
+
     public Contract getContract() {
         return contract;
     }
 
     public void setContract(Contract contract) {
         this.contract = contract;
+    }
+
+    @Override
+    public String toString() {
+        return "AftersaleExt{" +
+            "contract=" + contract +
+            '}';
     }
 }

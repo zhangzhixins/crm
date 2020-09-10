@@ -1,8 +1,7 @@
 package com.hy.crm.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hy.crm.pojo.Business;
 import com.hy.crm.pojo.Client;
 import com.hy.crm.service.IBusinessService;
@@ -64,13 +63,12 @@ public class BusinessController {
 
     @RequestMapping("/queryAll.do")
     @ResponseBody
-    public Layui queryAll(Layui layui,  int limit, int page) {
-        Page page1 = PageHelper.startPage(page, limit);
-        List<Business> users=iBusinessService.list(null);
+    public Layui queryAll(Layui layui,int limit, int page) {
+        IPage<Business> page1 =iBusinessService.queryAll(limit,page);
         layui.setCode(0);
         layui.setMsg(":");
-        layui.setCount((int) page1.getTotal());
-        layui.setData(users);
+        layui.setCount(Integer.parseInt(String.valueOf(page1.getTotal())));
+        layui.setData(page1.getRecords());
         return layui;
     }
 
