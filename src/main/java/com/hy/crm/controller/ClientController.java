@@ -127,14 +127,4 @@ public class ClientController {
         return msgUtils;
     }
 
-
-    @RequestMapping("queryById.do")
-    @ResponseBody
-    public MsgUtils queryById(Integer cliid){
-        MsgUtils msgUtils = new MsgUtils();
-        msgUtils.setCode("0");
-        msgUtils.setMsg("添加成功");
-        msgUtils.setData(clientService.getById(cliid));
-        return msgUtils;
-    }
 }
