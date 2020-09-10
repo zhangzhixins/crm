@@ -34,6 +34,8 @@ public class ClientController {
 
     @Autowired
     private IFinanceService iFinanceService;
+    private Client client;
+    private Finance finance;
 
 
     @RequestMapping("/query.do")
@@ -85,16 +87,6 @@ public class ClientController {
         return msgUtils;
     }
 
-    @RequestMapping("idcli.do")
-    @ResponseBody
-    public MsgUtils idcli(Integer cliid){
-        MsgUtils msgUtils = new MsgUtils();
-        msgUtils.setCode("0");
-        msgUtils.setMsg("添加成功");
-        msgUtils.setData(clientService.getById(cliid));
-        return msgUtils;
-    }
-
     @GetMapping("/querylist.do")
     public String queryList(Model model, int cliid){
         QueryWrapper queryWrapper=new QueryWrapper<>();
@@ -111,5 +103,27 @@ public class ClientController {
         clientService.updateById(client);
         iFinanceService.updateById(finance);
         return "redirect:client.html";
+    }
+
+
+    @RequestMapping("idcli.do")
+    @ResponseBody
+    public MsgUtils idcli(Integer cliid){
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("添加成功");
+        msgUtils.setData(clientService.getById(cliid));
+        return msgUtils;
+    }
+
+
+    @RequestMapping("queryById.do")
+    @ResponseBody
+    public MsgUtils queryById(Integer cliid){
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("添加成功");
+        msgUtils.setData(clientService.getById(cliid));
+        return msgUtils;
     }
 }

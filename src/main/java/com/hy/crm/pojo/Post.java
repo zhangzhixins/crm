@@ -29,6 +29,8 @@ public class Post implements Serializable {
 
     private Integer busid;
 
+    private Integer pusid;
+
     private String label;
 
     private String theme;
