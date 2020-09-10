@@ -34,6 +34,8 @@ public class ClientController {
 
     @Autowired
     private IFinanceService iFinanceService;
+    private Client client;
+    private Finance finance;
 
 
     @RequestMapping("/query.do")
@@ -114,23 +116,6 @@ public class ClientController {
         return msgUtils;
     }
 
-    @GetMapping("/querylist.do")
-    public String queryList(Model model, int cliid){
-        QueryWrapper queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("cliid",cliid);
-        Client client=clientService.getOne(queryWrapper);
-        Finance finance=iFinanceService.getOne(queryWrapper);
-        model.addAttribute("client",client);
-        model.addAttribute("finance",finance);
-        return "/html/editclient.html";
-    }
-
-    @GetMapping("/queryupdate.do")
-    public String queryUpdate( Client client,Finance finance){
-        clientService.updateById(client);
-        iFinanceService.updateById(finance);
-        return "redirect:client.html";
-    }
 
     @RequestMapping("queryById.do")
     @ResponseBody
