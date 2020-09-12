@@ -3,6 +3,7 @@ package com.hy.crm.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hy.crm.pojo.Documentary;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hy.crm.pojo.vo.MyStatistic;
 
 import java.util.ArrayList;
 
@@ -17,4 +18,5 @@ import java.util.ArrayList;
 public interface IDocumentaryService extends IService<Documentary> {
     IPage<Documentary> selectdoc(Integer page, Integer limit, Documentary documentary);
     ArrayList<Documentary> selectdocbus(Integer busid);
+    public MyStatistic selectCount();
 }

@@ -120,11 +120,13 @@ public class ClientController {
     @RequestMapping("queryById.do")
     @ResponseBody
     public MsgUtils queryById(Integer cliid){
+        System.out.println("09090909090"+cliid);
+        Client client=clientService.getById(cliid);
+        System.out.println("=-=-="+client);
         MsgUtils msgUtils = new MsgUtils();
         msgUtils.setCode("0");
         msgUtils.setMsg("添加成功");
-        msgUtils.setData(clientService.getById(cliid));
+        msgUtils.setData(client);
         return msgUtils;
     }
-
 }
