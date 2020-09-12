@@ -111,7 +111,7 @@ public class ClientController {
     public MsgUtils idcli(Integer cliid){
         MsgUtils msgUtils = new MsgUtils();
         msgUtils.setCode("0");
-        msgUtils.setMsg("添加成功");
+        msgUtils.setMsg("查询成功");
         msgUtils.setData(clientService.getById(cliid));
         return msgUtils;
     }

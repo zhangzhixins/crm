@@ -17,17 +17,16 @@ import java.util.List;
  */
 public class PostExt1 {
     private Post post;
-    private User user;
+    private List<User> user;
     private List<Reply> reply;
     private Integer replies;
 
-    public PostExt1(Post post, User user, List<Reply> reply, Integer replies) {
+    public PostExt1(Post post, List<User> user, List<Reply> reply, Integer replies) {
         this.post = post;
         this.user = user;
         this.reply = reply;
         this.replies = replies;
     }
-
 
     public Post getPost() {
         return post;
@@ -37,11 +36,11 @@ public class PostExt1 {
         this.post = post;
     }
 
-    public User getUser() {
+    public List<User> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(List<User> user) {
         this.user = user;
     }
 

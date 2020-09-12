@@ -66,7 +66,7 @@
                     {
                         field: 'allname',
                         title: '主题',
-                        width: 400,
+                        width: 300,
                         templet: '<div><a href="/post/updatepost.do?postid={{d.post.postid}}&num={{d.post.num}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.post.theme}}</a></div>'
                     }
                     , {
@@ -96,7 +96,7 @@
                     , {
                         field: 'contime',
                         title: '签约日期',
-                        width: 200,
+                        width: 185,
                         templet: "<div>{{layui.util.toDateString(d.post.updtime, 'yyyy-MM-dd HH:mm:ss')}}</div>"
                     }
                 ]]
@@ -104,6 +104,18 @@
                     this.where = {};
                 }
             });
+            form.on("submit(addcon)",function () {
+                layer.open({
+                    type: 2,  //类型  2表示iframe层  1：页面层
+                    icon: 2,
+                    closeBtn: 0,
+                    area: ['100%', '100%'],//弹出页面的宽 高
+                    /*shade: false,*/ //遮罩层透明度,默认false，也可以写数字表示透明程度（如：0.1），数字越大，透明度越低
+                    title: "新增帖子", //显示标题
+                    content: ["/html/addpost.html"],
+                    //content  是一个url，可以访问后台，如果不想让iframe出现滚动条，这样写content: ['http://baidu.com', 'no']
+                });
+            })
 
         })
 </script>

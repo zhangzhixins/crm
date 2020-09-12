@@ -4,11 +4,13 @@ package com.hy.crm.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hy.crm.pojo.Contract;
+import com.hy.crm.pojo.vo.ContractExt;
 import com.hy.crm.pojo.vo.TypeExt1;
 import com.hy.crm.service.IContractService;
 import com.hy.crm.service.IDocumentaryService;
 import com.hy.crm.utils.MsgUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -57,25 +59,22 @@ public class ContractController {
     @RequestMapping("/querycon.do")
     @ResponseBody
     public MsgUtils querycon(Integer page, Integer limit, Contract contract, TypeExt1 typeExt1){
-        IPage<Contract> con=contractService.querycon(page,limit,contract,typeExt1);
+        List<ContractExt> con=contractService.querycon(page,limit,contract,typeExt1);
         MsgUtils msgUtils = new MsgUtils();
         msgUtils.setCode("0");
         msgUtils.setMsg("查询成功");
-        msgUtils.setCount(Integer.parseInt(String.valueOf(con.getTotal())));
-        msgUtils.setData(con.getRecords());
+        msgUtils.setCount(con.size());
+        msgUtils.setData(con);
         return msgUtils;
     }
 
 
     @RequestMapping("/addcon.do")
-    @ResponseBody
-    public MsgUtils addcon(Contract contract){
+    public String addcon(Contract contract){
         contract.setNewtime(new Date());
+        contract.setState(1001);
         contractService.save(contract);
-        MsgUtils msgUtils = new MsgUtils();
-        msgUtils.setCode("0");
-        msgUtils.setMsg("查询成功");
-        return msgUtils;
+        return "html/contract.html";
     }
 
     @RequestMapping("/conut.do")
@@ -87,6 +86,21 @@ public class ContractController {
         msgUtils.setData(contractService.queryCount());
         return msgUtils;
     }
+
+    @RequestMapping("/updcontract.do")
+    public String updcontract(Model model,Contract contract){
+        contract =contractService.getById(contract.getConid());
+        model.addAttribute("con",contract);
+        return  "/html/updcontract.html";
+    }
+
+    @RequestMapping("/updcon.do")
+    public String updatecon(Contract contract){
+        contractService.updateById(contract);
+        return "html/contract.html";
+    }
+
+
 
 
 }

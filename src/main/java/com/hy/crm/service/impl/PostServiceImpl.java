@@ -62,7 +62,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
 
     @Override
     public PostExt1 updpost(Post post) {
-        User use=new User();
+        List<User> use=new ArrayList();
         List<Reply> reply= new ArrayList();
         Integer replylis=0;
         if (post.getNum()!=null && !post.getNum().equals("")){
@@ -70,7 +70,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
             boolean uppost =postMapper.updpost(post);
             if (uppost){
                 post=postMapper.selectById(post.getPostid());
-                use=userMapper.selectById(post.getSendid());
+                use=userMapper.selectList(null);
                 reply=replyMapper.queryid(post.getPostid());
                 replylis=replyMapper.countreply(post.getPostid());
 
@@ -78,7 +78,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements IP
         }else {
             if (post.getPostid()!=null && !post.getPostid().equals("")){
                 post=postMapper.selectById(post.getPostid());
-                use=userMapper.selectById(post.getSendid());
+                use=userMapper.selectList(null);
                 reply=replyMapper.queryid(post.getPostid());
                 replylis=replyMapper.countreply(post.getPostid());
             }

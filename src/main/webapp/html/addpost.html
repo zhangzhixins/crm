@@ -44,7 +44,7 @@
         <div class="layui-form-item layui-input-block">
         <label class="layui-form-label"><font color="red">*</font>所属商机:</label>
         <div class="layui-input-block">
-            <select class="layui-select" name="bosid" id="busid">
+            <select class="layui-select" name="busid" id="busid">
                 <option value="0" selected >请选择</option>
             </select>
         </div>
@@ -109,6 +109,7 @@
 
 
             form.on("submit(demo1)",function (data) {
+                alert(JSON.stringify(data.field))
                 $.get({
                     url:"/post/addpost.do",
                     data:data.field,

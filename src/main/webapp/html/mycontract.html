@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>全部合同</title>
+    <title>我的合同</title>
     <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <style>
@@ -50,46 +50,46 @@
         </blockquote>
     </div>
 </div>
-    <div class="box2"><!--右边的div-->
-        <form class="layui-form" action="" id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
-            <div class="layui-inline">
-                <div class="layui-input-block">
-                    <select name="conname" lay-filter="search">
-                        <option value="0">请选择</option>
-                        <option value="allname">按合同全称</option>
-                        <option value="conserial">按合同编号</option>
-                        <option value="starttime">按合同所属部门</option>
-                        <option value="affiliated">按关联人员</option>
-                        <option value="conmoney">按合同金额</option>
-                        <option value="contime">按签约时间</option>
-                    </select>
-                </div>
+<div class="box2"><!--右边的div-->
+    <form class="layui-form" action="" id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <select name="conname" lay-filter="search">
+                    <option value="0">请选择</option>
+                    <option value="allname">按合同全称</option>
+                    <option value="conserial">按合同编号</option>
+                    <option value="starttime">按合同所属部门</option>
+                    <option value="affiliated">按关联人员</option>
+                    <option value="conmoney">按合同金额</option>
+                    <option value="contime">按签约时间</option>
+                </select>
             </div>
+        </div>
 
-            <div class="layui-inline">
-                <div class="layui-input-block">
-                    <input type="text" name="allname" id="allname" placeholder="请输入关键字" autocomplete="off" class="layui-input">
-                </div>
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <input type="text" name="allname" id="allname" placeholder="请输入关键字" autocomplete="off" class="layui-input">
             </div>
+        </div>
 
-            <div class="layui-inline">
-                <div class="layui-input-block">
-                    <button class="layui-btn layui-btn-primary" lay-submit lay-filter="formDemo">查找</button>
-                </div>
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <button class="layui-btn layui-btn-primary" lay-submit lay-filter="formDemo">查找</button>
             </div>
-            <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+        </div>
+        <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
 
-            <div class="layui-inline">
-                <button type="button" class="layui-btn layui-btn-primary" id="cadd"  lay-submit lay-filter="addcon">
-                    <i class="layui-icon">&#xe608;</i> 新增合同
-                </button>
-                <button type="button" class="layui-btn layui-btn-primary" id="shuaxin" lay-submit lay-filter="refresh">
-                    <i class="layui-icon">&#xe666;</i> 刷新
-                </button>
-            </div>
-        </form>
-        <table id="demo" lay-filter="tabledemo"></table>
-    </div>
+        <div class="layui-inline">
+            <button type="button" class="layui-btn layui-btn-primary" id="cadd"  lay-submit lay-filter="addcon">
+                <i class="layui-icon">&#xe608;</i> 新增合同
+            </button>
+            <button type="button" class="layui-btn layui-btn-primary" id="shuaxin" lay-submit lay-filter="refresh">
+                <i class="layui-icon">&#xe666;</i> 刷新
+            </button>
+        </div>
+    </form>
+    <table id="demo" lay-filter="tabledemo"></table>
+</div>
 
 <script src="/layui/layui.js"></script>
 <script>
@@ -104,7 +104,7 @@
         table.render({
             elem: '#demo'
             , height: 312
-            , url: '/contract/querycon.do' //数据接口
+            , url: '/contract/querycon.do?affiliated='+'王娜' //数据接口
             , page: true //开启分页
             ,limits:[15,20,25,30,5]
             , cols: [[ //表头
@@ -112,27 +112,11 @@
                     field: 'allname',
                     title: '合同全称',
                     width: 300,
-                    templet: '<div><a href="/contract/updcontract.do?conid={{d.contract.conid}}&cliid={{d.contract.cliid}}"  target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.contract.allname}}</a></div>'
+                    templet: '<div><a href="/contract/updcontract.do?conid={{d.conid}}&cliid={{d.cliid}}"  style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.allname}}</a></div>'
                 }
-                , {
-                    field: 'conserial'
-                  , title: '合同编号'
-                  , width: 120
-                  , templet: '<div>{{d.cotract.conserial}}</div>'
-                }
-                , {
-                   field: 'conmoney'
-                 , title: '合同金额/￥'
-                 , width: 120
-                 , templet: '<div>{{d.cotract.conmoney}}</div>'
-                }
-                , {
-                   field: 'afttype'
-                 , title: '汇款金额/￥'
-                 , width: 120
-                 , templet: '<div><a href="/htmliremittance.html?conid={{d.contract.conid}}"  target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.contract.allname}}</a></div>'
-
-                }
+                , {field: 'conserial', title: '合同编号', width: 120}
+                , {field: 'conmoney', title: '合同金额/￥', width: 120}
+                , {field: 'afttype', title: '汇款金额/￥', width: 120}
                 , {field: 'afttype', title: '开票额/￥', width: 120}
                 , {
                     field: 'contime',
@@ -145,27 +129,27 @@
                 this.where = {};
             }
         });
-       form.on("submit(addcon)",function () {
-           layer.open({
-               type: 2,  //类型  2表示iframe层  1：页面层
-               icon: 2,
-               closeBtn: 0,
-               area: ['100%', '100%'],//弹出页面的宽 高
-               /*shade: false,*/ //遮罩层透明度,默认false，也可以写数字表示透明程度（如：0.1），数字越大，透明度越低
-               title: "新增合同", //显示标题
-               skin: 'layui-layer-rim', //加上边框
-               content: ["/html/addcontract.html"],
-               //content  是一个url，可以访问后台，如果不想让iframe出现滚动条，这样写content: ['http://baidu.com', 'no']
-           });
-       })
+        form.on("submit(addcon)",function () {
+            layer.open({
+                type: 2,  //类型  2表示iframe层  1：页面层
+                icon: 2,
+                closeBtn: 0,
+                area: ['100%', '100%'],//弹出页面的宽 高
+                /*shade: false,*/ //遮罩层透明度,默认false，也可以写数字表示透明程度（如：0.1），数字越大，透明度越低
+                title: "新增合同", //显示标题
+                skin: 'layui-layer-rim', //加上边框
+                content: ["/html/addcontract.html"],
+                //content  是一个url，可以访问后台，如果不想让iframe出现滚动条，这样写content: ['http://baidu.com', 'no']
+            });
+        })
 
         form.on("submit(formDemo)",function (data) {
-           layer.msg(data.field);
+            layer.msg(data.field);
         })
 
         form.on("submit(refresh)",function () {
             table.reload('demo', {//表格重载
-                url: '/contract/querycon.do'
+                url: '/contract/querycon.do?affiliated='+'王娜'
                 ,page: {
                     curr: 1 //重新从第 1 页开始
                 }
@@ -173,7 +157,7 @@
         })
         window.clistate=function(val){
             table.reload('demo', {//表格重载
-                url: '/contract/querycon.do?'+val+"="+val
+                url: '/contract/querycon.do?'+val+"="+val+'&affiliated='+'王娜'
                 ,page: {
                     curr: 1 //重新从第 1 页开始
                 }

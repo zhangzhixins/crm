@@ -2,6 +2,9 @@ package com.hy.crm.mapper;
 
 import com.hy.crm.pojo.Income;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface IncomeMapper extends BaseMapper<Income> {
 
+    @Select("select * from income where conid=${value}")
+    public List<Income> incomeid(Integer conid);
 }

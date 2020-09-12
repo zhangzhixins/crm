@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>我的跟单</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+<div class="box2"><!--右边的div-->
+    <form class="layui-form">
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <h1>我的跟单</h1>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <select name="docify" lay-verify="required" >
+                    <option value="0">请选择</option>
+                    <option value="doctime">跟单时间</option>
+                    <option value="docname">跟单主题</option>
+                    <option value="docpeople">跟单人</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <input class="layui-input" name="doccontent" id="demoReload" autocomplete="off">
+        </div>
+        <div class="layui-inline">
+            <button class="layui-btn layui-btn-primary" lay-submit lay-filter="listdoc"><i class="layui-icon" >&#xe615;搜索</i></button>
+        </div>
+        <div class="layui-inline">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-primary" id="adddoc"><i class="layui-icon" >&#xe654;新增跟单</i></button>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button class="layui-btn layui-btn-primary" id="brefresh"><i class="layui-icon" >&#xe9aa;刷新</i></button>
+        </div>
+    </form>
+</div>
+<table class="layui-hide" id="doc"></table>
+
+
+<script src="/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script>
+    layui.use('table', function(){
+        var layer = layui.layer
+            ,form = layui.form
+            ,table = layui.table
+            ,$=layui.jquery;
+
+        table.render({
+            elem: '#doc'
+            ,url:'/documentary/selectdoc.do?docpeople='+'李四'
+            ,page: true //开启分页
+            ,limits:[15,20,25,30,5]
+            ,cols: [[
+                ,{field:'doctime', width:170, title: '跟单时间',templet: "<div>{{layui.util.toDateString(d.doctime, 'yyyy-MM-dd HH:mm:ss')}}</div>"}
+                ,{
+                  field:'docname'
+                , width:350
+                , title: '跟单主题'
+                ,templet: '<div><a href="/business/queryById.do?busid={{d.busid}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.docname}}</a></div>'
+
+                }
+                ,{field:'docpeople', width:120, title: '跟单人'}
+                ,{field:'doccontent', width:380, title: '详细内容'}
+                ,{field:'docaccessory', width:265 ,title: '附件'}
+            ]]
+        });
+        $(function () {
+            //点击刷新按钮表格重载
+            $("#brefresh").click(function () {
+                $("#keyWord").val("");
+                table.reload('demo', {//表格重载
+                    url: '/doumentary/selectdoc.do'
+                    ,page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                });
+            })
+            //点击跟单
+            $("#adddoc").click(function () {
+                layer.open({
+                    type: 2,  //类型  2表示iframe层  1：页面层
+                    icon: 2,
+                    closeBtn: 0,
+                    area: ['100%', '100%'],//弹出页面的宽 高
+                    /*shade: false,*/ //遮罩层透明度,默认false，也可以写数字表示透明程度（如：0.1），数字越大，透明度越低
+                    title: "新增跟单", //显示标题
+                    skin: 'layui-layer-rim', //加上边框
+                    content: ["/html/adddocumentary.html"],
+                    //content  是一个url，可以访问后台，如果不想让iframe出现滚动条，这样写content: ['http://baidu.com', 'no']
+                });
+            })
+        })
+        form.on('submit(listdoc)', function(data){
+            console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+            tab.reload({
+                url: '/documentary/selectdoc.do' //数据接口
+                ,where:data.field
+            });
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        })
+    })
+</script>
+</body>
+</html>

@@ -38,11 +38,20 @@ public class DocumentaryController {
     /*添加跟单*/
     @RequestMapping("/adddoc.do")
     @ResponseBody
-    public void adddocumentary(Documentary documentary,String theme){
+    public MsgUtils adddocumentary(Documentary documentary,String theme){
         documentary.setState("初期沟通");
         documentary.setNewtime(new Date());
         documentary.setDocname(theme+"-"+documentary.getDocify());
-        iDocumentaryService.save(documentary);
+        boolean ad=iDocumentaryService.save(documentary);
+        MsgUtils msg=new MsgUtils();
+        if (ad==false){
+                msg.setCode("1");
+                msg.setMsg("查询失败");
+        }else {
+                msg.setCode("0");
+                msg.setMsg("查询成功");
+        }
+        return msg;
     }
 
 
@@ -50,6 +59,7 @@ public class DocumentaryController {
     @RequestMapping("/selectdoc.do")
     @ResponseBody
     public MsgUtils selectDocumentary(Integer page, Integer limit, Documentary documentary){
+        System.out.println("====================="+documentary.getDocpeople());
         IPage<Documentary> doclist =iDocumentaryService.selectdoc(page,limit,documentary);
         MsgUtils msg=new MsgUtils();
         msg.setCode("0");

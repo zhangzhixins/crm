@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<!--suppress ALL-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/layui/css/layui.css">
-    <title>添加合同</title>
+    <title>合同详情</title>
 </head>
 <style>
     .box{
@@ -103,7 +104,7 @@
         position:absolute;
         top: 210px;
         left: 510px;
-        border: 1px black solid;
+        border: 1px rgba(0, 0, 0, 0.99) solid;
         width: 400px;
         height: 150px;
     }
@@ -118,11 +119,11 @@
         left: 370px;
     }
 </style>
-<body>
+<body style="overflow-y: auto">
 <div class="box1">
     <form class="layui-form" method="post">
         <div class="layui-form-item box" ><!--页面头部信息-->
-            <div class="layui-inline" style="width: 200px;font-size: 25px;float: left">新增合同服务
+            <div class="layui-inline" style="width: 200px;font-size: 25px;float: left">合同详细
             </div>
             <div class="layui-inline" style="width: 100px;float: right">
                 <button type="button" class="layui-btn layui-btn-primary">
@@ -139,15 +140,15 @@
             <div class="layui-form-item layui-inline">
                 <label class="layui-form-label box10"><font color="red">*</font>合同全称:</label>
                 <div class="layui-input-block">
-                    <input type="text" name="allname" id="allname"   autocomplete="off" class="layui-input box11">
+                    <input type="text" name="allname" id="allname"  th:value="${con.allname}"  style="font-size:15px;"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline" style="float: right">
                 <label class="layui-form-label">优先级:</label>
                 <div class="layui-input-block">
-                    <input type="radio" lay-skin="primary" name="conpriority" value="1" title="低">
-                    <input type="radio" lay-skin="primary" name="conpriority" value="2" title="中">
-                    <input type="radio" lay-skin="primary" name="conpriority" value="3" title="高">
+                    <input type="radio" lay-skin="primary" name="conpriority" th:value="1" title="低" th:checked="*{con.conpriority}">
+                    <input type="radio" lay-skin="primary" name="conpriority" th:value="2" title="中" th:checked="*{con.conpriority}">
+                    <input type="radio" lay-skin="primary" name="conpriority" th:value="3" title="高" th:checked="*{con.conpriority}">
                 </div>
             </div>
         </div>
@@ -156,8 +157,7 @@
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10"><font color="red">*</font>客户名称:</label>
                 <div class="layui-input-block" style = "width:300px;">
-                    <select id="allcli" name="cliid" lay-filter="allcli">
-                        <option value="0" selected >请选择</option>
+                    <select id="allcli" name="allcli" th:field="${con.cliid}" lay-filter="allcli">
                     </select>
                 </div>
             </div>
@@ -165,7 +165,6 @@
                 <label class="layui-form-label box10">所属行业:</label>
                 <div class="layui-input-block box11">
                     <select name="industry" id="industry">
-                        <option value="0">请选择</option>
                         <option value="IT|互联网|通信|电子">IT|互联网|通信|电子</option>
                         <option value="金融|银行|保险">金融|银行|保险</option>
                         <option value="房产|建筑建设|物业">房产|建筑建设|物业</option>
@@ -194,98 +193,98 @@
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10"><font color="red">*</font>合同名称:</label>
                 <div class="layui-input-block">
-                    <input type="text" name="conname" id="conname" autocomplete="off" class="layui-input box11">
+                    <input type="text" name="conname" id="conname" th:value="${con.conname}" autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10"><font color="red">*</font>合同编号:</label>
                 <div class="layui-input-block">
-                    <input type="text" name="conserial"  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="conserial"  th:value="${con.conserial}" autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">合同金额:</label>
                 <div class="layui-input-block">
-                    <input type="text" name="conmoney"  autocomplete="off" class="layui-input box11">
+                    <input type="text" name="conmoney"  th:value="${con.conmoney}" autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box12"><font color="red">*</font>签约日期:</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="contime" id="test1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
+                    <input type="text" name="contime" id="test1" th:value="${#dates.format(con.contime, 'yyyy-MM-dd')}" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">生效日期:</label>
                 <div class="layui-input-block">
-                    <input type="text" name="entrytime" id="test2" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11">
+                    <input type="text" name="entrytime" id="test2" th:value="${#dates.format(con.entrytime, 'yyyy-MM-dd')}" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box12">服务期至:</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="endtime" id="test3" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
-                </div>
+                    <div class="layui-input-inline">
+                        <input type="text" name="endtime" id="test3"  th:value="${#dates.format(con.endtime, 'yyyy-MM-dd')}"lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input box13">
+                    </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10"><font color="red">*</font>对方联系人:</label>
-                <div class="layui-input-block">
-                    <input type="text" name="linkname"  autocomplete="off" class="layui-input box11">
-                </div>
+                    <div class="layui-input-block">
+                        <input type="text" name="linkname"  autocomplete="off" th:value="${con.linkname}" class="layui-input box11">
+                    </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">固定电话:</label>
-                <div class="layui-input-block">
-                    <input type="text" name="linkphone"  autocomplete="off" class="layui-input box11">
-                </div>
+                    <div class="layui-input-block">
+                        <input type="text" name="linkphone"  th:value="${con.linkphone}" autocomplete="off" class="layui-input box11">
+                    </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">移动电话:</label>
-                <div class="layui-input-block">
-                    <input type="text" name="phone"  autocomplete="off" class="layui-input box11">
-                </div>
+                    <div class="layui-input-block">
+                        <input type="text" name="phone"  th:value="${con.phone}" autocomplete="off" class="layui-input box11">
+                    </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">邮件/QQ:</label>
-                <div class="layui-input-block">
-                    <input type="text" name="email"  autocomplete="off" class="layui-input box11">
-                </div>
+                    <div class="layui-input-block">
+                        <input type="text" name="email"  th:value="${con.email}" autocomplete="off" class="layui-input box11">
+                    </div>
             </div>
             <div class="layui-form-item box14">
                 <label class="layui-form-label">主要技术条款:</label>
-                <div class="layui-input-block">
-                    <textarea  name="technicalterm" type="text/plain" style="width:85%;height:150px"></textarea>
-                </div>
+                    <div class="layui-input-block">
+                        <textarea  name="technicalterm" th:text="${con.technicalterm}" type="text/plain" style="width:85%;height:150px"></textarea>
+                    </div>
             </div>
             <div class="layui-form-item box14">
                 <label class="layui-form-label">主要商务条款:</label>
-                <div class="layui-input-block">
-                    <textarea  name="commerceterm" type="text/plain" style="width:85%;height:150px"></textarea>
-                </div>
+                    <div class="layui-input-block">
+                        <textarea  name="commerceterm" th:text="${con.commerceterm}" type="text/plain" style="width:85%;height:150px"></textarea>
+                    </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">相关附件:</label>
-                <div class="layui-input-block">
-                    <input type="file" name=""  autocomplete="off" class="layui-input box11">
-                </div>
+                    <div class="layui-input-block">
+                        <input type="file" name=""  th:value="${con.entrytime}" autocomplete="off" class="layui-input box11">
+                    </div>
             </div>
             <div class="layui-form-item layui-inline box4"><!--这个不用啥也不用写-->
                 <label class="layui-form-label box10"></label>
-                <div class="layui-input-block">
-                    <input type="text" name=""  autocomplete="off" class="layui-input box11" style="border: none">
-                </div>
+                    <div class="layui-input-block">
+                        <input type="text" name=""  th:value="${con.entrytime}" autocomplete="off" class="layui-input box11" style="border: none">
+                    </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">商机所属部门:</label>
-                <div class="layui-input-block">
-                    <input type="text" name="condept"  autocomplete="off" class="layui-input box11">
-                </div>
+                    <div class="layui-input-block">
+                        <input type="text" name="condept"  th:value="${con.condept}" autocomplete="off" class="layui-input box11">
+                    </div>
             </div>
             <div class="layui-form-item layui-inline box4">
                 <label class="layui-form-label box10">关联人员:</label>
-                <div class="layui-input-block">
-                    <input type="text" name="affiliated"  autocomplete="off" class="layui-input box11">
-                </div>
+                    <div class="layui-input-block">
+                        <input type="text" name="affiliated" th:value="${con.affiliated }" autocomplete="off" class="layui-input box11">
+                    </div>
             </div>
         </div>
         <div class="box15"><!--处理流程信息-->
@@ -312,9 +311,10 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" th:name="conid" th:value="${con.conid}">
         <div class="layui-form-item box20">
             <div class="layui-input-block">
-                <button class="layui-btn layui-btn-radius layui-btn-normal" lay-submit lay-filter="formTest">保存</button>
+                <button class="layui-btn layui-btn-radius layui-btn-normal" lay-submit lay-filter="formTest">编辑</button>
                 <button class="layui-btn layui-btn-radius layui-btn-normal">提交主管审核</button>
                 <button class="layui-btn layui-btn-radius layui-btn-normal">组织多人评审</button>
                 <button class="layui-btn layui-btn-radius layui-btn-normal">登记完成转执行</button>
@@ -328,41 +328,20 @@
 <script src="/layui/layui.js"></script>
 <script>
     //一般直接写在一个js文件中
-    layui.use(['layer', 'form','table','jquery','laydate','upload'], function(){
+    layui.use(['layer', 'form','table','jquery','laydate','upload'], function() {
         var layer = layui.layer
-            ,form = layui.form
-            ,table = layui.table
-            ,$=layui.jquery
-            ,laydate = layui.laydate
-            ,upload = layui.upload;
+            , form = layui.form
+            , table = layui.table
+            , $ = layui.jquery
+            , laydate = layui.laydate
+            , upload = layui.upload;
 
-        //时间
-        laydate.render({
-            elem: '#test1' //指定元素
-        });
-        laydate.render({
-            elem: '#test2' //指定元素
-        });
-        laydate.render({
-            elem: '#test3' //指定元素
-        });
-
-        //保存
         form.on('submit(formTest)', function(data){
             $.get({
-                url:"/contract/addcon.do",
+                url:"/contract/updcon.do",
                 data:data.field,
-                success:function (data) {
-                    layer.msg(data.msg());
-                    layer.open({
-                        content: ["/html/contract.html"],
-                        //content  是一个url，可以访问后台，如果不想让iframe出现滚动条，这样写content: ['http://baidu.com', 'no']
-                    });
-                }
             })
-            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });
-
         form.on('select(allcli)',function (data) {
             $("#allname").val(data.elem[data.elem.selectedIndex].text);
             $.ajax({
@@ -384,7 +363,16 @@
                 }
             })
         })
-        //预加载函数
+        //时间
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+        laydate.render({
+            elem: '#test2' //指定元素
+        });
+        laydate.render({
+            elem: '#test3' //指定元素
+        });
         $(function () {
             $.ajax({
                 url:"/client/query.do",
@@ -407,8 +395,9 @@
                 }
 
             })
-        })
-    });
+        });
+        });
+
 </script>
 </body>
 </html>

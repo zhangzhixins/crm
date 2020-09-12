@@ -49,19 +49,24 @@ public class SqlUtils {
 
     public String select2(Page<Documentary> page, @Param("doc") Documentary documentary){
         StringBuffer sql=new StringBuffer("select * from documentary where 1=1");
+        if (documentary.getDocpeople() !=null && !documentary.getDocpeople().equals("")) {
+            sql.append(" and docpeople= #{doc.docpeople}");
+        }
         if (documentary.getDocify()!=null && !documentary.getDocify().equals("")) {
             if (documentary.getDocify() != "0") {
-                sql.append("and ${doc.docify()} like %${doc.doccontent()}%");
+                sql.append(" and ${doc.docify} like %${doc.doccontent}%");
             }
         }
-
         return  sql.toString();
     }
     public String select3(Page<Contract> page, @Param("con") Contract contract,@Param("type")TypeExt1 typeExt1){
         StringBuffer sql=new StringBuffer("select * from contract where 1=1");
+        if (contract.getAffiliated()!=null && !contract.getAffiliated().equals("")){
+            sql.append(" and affiliated = #{con.affiliated}");
+        }
         if (contract.getConname()!=null && !contract.getConname().equals("")){
             if (contract.getConname()!="0"){
-                sql.append("and ${con.conname()} like %${con.allname()}%");
+                sql.append(" and ${con.conname} like %${con.allname}%");
             }
         }
         if(typeExt1.getHand() !=null && !typeExt1.getHand().equals("")){

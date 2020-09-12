@@ -4,7 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hy.crm.mapper.ContractMapper;
+import com.hy.crm.mapper.IncomeMapper;
+import com.hy.crm.mapper.InvoiceMapper;
 import com.hy.crm.pojo.Contract;
+import com.hy.crm.pojo.Income;
+import com.hy.crm.pojo.Invoice;
+import com.hy.crm.pojo.vo.ContractExt;
 import com.hy.crm.pojo.vo.TypeExt;
 import com.hy.crm.pojo.vo.TypeExt1;
 import com.hy.crm.service.IContractService;
@@ -28,6 +33,10 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
 
     @Autowired
     ContractMapper contractMapper;
+    @Autowired
+    IncomeMapper incomeMapper;
+    @Autowired
+    InvoiceMapper invoiceMapper;
 
     @Override
     public List<Contract> queryContract(Integer cliid){
@@ -42,14 +51,22 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
     }
 
     @Override
-    public IPage<Contract> querycon(Integer page, Integer limit, Contract contract,TypeExt1 typeExt1) {
-
+    public List<ContractExt> querycon(Integer page, Integer limit, Contract contract,TypeExt1 typeExt1) {
+         List<Income> listincome=new ArrayList<>();
+         List<Invoice> listinvoice=new ArrayList<>();
+         List<ContractExt> listconext=new ArrayList<>();
         if (page==null || page.equals("")){
             page=1;
         }
         Page page1=new Page(page,limit);
         IPage<Contract> querycon =contractMapper.querycon(page1,contract,typeExt1);
-        return  querycon;
+        for(Contract con:querycon.getRecords()){
+            listincome=incomeMapper.incomeid(con.getConid());
+            listinvoice=invoiceMapper.invoiceid(con.getConid());
+            ContractExt contractExt=new ContractExt(con,listincome,listinvoice);
+            listconext.add(contractExt);
+        }
+        return  listconext;
     }
     @Override
     public TypeExt1 queryCount(){
@@ -69,7 +86,6 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
         for (int i = 0; i < lis.size(); i++) {
             //传入日期函数 string
             list.add(contractMapper.queryCount(lis.get(i)));
-            System.out.println(contractMapper.queryCount(lis.get(i)));
         }
         typeExt.setHand(String.valueOf(list.get(0)));
         typeExt.setEnd(String.valueOf(list.get(1)));
