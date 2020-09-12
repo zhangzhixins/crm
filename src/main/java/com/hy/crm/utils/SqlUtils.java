@@ -105,4 +105,17 @@ public class SqlUtils {
         }
         return  sql.toString();
     }
+
+
+
+    public String select7(@Param("state") Integer state,@Param("date") String date){
+        StringBuffer sql=new StringBuffer("select count(1) as count,sum(makemoney) as money from business ");
+        if(date=="1" ||date.equals("1")){
+            sql.append(" where state=#{state}");
+        }else {
+            sql.append(" where state=#{state} ${date}");
+        }
+        System.out.println("11111111111111111111111111111"+sql);
+        return sql.toString();
+    }
 }

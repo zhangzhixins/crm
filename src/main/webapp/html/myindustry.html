@@ -59,11 +59,11 @@
         table.render({
             elem: '#demo'
             ,height: 400
-            ,url: 'bb' //数据接口
+            ,url: '/statistic/industry.do' //数据接口
             ,cols: [[ //表头
-                ,{field: '', title: '行业分布', width:600}
-                ,{field: '', title: '商机数', width:200}
-                ,{field: '', title: '金额', width: 200}
+                ,{field: 'cliindustry', title: '行业分布', width:600}
+                ,{field: 'bcount', title: '商机数', width:200}
+                ,{field: 'bmoney', title: '金额', width: 200}
             ]]
             ,done: function(res, curr, count){
                 this.where={};
@@ -98,187 +98,157 @@
         }
 
 
-        /**
-         * 第一个
-         */
-        // 基于准备好的dom，初始化echarts实例
-        var myChart1 = echarts.init(document.getElementById('d1'));
-        // 指定图表的配置项和数据
-        var option1 = {
-            xAxis: {
-                type: 'category',
-                data: [
-                    'IT|互联网|通信|电子',
-                    '金融|银行|保险',
-                    '房产|建筑建设|物业',
-                    '广告|传媒|印刷出版',
-                    '消费零售|贸易|交通物流',
-                    '管理咨询|教育科研|中介服务',
-                    '医药生物|医疗保健',
-                    '酒店旅游',
-                    '政府|非赢利机构|科研',
-                    '其他'
-                ]
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [{
-                data: [120, 200, 150, 200, 70, 110, 130],
-                type: 'bar',
-                showBackground: true,
-                backgroundStyle: {
-                    color: 'rgba(220, 220, 220, 0.8)'
+        $.get({
+            url:"/statistic/industry.do",
+            success:function (data) {
+
+                data=data.data;
+                var name=[];//名称数组
+                var value1=[];//商机数量
+                var value2=[];//商机金额
+                var obj=[];
+                var obj2=[];
+                for(var i=0;i<data.length;i++) {
+                    name.push(data[i].cliindustry);
+                    value2.push(data[i].bmoney);
+                    /*来源名称和数量*/
+                    var hyy = {name: data[i].cliindustry, value: data[i].bcount}
+                    /*来源名称和进而*/
+                    var hyy2 = {name: data[i].cliindustry, value: data[i].bmoney}
+                    obj.push(hyy);
+                    obj2.push(hyy2);
                 }
-                ,itemStyle: {
-                    normal: {
-                        label: {
-                            show: true, //开启显示
-                            position: 'top', //在上方显示
-                            textStyle: { //数值样式
-                                color: 'black',
-                                fontSize: 16
+
+                // 基于准备好的dom，初始化echarts实例
+                var myChart1 = echarts.init(document.getElementById('d1'));
+                // 指定图表的配置项和数据
+                var option1 = {
+                    xAxis: {
+                        type: 'category',
+                        data: name
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        data: obj,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(220, 220, 220, 0.8)'
+                        }
+                        ,itemStyle: {
+                            normal: {
+                                label: {
+                                    show: true, //开启显示
+                                    position: 'top', //在上方显示
+                                    textStyle: { //数值样式
+                                        color: 'black',
+                                        fontSize: 16
+                                    }
+                                }
+                            }
+                        },
+                        dataZoom: [
+                            {
+                                show: true,//dataZoom，框选区域缩放，自动与存在的dataZoom控件同步，分别是启用，缩放后退
+                                start: 0,
+                                end: 10
+                            }
+                        ],
+                    }]
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart1.setOption(option1);
+
+
+
+
+                /**
+                 * 第二个
+                 */
+                    // 基于准备好的dom，初始化echarts实例
+                var myChart2 = echarts.init(document.getElementById('d2'));
+                // 指定图表的配置项和数据
+                var option2 = {
+                    xAxis: {
+                        type: 'category',
+                        data: name
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        data: obj2,
+                        type: 'bar',
+                        showBackground: true,
+                        backgroundStyle: {
+                            color: 'rgba(220, 220, 220, 0.8)'
+                        }
+                    }]
+                    ,itemStyle: {
+                        normal: {
+                            label: {
+                                show: true, //开启显示
+                                position: 'top', //在上方显示
+                                textStyle: { //数值样式
+                                    color: 'black',
+                                    fontSize: 16
+                                }
                             }
                         }
-                    }
-                },
-                dataZoom: [
-                    {
-                        show: true,//dataZoom，框选区域缩放，自动与存在的dataZoom控件同步，分别是启用，缩放后退
-                        start: 0,
-                        end: 10
-                    }
-                ],
-            }]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart1.setOption(option1);
-
-
-
-
-        /**
-         * 第二个
-         */
-            // 基于准备好的dom，初始化echarts实例
-        var myChart2 = echarts.init(document.getElementById('d2'));
-        // 指定图表的配置项和数据
-        var option2 = {
-            xAxis: {
-                type: 'category',
-                data: [
-                    'IT|互联网|通信|电子',
-                    '金融|银行|保险',
-                    '房产|建筑建设|物业',
-                    '广告|传媒|印刷出版',
-                    '消费零售|贸易|交通物流',
-                    '管理咨询|教育科研|中介服务',
-                    '医药生物|医疗保健',
-                    '酒店旅游',
-                    '政府|非赢利机构|科研',
-                    '其他'
-                ]
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [{
-                data: [120, 200, 150, 80, 70, 200, 130,152,140,56],
-                type: 'bar',
-                showBackground: true,
-                backgroundStyle: {
-                    color: 'rgba(220, 220, 220, 0.8)'
-                }
-            }]
-            ,itemStyle: {
-                normal: {
-                    label: {
-                        show: true, //开启显示
-                        position: 'top', //在上方显示
-                        textStyle: { //数值样式
-                            color: 'black',
-                            fontSize: 16
+                    },
+                    dataZoom: [
+                        {
+                            show: true,//dataZoom，框选区域缩放，自动与存在的dataZoom控件同步，分别是启用，缩放后退
+                            start: 0,
+                            end: 10
                         }
-                    }
-                }
-            },
-            dataZoom: [
-                {
-                    show: true,//dataZoom，框选区域缩放，自动与存在的dataZoom控件同步，分别是启用，缩放后退
-                    start: 0,
-                    end: 10
-                }
-            ],
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart2.setOption(option2);
+                    ],
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart2.setOption(option2);
 
 
 
-        /**
-         * 第三个
-         */
-            // 基于准备好的dom，初始化echarts实例
-        var myChart3 = echarts.init(document.getElementById('d3'));
-        // 指定图表的配置项和数据
-        var option3 = {
-            series : [
-                {
-                    name: '访问来源',
-                    type: 'pie',
-                    radius: '55%',
-                    left:200,
-                    data:[
-                        {value:1, name:'IT|互联网|通信|电子'},
-                        {value:2, name:'金融|银行|保险'},
-                        {value:3, name:'房产|建筑建设|物业'},
-                        {value:4, name:'广告|传媒|印刷出版'},
-                        {value:5, name:'消费零售|贸易|交通物流'},
-                        {value:6, name:'管理咨询|教育科研|中介服务'},
-                        {value:7, name:'医药生物|医疗保健'},
-                        {value:8, name:'酒店旅游'},
-                        {value:9, name:'政府|非赢利机构|科研'},
-                        {value:4, name:'其他'},
-                    ]
-                }
-            ]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart3.setOption(option3);
+                /**
+                 * 第三个
+                 */
+                    // 基于准备好的dom，初始化echarts实例
+                var myChart3 = echarts.init(document.getElementById('d3'));
+                // 指定图表的配置项和数据
+                var option3 = {
+                    title: {left: 'center'},
+                    tooltip: {trigger: 'item', formatter: '{a} <br/>{b} : {c} ({d}%)'},
+                    series: [
+                        {type: 'pie', radius: '55%', center: ['40%', '50%'], data: obj,
+                            emphasis: {itemStyle: {shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.5)'}}}]
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart3.setOption(option3);
 
 
 
 
-        /**
-         * 第四个
-         */
-            // 基于准备好的dom，初始化echarts实例
-        var myChart4 = echarts.init(document.getElementById('d4'));
-        // 指定图表的配置项和数据
-        var option4 = {
-            series: [
-                {
-                    name: '访问来源',
-                    type: 'pie',
-                    radius: '55%',
-                    left: 200,
-                    data: [
-                        {value:1, name:'IT|互联网|通信|电子'},
-                        {value:2, name:'金融|银行|保险'},
-                        {value:3, name:'房产|建筑建设|物业'},
-                        {value:4, name:'广告|传媒|印刷出版'},
-                        {value:5, name:'消费零售|贸易|交通物流'},
-                        {value:6, name:'管理咨询|教育科研|中介服务'},
-                        {value:7, name:'医药生物|医疗保健'},
-                        {value:8, name:'酒店旅游'},
-                        {value:9, name:'政府|非赢利机构|科研'},
-                        {value:4, name:'其他'},
-                    ]
-                }
-            ]
-        }
-        // 使用刚指定的配置项和数据显示图表。
-        myChart4.setOption(option4);
+                /**
+                 * 第四个
+                 */
+                    // 基于准备好的dom，初始化echarts实例
+                var myChart4 = echarts.init(document.getElementById('d4'));
+                // 指定图表的配置项和数据
+                var option4 = {
+                    title: {left: 'center'},
+                    tooltip: {trigger: 'item', formatter: '{a} <br/>{b} : {c} ({d}%)'},
+                    series: [
+                        {type: 'pie', radius: '55%', center: ['40%', '50%'], data: obj2,
+                            emphasis: {itemStyle: {shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.5)'}}}]
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart4.setOption(option4);
+            }
+        })
+
+
 
     });
 </script>

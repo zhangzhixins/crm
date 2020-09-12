@@ -27,5 +27,15 @@ public interface DocumentaryMapper extends BaseMapper<Documentary> {
     @Select("select * from documentary where busid=#{value}")
     ArrayList<Documentary> iddocbus(Integer busid);
 
+    /*查询时间段内的跟单总数量*/
+    @Select("select count(1) from documentary where 1=1  ${value}")
+    public Integer selectCount(String val);
+
+
+    /**
+     * 根据id查询跟单数
+     */
+    @Select("select count(1) from documentary where docpeople=#{name} ${date}")
+    public Integer queryThis(@Param("name") String name,@Param("date") String date);
 
 }

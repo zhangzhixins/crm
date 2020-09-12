@@ -24,4 +24,21 @@ public interface ContractMapper extends BaseMapper<Contract> {
     @Select("select count(1) from contract where ${val}")
     public int queryCount(String val);
 
+
+    /*查询总数量*/
+    @Select("select count(1) from contract where state!=1015 ${value} ")
+    public Integer selectCount(String val);
+
+
+    /**
+     * 根据id查询合同数量
+     */
+    @Select("select count(1) from contract where affiliated=#{name} ${date}")
+    public Integer queryThis(@Param("name") String name,@Param("date") String date);
+
+
+    /*查数量*/
+    @Select("select count(1) from contract where state!=1015")
+    public Integer allCount();
+
 }
