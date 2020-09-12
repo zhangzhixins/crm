@@ -18,7 +18,9 @@ public interface IClientService extends IService<Client> {
     public List<Client> queryClient();
     public List<Client> verifyClient(String cliname);
 
-    public List<ClientExt2> QueryBusinesss(Integer limit, Integer page,ClientExt2 clientExt2);
+    public List<ClientExt2> QueryBusinesss(Integer limit, Integer page,ClientExt2 clientExt2,Client client,String val,String keyWord,Integer ifyid);
+
+
 
 
 }

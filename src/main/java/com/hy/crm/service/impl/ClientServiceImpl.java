@@ -52,18 +52,30 @@ public class ClientServiceImpl extends ServiceImpl<ClientMapper, Client> impleme
     }
 
     @Override
-    public List<ClientExt2> QueryBusinesss(Integer limit, Integer page,ClientExt2 clientExt2) {
-        if(limit==null){
-            limit=10;
-        }
-        if(page==null){
-            page=1;
-        }
-        List<ClientExt2> list1=new ArrayList<>();
+    public List<ClientExt2> QueryBusinesss(Integer limit, Integer page,ClientExt2 clientExt2,Client client,String val,String keyWord,Integer ifyid) {
 
-        IPage iPage = new Page<>(page,limit);
-        IPage iPage1 = clientMapper.selectPage(iPage,null);
-        List<Client> list2= iPage.getRecords();
+        List<ClientExt2> list1=new ArrayList<>();
+        IPage iPage = new Page<Client>(page,limit);
+
+        QueryWrapper<Client> queryWrapper = new QueryWrapper<>();
+        IPage iPage1 =null;
+        if(val!=null && keyWord!=null ){
+            if(ifyid!=null){
+                queryWrapper.like(val,keyWord);
+                queryWrapper.eq("ifyid",ifyid);
+            }else {
+                queryWrapper.like(val,keyWord);
+            }
+        }else {
+            if(ifyid==null){
+                queryWrapper=null;
+            }else{
+                queryWrapper.eq("ifyid",ifyid);
+            }
+        }
+        iPage1=clientMapper.selectPage(iPage,queryWrapper);
+        List<Client> list2= iPage1.getRecords();
+
         for(Client lid:list2){
             ClientExt2 clientExt21=new ClientExt2();
 
@@ -109,10 +121,8 @@ public class ClientServiceImpl extends ServiceImpl<ClientMapper, Client> impleme
             Float fwjkfj=0.0f;//算出的均分
             for (Aftersale aftersales:aftersaleList){
                 fwjk+=aftersales.getAftgrade();//拿到售后服务均分
-                System.out.println(fwjk/aff);
                 fwjkfj=Float.parseFloat(String.valueOf(fwjk/aff));
             }
-
 
             clientExt21.setCliname(lid.getCliname());//客户名称
             clientExt21.setCliid(lid.getCliid());//客户id
@@ -127,5 +137,7 @@ public class ClientServiceImpl extends ServiceImpl<ClientMapper, Client> impleme
         }
         return list1;
     }
+
+
 
 }

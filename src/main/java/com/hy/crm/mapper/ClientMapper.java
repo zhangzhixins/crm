@@ -1,7 +1,7 @@
 package com.hy.crm.mapper;
 
-import com.hy.crm.pojo.Client;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hy.crm.pojo.Client;
 import com.hy.crm.pojo.vo.ByIndustryStatistics;
 import org.apache.ibatis.annotations.Select;
 
@@ -22,5 +22,6 @@ public interface ClientMapper extends BaseMapper<Client> {
 
     @Select("select count(1) from client")
     public Integer allCount();
+
 
 }

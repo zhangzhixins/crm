@@ -1,6 +1,5 @@
 package com.hy.crm.mapper;
 
-import com.hy.crm.pojo.Business;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hy.crm.pojo.vo.BusFunnel;
 import com.hy.crm.pojo.vo.ByBusinessSource;
@@ -11,6 +10,13 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
+import com.hy.crm.pojo.Business;
+import com.hy.crm.pojo.Client;
+import com.hy.crm.pojo.vo.BusinessExt;
+import org.apache.ibatis.annotations.One;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * <p>
@@ -22,6 +28,15 @@ import java.util.Map;
  */
 public interface BusinessMapper extends BaseMapper<Business> {
 
+
+    @Results({
+            @Result(column = "cliid",property = "client",one = @One(select ="queryClient" ))
+    })
+    @Select("select * from business where busid=#{busid}")
+    public BusinessExt queryById(Integer busid);
+
+    @Select("select * from client where cliid=#{value}")
+    public Client queryClient(Integer cliid);
     /**
      * 查询全部的数量
      * @param val

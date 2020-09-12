@@ -27,6 +27,7 @@ public class Post implements Serializable {
 
     private Integer busid;
 
+
     private String label;
 
     private String theme;
@@ -130,6 +131,8 @@ public class Post implements Serializable {
     public void setBusid(Integer busid) {
         this.busid = busid;
     }
+
+
 
     @Override
     public String toString() {

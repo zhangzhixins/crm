@@ -27,7 +27,7 @@ public class Documentary implements Serializable {
 
     private Integer busid;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date doctime;
+    private String doctime;
 
     private String docify;
 
@@ -57,11 +57,11 @@ public class Documentary implements Serializable {
     public void setBusid(Integer busid) {
         this.busid = busid;
     }
-    public Date getDoctime() {
+    public String getDoctime() {
         return doctime;
     }
 
-    public void setDoctime(Date doctime) {
+    public void setDoctime(String doctime) {
         this.doctime = doctime;
     }
     public String getDocify() {
