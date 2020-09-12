@@ -159,16 +159,16 @@
         //表格加载数据
         table.render({
             elem: '#demo'
-            ,height: 312
+            ,height: 350
             ,url: '/business/queryAll.do' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
-                {field: 'busname', title: '商机名称', width:300,templet: '<div><a href="/business/querylist.do?cliid={{d.cliid}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.busname}}</a></div>'}
+                {field: 'busname', title: '商机名称', width:300,templet: '<div><a href="/business/queryById.do?busid={{d.busid}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.busname}}</a></div>'}
                 ,{field: 'busstage', title: '商机阶段', width:120}
                 ,{field: 'makemoney', title: '预计成交金额', width:200}
                 ,{field: 'busprincipal', title: '商机负责人', width: 120}
-                ,{field: '', title: '最后跟单', width:200}
-                ,{field: '', title: '讨论版', width: 120}
+                ,{field: 'doctime', title: '最后跟单', width:200}
+                ,{field: 'discussion', title: '讨论版', width: 120}
             ]]
             ,done: function(res, curr, count){
                 this.where={};

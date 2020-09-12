@@ -1,7 +1,7 @@
 package com.hy.crm.mapper;
 
-import com.hy.crm.pojo.Client;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.hy.crm.pojo.Client;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -18,6 +18,7 @@ public interface ClientMapper extends BaseMapper<Client> {
 
     @Select("select * from client")
     public List<Client> queryClient();
+
 
 
 }

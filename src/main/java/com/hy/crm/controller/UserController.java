@@ -1,5 +1,6 @@
 package com.hy.crm.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hy.crm.pojo.Layuiimg;
 import com.hy.crm.pojo.User;
 import com.hy.crm.service.IUserService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -34,7 +36,7 @@ public class UserController {
     @Autowired
     private IUserService iUserService;
     @RequestMapping(value = "/login.do")
-    public  String sub(User user, Model model) throws UnsupportedEncodingException {
+    public  String sub(User user, Model model, HttpSession session) throws UnsupportedEncodingException {
         System.out.println("他来了");
         System.out.println(user.getUsername()+user.getPwd()+"===");
         Subject subject= SecurityUtils.getSubject();
@@ -55,7 +57,10 @@ public class UserController {
         if(count>0){
             return "html/abnormal.html";
         }
-
+        QueryWrapper queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("username",user.getUsername());
+        User user1=iUserService.getOne(queryWrapper);
+        session.setAttribute("user",user1);
         return "redirect:/html/2.html";
     }
 

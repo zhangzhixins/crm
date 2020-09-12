@@ -168,26 +168,26 @@
             <div class="layui-inline">
                 <label class="layui-form-label"><font color="red">*</font>客户名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="cliname" id="cliname" th:value="${client.cliname}" lay-verify="required"  placeholder="请输入客户名称" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                    <input type="text" name="cliname" id="cliname" th:value="${business.client.cliname}" lay-verify="required"  placeholder="请输入客户名称" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">所属行业</label>
                 <div class="layui-input-block" style="width:400px; height:38px;">
                     <select name="industry" id="industry" lay-filter="aihao" >
-                        <option value="0" th:selected="${client.industry=='0'} ? true:false">请选择</option>
-                        <option value="1" th:selected="${client.industry=='1'} ? true:false">IT|互联网|通信|电子</option>
-                        <option value="2" th:selected="${client.industry=='2'} ? true:false">金融|银行|保险</option>
-                        <option value="3" th:selected="${client.industry=='3'} ? true:false">房产|建筑建设|物业</option>
-                        <option value="4" th:selected="${client.industry=='4'} ? true:false">广告|传媒|印刷出版</option>
-                        <option value="5" th:selected="${client.industry=='5'} ? true:false">消费零售|贸易|交通物流</option>
-                        <option value="6" th:selected="${client.industry=='6'} ? true:false">加工制造|仪表设备</option>
-                        <option value="7" th:selected="${client.industry=='7'} ? true:false">管理咨询|教育科研|中介服务</option>
-                        <option value="8" th:selected="${client.industry=='8'} ? true:false">医药生物|医疗保健</option>
-                        <option value="9" th:selected="${client.industry=='9'} ? true:false">酒店旅游</option>
-                        <option value="10" th:selected="${client.industry=='10'} ? true:false">能源矿产|石油化工</option>
-                        <option value="11" th:selected="${client.industry=='11'} ? true:false">政府|非赢利机构|科研</option>
-                        <option value="12" th:selected="${client.industry=='12'} ? true:false">其他</option>
+                        <option value="请选择" th:selected="${business.client.industry=='请选择'} ? true:false">请选择</option>
+                        <option value="IT|互联网|通信|电子" th:selected="${business.client.industry=='IT|互联网|通信|电子'} ? true:false">IT|互联网|通信|电子</option>
+                        <option value="金融|银行|保险" th:selected="${business.client.industry=='金融|银行|保险'} ? true:false">金融|银行|保险</option>
+                        <option value="房产|建筑建设|物业" th:selected="${business.client.industry=='房产|建筑建设|物业'} ? true:false">房产|建筑建设|物业</option>
+                        <option value="广告|传媒|印刷出版" th:selected="${business.client.industry=='广告|传媒|印刷出版'} ? true:false">广告|传媒|印刷出版</option>
+                        <option value="消费零售|贸易|交通物流" th:selected="${business.client.industry=='消费零售|贸易|交通物流'} ? true:false">消费零售|贸易|交通物流</option>
+                        <option value="加工制造|仪表设备" th:selected="${business.client.industry=='加工制造|仪表设备'} ? true:false">加工制造|仪表设备</option>
+                        <option value="管理咨询|教育科研|中介服务" th:selected="${business.client.industry=='管理咨询|教育科研|中介服务'} ? true:false">管理咨询|教育科研|中介服务</option>
+                        <option value="医药生物|医疗保健" th:selected="${business.client.industry=='医药生物|医疗保健'} ? true:false">医药生物|医疗保健</option>
+                        <option value="酒店旅游" th:selected="${business.client.industry=='酒店旅游'} ? true:false">酒店旅游</option>
+                        <option value="能源矿产|石油化工" th:selected="${business.client.industry=='能源矿产|石油化工'} ? true:false">能源矿产|石油化工</option>
+                        <option value="政府|非赢利机构|科研" th:selected="${business.client.industry=='政府|非赢利机构|科研'} ? true:false">政府|非赢利机构|科研</option>
+                        <option value="其他" th:selected="${business.client.industry=='其他'} ? true:false">其他</option>
                     </select>
                 </div>
             </div>
@@ -196,13 +196,13 @@
             <div class="layui-inline">
                 <label class="layui-form-label">所在城市</label>
                 <div class="layui-input-block">
-                    <input type="text" name="city" id="city" th:value="${client.city}" lay-verify="required" lay-reqtext="请输入所在城市" placeholder="请输入所在城市" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                    <input type="text" name="city" id="city" th:value="${business.client.city}" lay-verify="required" lay-reqtext="请输入所在城市" placeholder="请输入所在城市" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
             <div class="layui-inline">
                 <label class="layui-form-label">详细地址</label>
                 <div class="layui-input-block">
-                    <input type="text" name="address" id="address" th:value="${client.address}" lay-verify="required" lay-reqtext="请输入您当前详细地址" placeholder="请输入详细地址" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
+                    <input type="text" name="address" id="address" th:value="${business.client.address}" lay-verify="required" lay-reqtext="请输入您当前详细地址" placeholder="请输入详细地址" autocomplete="off" style="width:400px; height:38px;" class="layui-input">
                 </div>
             </div>
         </div>
@@ -219,22 +219,22 @@
             <div class="layui-inline">
                 <label class="layui-form-label">客户来源</label>
                 <div class="layui-input-block" style="width:400px; height:38px;">
-                    <select name="clisources" id="id" lay-filter="aihao" >
-                        <option value="0" th:selected="${business.clisources=='0'} ? true:false">请选择</option>
-                        <option value="1" th:selected="${business.clisources=='1'} ? true:false">老客户</option>
-                        <option value="2" th:selected="${business.clisources=='2'} ? true:false">代理商</option>
-                        <option value="3" th:selected="${business.clisources=='3'} ? true:false">互联网</option>
-                        <option value="4" th:selected="${business.clisources=='4'} ? true:false">独立开发</option>
-                        <option value="5" th:selected="${business.clisources=='5'} ? true:false">客户介绍</option>
-                        <option value="6" th:selected="${business.clisources=='6'} ? true:false">合作伙伴</option>
-                        <option value="7" th:selected="${business.clisources=='7'} ? true:false">促销活动</option>
-                        <option value="8" th:selected="${business.clisources=='8'} ? true:false">媒体宣传</option>
-                        <option value="9" th:selected="${business.clisources=='9'} ? true:false">电话访问</option>
-                        <option value="10" th:selected="${business.clisources=='10'} ? true:false">客户来电</option>
-                        <option value="11" th:selected="${business.clisources=='11'} ? true:false">二次销售</option>
-                        <option value="12" th:selected="${business.clisources=='12'} ? true:false">公开招标</option>
-                        <option value="13" th:selected="${business.clisources=='13'} ? true:false">研究会和展会</option>
-                        <option value="14" th:selected="${business.clisources=='14'} ? true:false">其他</option>
+                    <select name="clisources"  lay-filter="aihao" >
+                        <option value="请选择" th:selected="${business.clisources=='请选择'} ? true:false">请选择</option>
+                        <option value="老客户" th:selected="${business.clisources=='老客户'} ? true:false">老客户</option>
+                        <option value="代理商" th:selected="${business.clisources=='代理商'} ? true:false">代理商</option>
+                        <option value="互联网" th:selected="${business.clisources=='互联网'} ? true:false">互联网</option>
+                        <option value="独立开发" th:selected="${business.clisources=='独立开发'} ? true:false">独立开发</option>
+                        <option value="客户介绍" th:selected="${business.clisources=='客户介绍'} ? true:false">客户介绍</option>
+                        <option value="合作伙伴" th:selected="${business.clisources=='合作伙伴'} ? true:false">合作伙伴</option>
+                        <option value="促销活动" th:selected="${business.clisources=='促销活动'} ? true:false">促销活动</option>
+                        <option value="媒体宣传" th:selected="${business.clisources=='媒体宣传'} ? true:false">媒体宣传</option>
+                        <option value="电话访问" th:selected="${business.clisources=='电话访问'} ? true:false">电话访问</option>
+                        <option value="客户来电" th:selected="${business.clisources=='客户来电'} ? true:false">客户来电</option>
+                        <option value="二次销售" th:selected="${business.clisources=='二次销售'} ? true:false">二次销售</option>
+                        <option value="公开招标" th:selected="${business.clisources=='公开招标'} ? true:false">公开招标</option>
+                        <option value="研究会和展会" th:selected="${business.clisources=='研究会和展会'} ? true:false">研究会和展会</option>
+                        <option value="其他" th:selected="${business.clisources=='其他'} ? true:false">其他</option>
                     </select>
                 </div>
             </div>
@@ -434,8 +434,7 @@
                 data:data.field,
                 success:function (data) {
                     if(data.code="0"){
-                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                        parent.layer.close(index);
+                        self.close();
                     }
                 }
             })

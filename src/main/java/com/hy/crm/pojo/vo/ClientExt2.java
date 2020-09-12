@@ -5,7 +5,8 @@ import java.math.BigDecimal;
 
 public class ClientExt2 implements Serializable {
 
-    private  int cliid;
+    private  int cliid;//客户id
+    private Integer ifyid;//客户分类
     private String cliname; //客户名称
     private Integer opportunities; //商机数
     private BigDecimal makemoney; //预计成交金额
@@ -85,5 +86,13 @@ public class ClientExt2 implements Serializable {
 
     public void setAftgrade(Float aftgrade) {
         this.aftgrade = aftgrade;
+    }
+
+    public Integer getIfyid() {
+        return ifyid;
+    }
+
+    public void setIfyid(Integer ifyid) {
+        this.ifyid = ifyid;
     }
 }

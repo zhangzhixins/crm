@@ -19,6 +19,7 @@
     }
 
 </style>
+
 <body>
 <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:1200px; height:38px;" class="div"></div>
 <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:1200px; height:38px;" class="div"></div>
@@ -39,27 +40,28 @@
                 <img src="../static/u214.png" height="20" width="20"/>
                 <span>所有分类</span><br>
                 <img src="../static/u214.png" height="20" width="20"/>
-                <span><a href="">客户分类
+                <span><a href="#" onclick="clistate(1)">客户分类1
                 </a></span><br>
                 <img src="../static/u214.png" height="20" width="20"/>
-                <span><a href="">客户分类2</a></span><br>
+                <span><a href="#" onclick="clistatee(2)">客户分类2</a></span><br>
                 <img src="../static/u214.png" height="20" width="20"/>
-                <span><a href="">客户分类3</a></span><br>
+                <span><a href="#" onclick="clistateee(3)">客户分类3</a></span><br>
             </blockquote>
         </div>
     </div>
 
     <div class="box2"><!--右边的div-->
-        <form class="layui-form" action="/client/queryAll.do" id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
-
+        <form class="layui-form"  id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
             <div class="layui-inline">
                 <div class="layui-input-block">
                     <select name="val" lay-filter="aihao">
-                        <option value="afttheme">按主题</option>
-                        <option value="afttype">按服务类型</option>
-                        <option value="starttime">按开始时间</option>
-                        <option value="aftpeo">按服务人员</option>
-                        <option value="aftgrade">按服务评分</option>
+                        <option value="">请选择</option>
+                        <option value="cliname">按客户名称</option>
+                        <option value="clistr">按拼音</option>
+                        <option value="clisource">按客户来源</option>
+                        <option value="regions">按国家和地区</option>
+                        <option value="city">按所在城市</option>
+                        <option value="industry">按所属行业</option>
                     </select>
                 </div>
             </div>
@@ -88,7 +90,6 @@
 
         </form>
 
-
         <table id="demo" lay-filter="test"></table>
     </div>
 </div>
@@ -106,24 +107,58 @@
         //表格加载数据
         table.render({
             elem: '#demo'
-            ,height: 312
+            ,height: 500
             ,url: '/client/queryAll.do' //数据接口
             ,page: true //开启分页
             ,cols: [[ //表头
 
                 {field:'cliname',title: '客户名称', width:300,templet: '<div><a href="/client/querylist.do?cliid={{d.cliid}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.cliname}}</a></div>'}
-                ,{field: 'opportunities', title: '商机数', width:120}
+                ,{field: 'opportunities', title: '商机数', width:120,templet: '<div><a href="" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'"><img src="../static/u356_mouseover.png" height="15" width="15" style=" background-color:#1E9FFF;"/>&nbsp{{d.opportunities}}</a></div>'}
                 ,{field: 'makemoney', title: '预计成交金额', width:120}
-                ,{field: 'contract', title: '合同数', width:120}
+                ,{field: 'contract', title: '合同数', width:120,templet: '<div><a href="" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'"><img src="../static/u356_mouseover.png" height="15" width="15" style=" background-color:#1E9FFF;"/>&nbsp{{d.contract}}</a></div>'}
                 ,{field: 'conmoney', title: '合同金额', width:120}
                 ,{field: 'returned', title: '回款额', width:120}
-                ,{field: 'number', title: '售后服务数', width:120}
+                ,{field: 'number', title: '售后服务数', width:120,templet: '<div><a href="" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'"><img src="../static/u356_mouseover.png" height="15" width="15" style=" background-color:#1E9FFF;"/>&nbsp{{d.number}}</a></div>'}
                 ,{field: 'aftgrade', title: '服务均分', width:120}
             ]]
         });
-
-
+//点击页面左侧的分类进行查询
+        window.clistate=function(val){
+            table.reload('demo', {//表格重载
+                url: '/client/queryAll.do',
+                where:{
+                    ifyid:1
+                }
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        };
+        window.clistatee=function(val){
+            table.reload('demo', {//表格重载
+                url: '/client/queryAll.do',
+                where:{
+                    ifyid:2
+                }
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        };
+        window.clistateee=function(val){
+            table.reload('demo', {//表格重载
+                url: '/client/queryAll.do',
+                where:{
+                    ifyid:3
+                }
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+        };
         $(function () {
+
+
             //点击刷新按钮表格重载
             $("#brefresh").click(function () {
                 table.reload('demo', {
@@ -152,6 +187,7 @@
             table.reload('demo', {
                 url: '/client/queryAll.do'
                 ,where:data.field //设定异步数据接口的额外参数
+
             });
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });

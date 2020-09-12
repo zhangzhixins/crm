@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body>
+<div class="box2"><!--右边的div-->
+    <form class="layui-form"  id="formTest"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+        <blockquote class="layui-elem-quote layui-quote-nm">
+            <div class="layui-inline">
+                <label class="layui-form-label">商机全称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="allname" placeholder="请输入商机全称" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">商机阶段</label>
+                <div class="layui-input-block">
+                    <input type="text" name="busstage" placeholder="请输入商机阶段" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">商机负责人</label>
+                <div class="layui-input-block">
+                    <input type="text" name="busprincipal" placeholder="请输入商机负责人" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                </div>
+            </div><br>
+            <div style="background:rgba(23,34,226,0); color:rgba(255,255,255,0);width:1200px; height:18px;" class="div" ></div>
+            <div class="layui-inline">
+                <label class="layui-form-label">所属部门</label>
+                <div class="layui-input-block">
+                    <input type="text" name="linkduty" placeholder="请输入所属部门" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">预成交金额</label>
+                <div class="layui-input-block">
+                    <input type="text" name="makemoney" placeholder="请输入预成交金额" autocomplete="off" class="layui-input" style="width:220px; height:38px;">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">预结算日期</label>
+                <div class="layui-input-block">
+                    <input type="text" name="statementdate" class="layui-input" id="test1" placeholder="yyyy-MM-dd" style="width:220px; height:38px;">
+                </div>
+            </div>
+            <div align="center" style="position:relative;top:10px">
+                <button type="submit" class="layui-btn layui-btn-radius" lay-submit lay-filter="submitdemo">确认</button>
+                <button type="reset" class="layui-btn layui-btn-primary layui-btn-radius">重置</button>
+            </div>
+        </blockquote>
+        <div  align="right" style="position:relative;top:10px">
+            <button type="button" class="layui-btn layui-btn-normal" id="badd">
+                <i class="layui-icon layui-icon-add-1"></i> 新增商机
+            </button>
+        </div>
+    </form>
+    <table id="demo" lay-filter="test"></table>
+</div>
+<script src="/layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form','table','jquery','laydate'], function(){
+        var layer = layui.layer
+            ,form = layui.form
+            ,table = layui.table
+            ,$=layui.jquery
+            ,laydate = layui.laydate
+
+        //表格加载数据
+        table.render({
+            elem: '#demo'
+            ,height: 312
+            ,url: '/business/queryAll.do' //数据接口
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {field: 'busname', title: '商机名称', width:300,templet: '<div><a href="/business/querylist.do?cliid={{d.cliid}}" target="_blank" style="color: #1E9FFF;" onMouseOver="this.style.color=\'#000000\'" onMouseOut="this.style.color=\'#1E9FFF\'">{{d.busname}}</a></div>'}
+                ,{field: 'busstage', title: '商机阶段', width:120}
+                ,{field: 'makemoney', title: '预计成交金额', width:200}
+                ,{field: 'busprincipal', title: '商机负责人', width: 120}
+                ,{field: '', title: '最后跟单', width:200}
+                ,{field: '', title: '讨论版', width: 120}
+            ]]
+            ,done: function(res, curr, count){
+                this.where={};
+            }
+        });
+
+        form.on('submit(submitdemo)',function (data) {
+            table.reload('demo', {//表格重载
+                url: '/business/queryAll.do'
+                ,where: data.field
+                ,page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+            });
+            return false;
+        })
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+        $(function () {
+            //点击刷新按钮表格重载
+            $("#brefresh").click(function () {
+                table.reload('demo', {
+                    url: '/business/queryAll.do'
+                    ,where: {}
+                });
+            })
+            //点击新增服务
+            $("#badd").click(function () {
+                layer.open({
+                    type: 2,  //类型  2表示iframe层  1：页面层
+                    icon:2,
+                    closeBtn: 0,
+                    area: ['100%','100%'],//弹出页面的宽 高
+                    /*shade: false,*/ //遮罩层透明度,默认false，也可以写数字表示透明程度（如：0.1），数字越大，透明度越低
+                    title: "新增商机服务", //显示标题
+                    skin: 'layui-layer-rim', //加上边框
+                    content: ["/html/addbusiness.html"],
+                    //content  是一个url，可以访问后台，如果不想让iframe出现滚动条，这样写content: ['http://baidu.com', 'no']
+                });
+            })
+        })
+
+    });
+</script>
+</body>
+
+</html>

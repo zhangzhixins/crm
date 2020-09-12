@@ -1,25 +1,22 @@
 package com.hy.crm.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hy.crm.mapper.BusinessMapper;
+import com.hy.crm.mapper.PostMapper;
 import com.hy.crm.mapper.ReplyMapper;
 import com.hy.crm.mapper.UserMapper;
 import com.hy.crm.pojo.Business;
 import com.hy.crm.pojo.Post;
-import com.hy.crm.mapper.PostMapper;
 import com.hy.crm.pojo.Reply;
 import com.hy.crm.pojo.User;
 import com.hy.crm.pojo.vo.PostExt;
 import com.hy.crm.pojo.vo.PostExt1;
 import com.hy.crm.service.IPostService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

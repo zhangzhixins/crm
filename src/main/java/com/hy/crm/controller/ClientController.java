@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hy.crm.pojo.Client;
 import com.hy.crm.pojo.Finance;
 import com.hy.crm.pojo.vo.ClientExt2;
+import com.hy.crm.service.IBusinessService;
 import com.hy.crm.service.IClientService;
 import com.hy.crm.service.IFinanceService;
 import com.hy.crm.utils.Layui;
@@ -34,6 +35,9 @@ public class ClientController {
 
     @Autowired
     private IFinanceService iFinanceService;
+
+    @Autowired
+    private IBusinessService iBusinessService;
     private Client client;
     private Finance finance;
 
@@ -51,8 +55,9 @@ public class ClientController {
 
     @RequestMapping("/queryAll.do")
     @ResponseBody
-    public Layui queryAllClinet(Integer limit, Integer page,ClientExt2 clientExt2) {
-        List<ClientExt2> iPage=clientService.QueryBusinesss(limit,page,clientExt2);
+    public Layui queryAllClinet(Integer limit, Integer page,String val,String keyWord,ClientExt2 clientExt2,Client client,Integer ifyid) {
+       System.out.println("当前客户分类"+ifyid);
+        List<ClientExt2> iPage=clientService.QueryBusinesss(limit,page,clientExt2,client,val,keyWord,ifyid);
         Layui layui = new Layui();
         layui.setCode(0);
         layui.setMsg(":");
@@ -102,7 +107,7 @@ public class ClientController {
     public String queryUpdate( Client client,Finance finance){
         clientService.updateById(client);
         iFinanceService.updateById(finance);
-        return "redirect:client.html";
+        return "redirect:/html/client.html";
     }
 
 
@@ -126,5 +131,15 @@ public class ClientController {
         msgUtils.setData(clientService.getById(cliid));
         return msgUtils;
     }
+
+   /* @RequestMapping("/conut.do")
+    @ResponseBody
+    public MsgUtils queryCount(){
+        MsgUtils msgUtils = new MsgUtils();
+        msgUtils.setCode("0");
+        msgUtils.setMsg("查询成功");
+        msgUtils.setData(clientService.queryConnet());
+        return msgUtils;
+    }*/
 
 }
