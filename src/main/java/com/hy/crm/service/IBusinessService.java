@@ -26,7 +26,6 @@ public interface IBusinessService extends IService<Business> {
     public BusinessExt queryById(Integer busid);
     public List<BusinessExt1> QueryBusiness(Integer limit, Integer page, Business business);
 
-    public IPage<Business> QueryBusiness(Integer limit, Integer page,Business business);
     public MyStatistic selectCount();
     public MyStatistic selectMake();
     public List<String> listDate();

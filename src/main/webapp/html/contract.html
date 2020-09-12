@@ -118,13 +118,13 @@
                     field: 'conserial'
                   , title: '合同编号'
                   , width: 120
-                  , templet: '<div>{{d.cotract.conserial}}</div>'
+                  , templet: '<div>{{d.contract.conserial}}</div>'
                 }
                 , {
                    field: 'conmoney'
                  , title: '合同金额/￥'
                  , width: 120
-                 , templet: '<div>{{d.cotract.conmoney}}</div>'
+                 , templet: '<div>{{d.contract.conmoney}}</div>'
                 }
                 , {
                    field: 'afttype'
@@ -138,7 +138,7 @@
                     field: 'contime',
                     title: '签约日期',
                     width: 200,
-                    templet: "<div>{{layui.util.toDateString(d.contime, 'yyyy-MM-dd HH:mm:ss')}}</div>"
+                    templet: "<div>{{layui.util.toDateString(d.contract.contime, 'yyyy-MM-dd HH:mm:ss')}}</div>"
                 }
             ]]
             , done: function (res, curr, count) {
