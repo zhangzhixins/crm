@@ -140,6 +140,7 @@
                 </button>
             </div>
         </div>
+    <form class="layui-form" action="/aftersale/queryAll.do" id="formTest">
         <div class="box2"><!--基本信息-->
             <p class="box3">基本信息</p>
             <div class="layui-form-item box4">
@@ -174,8 +175,7 @@
             <div class="layui-form-item box4 layui-inline">
                 <label class="layui-form-label">客户名称:</label>
                 <div class="layui-input-block box9">
-                    <input type="hidden" name="cliid" id="cliid" th:value="${aftersale.cliid}">
-                    <input type="text" readonly name="cliname" id="cliname"  autocomplete="off" class="layui-input box6">
+                    <input type="text" readonly name="cliname"  id="cliname"  autocomplete="off" class="layui-input box11">
                 </div>
             </div>
             <div class="layui-form-item box4 layui-inline">
@@ -302,6 +302,8 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" id="cliid" th:value="${aftersale.cliid}">
+    </form>
 
 </div>
 
@@ -316,6 +318,7 @@
             , $ = layui.jquery
             , laydate = layui.laydate
             , upload = layui.upload;
+
         $(function () {
             $.get({
                 url:"/client/queryById.do",
