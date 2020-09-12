@@ -12,7 +12,10 @@ import com.hy.crm.pojo.Documentary;
 import com.hy.crm.pojo.Post;
 import com.hy.crm.pojo.vo.BusinessExt;
 import com.hy.crm.pojo.vo.BusinessExt1;
+import com.hy.crm.pojo.vo.MyStatistic;
+import com.hy.crm.pojo.vo.TypeExt;
 import com.hy.crm.service.IBusinessService;
+import com.hy.crm.utils.Layui;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -123,5 +126,72 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, Business> i
     public BusinessExt queryById(Integer busid){
         BusinessExt business=businessMapper.queryById(busid);
         return business;
+    }
+
+
+    /**
+     * 查询商机每个时间段的总数量
+     */
+    @Override
+    public MyStatistic selectCount(){
+        List<String> lis=this.listDate();
+        MyStatistic myStatistic1 = new MyStatistic();
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < lis.size()-1; i++) {
+            list.add(businessMapper.selectCount(lis.get(i)));
+        }
+        return this.test(myStatistic1,list);
+    }
+
+    /**
+     * 查询每个阶段商机成交的数量
+     * 已成交的状态 1008
+     * @return
+     */
+    @Override
+    public MyStatistic selectMake(){
+        List<String> lis = this.listDate();
+        MyStatistic myStatistic1 = new MyStatistic();
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < lis.size()-1; i++) {
+            list.add(businessMapper.selectMake(lis.get(i)));
+        }
+        return this.test(myStatistic1,list);
+    }
+
+
+
+    /**
+     * 封装各个阶段的时间
+     * @return
+     */
+    @Override
+    public List<String> listDate(){
+        ArrayList<String> lis = new ArrayList<>();
+        lis.add(" and YEARWEEK(date_format(newtime,'%Y-%m-%d'),-1) = YEARWEEK(date_format(NOW(),'%Y-%m-%d'))");
+        lis.add(" and YEARWEEK(date_format(newtime,'%Y-%m-%d'),1) = YEARWEEK(date_format(NOW(),'%Y-%m-%d'))");
+        lis.add(" and DATE_FORMAT(newtime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' )");
+        lis.add(" and PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format(newtime, '%Y%m' ) ) =1");
+        lis.add(" and QUARTER(newtime)=QUARTER(now()) and  year(newtime)=year(now())");
+        lis.add(" and QUARTER(newtime)=QUARTER(DATE_SUB(now(),interval 1 QUARTER)) and  YEAR (newtime)=YEAR(DATE_SUB(now(),interval 1 QUARTER))");
+        lis.add(" and YEAR(newtime)=YEAR(NOW())");
+        lis.add(" and year(newtime)=year(date_sub(now(),interval 1 year))");
+        lis.add("1");
+        return lis;
+    }
+
+
+    /*封装数据*/
+    @Override
+    public MyStatistic test(MyStatistic myStatistic1,List<Integer> list){
+        myStatistic1.setThisWeek(list.get(0));
+        myStatistic1.setPreWeek(list.get(1));
+        myStatistic1.setThisMonth(list.get(2));
+        myStatistic1.setPreMonth(list.get(3));
+        myStatistic1.setThisSeason(list.get(4));
+        myStatistic1.setPreSeason(list.get(5));
+        myStatistic1.setThisYear(list.get(6));
+        myStatistic1.setPreYear(list.get(7));
+        return myStatistic1;
     }
 }

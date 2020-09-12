@@ -82,15 +82,8 @@ public class AftersaleServiceImpl extends ServiceImpl<AftersaleMapper, Aftersale
 
     @Override
     public AftersaleExt queryById(Integer aftid){
-       /* AftersaleExt aftersaleExt=aftersaleMapper.queryId(aftid);
-        *//*Contract contract=aftersaleMapper.queryById(aftersaleExt.getConid());
-        aftersaleExt.setContract(contract);
-        System.out.println("-=pp=-=-=-"+contract);*//*
-        System.out.println("-----------------"+aftersaleExt.getContract().toString());
-        System.out.println("==============="+aftersaleExt.getContract().getConserial());*/
-        System.out.println("=================================");
         AftersaleExt aftersaleExt=aftersaleMapper.queryId(aftid);
-        System.out.println(aftersaleExt.getContract().getConserial());
+        System.out.println(aftersaleExt.getContract().getCliid());
         return aftersaleExt;
     }
 }

@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hy.crm.mapper.ContractMapper;
 import com.hy.crm.pojo.Contract;
+import com.hy.crm.pojo.vo.MyStatistic;
 import com.hy.crm.pojo.vo.TypeExt;
 import com.hy.crm.pojo.vo.TypeExt1;
+import com.hy.crm.service.IBusinessService;
 import com.hy.crm.service.IContractService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
 
     @Autowired
     ContractMapper contractMapper;
+
+    @Autowired
+    IBusinessService businessService;
 
     @Override
     public List<Contract> queryContract(Integer cliid){
@@ -82,5 +87,18 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
         typeExt.setThisseason(String.valueOf(list.get(8)));
         typeExt.setPreseason(String.valueOf(list.get(9)));
         return typeExt;
+    }
+
+
+    /*查询时间段内的合同数量*/
+    @Override
+    public MyStatistic selectCount(){
+        List<String> lis=businessService.listDate();
+        MyStatistic myStatistic1 = new MyStatistic();
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < lis.size()-1; i++) {
+            list.add(contractMapper.selectCount(lis.get(i)));
+        }
+        return businessService.test(myStatistic1,list);
     }
 }

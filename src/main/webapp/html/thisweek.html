@@ -33,23 +33,23 @@
         table.render({
             elem: '#demo'
             ,height: 312
-            ,url: 'bb' //数据接口
+            ,url: '/statistic/thisWeek.do?key=1' //数据接口
             ,page: true //开启分页
             ,cols: [[
-                { field: "name",title:"姓名",rowspan: 2, align:"center",width:100},
+                { field: "userName",title:"姓名",rowspan: 2, align:"center",width:100},
                 { field: "", title: "商机数", colspan: 2, align: "left", width:140},
                 { field: "", title: "成交数", colspan: 2, align: "left", width:140},
                 { field: "", title: "跟单数", colspan: 2, align: "left", width:140},
                 { field: "", title: "合同数", colspan: 2, align: "left", width:140},
                 ], [
-                { field: "thisweek", title: "本周", width:100 },
-                { title: "preweek",  title: "上周", width: 100 },
-                { field: "thisweek", title: "本周", width:100 },
-                { title: "preweek",  title: "上周", width: 100 },
-                { field: "thisweek", title: "本周", width:100 },
-                { title: "preweek",  title: "上周", width: 100 },
-                { field: "thisweek", title: "本周", width:100 },
-                { title: "preweek",  title: "上周", width: 100 },
+                { field: "businessThis", title: "本周", width:100 },
+                { field: "businessLast",  title: "上周", width: 100 },
+                { field: "accomplishThis", title: "本周", width:100 },
+                { field: "accomplishLast",  title: "上周", width: 100 },
+                { field: "documentaryThis", title: "本周", width:100 },
+                { field: "documentaryLast",  title: "上周", width: 100 },
+                { field: "contractThis", title: "本周", width:100 },
+                { field: "contractLast",  title: "上周", width: 100 },
                 ]]
             ,done: function(res, curr, count){
                 this.where={};
